@@ -1,0 +1,17 @@
+<html xmlns="http://www.thymeleaf.org">
+<head>
+<meta charset="UTF-8">
+<title>日報</title>
+</head>
+<body>
+	<form method="post" th:action="@{/login}">
+		<input type="text" name="activity" />
+		<select>
+			<option value="1">〇</option>
+			<option value="2">△</option>
+			<option value="3">✕</option>
+		</select>
+		<input type="text" name="improvement" />
+		<input type="submit" value="提出" >
+	
+	</form>

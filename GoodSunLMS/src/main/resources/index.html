@@ -1,0 +1,15 @@
+<!DOCTYPE html>
+<html xmlns:th="http://www.thymeleaf.org">
+<head>
+<meta charset="UTF-8">
+<title>GoodSunLMS ログイン</title>
+</head>
+<body>
+
+<form method="post" th:action="@{/select}">
+	ID:<input type="text" name="id"/>
+	password:<input type="password" name="password" />
+	<input type="submit" value="ログイン" />
+</form>
+</body>
+</html>

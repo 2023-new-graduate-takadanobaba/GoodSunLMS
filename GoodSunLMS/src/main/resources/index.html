@@ -1,4 +1,5 @@
 <!DOCTYPE html>
+<<<<<<< HEAD
 <html xmlns="http://www.thymeleaf.org">
 <head>
 <meta charset="UTF-8">
@@ -17,5 +18,19 @@
 	
 	</form>
 
+=======
+<html xmlns:th="http://www.thymeleaf.org">
+<head>
+<meta charset="UTF-8">
+<title>GoodSunLMS ログイン</title>
+</head>
+<body>
+
+<form method="post" th:action="@{/select}">
+	ID:<input type="text" name="id"/>
+	password:<input type="password" name="password" />
+	<input type="submit" value="ログイン" />
+</form>
+>>>>>>> branch 'main' of https://github.com/2023-new-graduate-takadanobaba/GoodSunLMS.git
 </body>
 </html>

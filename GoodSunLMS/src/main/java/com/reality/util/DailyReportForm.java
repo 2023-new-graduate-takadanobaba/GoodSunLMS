@@ -1,12 +1,12 @@
 package com.reality.util;
 
+import java.util.ArrayList;
 import java.util.Map;
 
 public class DailyReportForm {
 	
 	// やったこと
-	// <やったこと, 〇△×>
-	private Map<String, String> doneThings;
+	private ArrayList<DoneThings> doneThings;
 	// 所感
 	private String reflection;
 	
@@ -14,25 +14,26 @@ public class DailyReportForm {
 		super();
 		// TODO Auto-generated constructor stub
 	}
-	public DailyReportForm(Map<String, String> doneThings, String reflection) {
+	public DailyReportForm(ArrayList<DoneThings> doneThings, String reflection) {
 		super();
 		this.doneThings = doneThings;
 		this.reflection = reflection;
 	}
-	
-	public Map<String, String> getDoneThings() {
+
+	public ArrayList<DoneThings> getDoneThings() {
 		return doneThings;
 	}
-	public void setDoneThings(Map<String, String> doneThings) {
+
+	public void setDoneThings(ArrayList<DoneThings> doneThings) {
 		this.doneThings = doneThings;
 	}
+
 	public String getReflection() {
 		return reflection;
 	}
+
 	public void setReflection(String reflection) {
 		this.reflection = reflection;
 	}
-	
-	
 	
 }

@@ -17,4 +17,9 @@ public class SessionController {
 		public String doLogin() {
 			return "select";
 		}
+	
+	@RequestMapping("/select")
+		public String select() {
+		return "select";
+	}
 }

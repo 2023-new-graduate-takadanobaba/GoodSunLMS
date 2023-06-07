@@ -10,4 +10,9 @@ public class SelectController {
 	public String dailyReport() {
 		return "dailyReport";
 	}
+	
+	@GetMapping("/attendanceSystem")
+	public String attendanceSystem() {
+		return "attendanceSystem";
+	}
 }

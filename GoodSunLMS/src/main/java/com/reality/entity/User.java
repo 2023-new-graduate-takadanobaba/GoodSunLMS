@@ -6,7 +6,7 @@ package com.reality.entity;
 //import javax.persistence.Column;
 //
 //@Entity
-//@Table(name = "attendance")
+//@Table(name = "user")
 public class User {
 //	@Id
 //	private Integer userId;

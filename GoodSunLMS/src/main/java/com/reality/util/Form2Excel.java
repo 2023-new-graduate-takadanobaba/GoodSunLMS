@@ -102,12 +102,6 @@ public class Form2Excel {
 		// form情報整え
 		
 		for (int i = 0; i < drf.getDoneThingsList().size(); i++) {
-			// やったことある？と判断
-			// ないだったら削除
-//			if (drf.getDoneThingsList().get(i).getThings()==null||drf.getDoneThingsList().get(i).getThings().isEmpty()) {
-//				drf.getDoneThingsList().remove(i);
-//				i--;
-//			}
 			// 改行
 			drf.getDoneThingsList().get(i).getThings().replaceAll("(.{15})", "\n");
 			drf.getDoneThingsList().get(i).getImprovement().replaceAll("(.{20})", "\n");

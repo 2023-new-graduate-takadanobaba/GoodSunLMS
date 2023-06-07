@@ -17,16 +17,16 @@ public class SessionController {
 		return "index";
 	}
 	
-	@PostMapping("/login")
+	@PostMapping("/select")
 		public String doLogin(LoginForm form, HttpSession session) {
 			session.setAttribute("userName", form.getUserName());
 			return "select";
 		}
 	
-	@GetMapping("/select")
-		public String select() {
-		return "select";
-	}
+//	@PostMapping("/select")
+//		public String select() {
+//		return "select";
+//	}
 	
 	@GetMapping("/logout")
 	public String logout(HttpSession session) {

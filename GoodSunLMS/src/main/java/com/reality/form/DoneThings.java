@@ -1,4 +1,4 @@
-package com.reality.util;
+package com.reality.form;
 
 public class DoneThings {
 	// やったこと

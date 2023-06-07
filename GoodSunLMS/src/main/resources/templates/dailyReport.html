@@ -9,9 +9,9 @@
 <body>
 	<p>日報</p>
 	<p th:text="${session.sdf}"></p>
-<!--	<span th:text="${#dates.format(session.date, 'yyyy/MM/dd')}"></span>-->
 	<p th:text="${session.date}"></p>
 	<form method="post" th:action="@{/}">
+		<p>
 		<table>
 			<tr>
 				<th>やったこと</th>
@@ -64,8 +64,9 @@
 				<td><input type="text" name="improvement" /></td>
 			</tr>
 		</table>
+		</p>
 
-		<p>所感</p>
+		<div>所感(400文字以内)</div>
 		<textarea name="impression" cols="50" rows="8"></textarea>
 		<br>
 		<input type="submit" value="提出">

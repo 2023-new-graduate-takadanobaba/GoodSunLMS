@@ -41,7 +41,7 @@ public class DailyReportForm {
 	public void setDoneThingsList(ArrayList<DoneThings> doneThingsList) {
 		this.doneThingsList = doneThingsList;
 	}
-
+	
 	public void setDoneThingsList(DoneThings doneThings) {
 		String[] thingsArr = doneThings.getThings().split(",");
 		String[] comArr = doneThings.getCompleteness().split(",");

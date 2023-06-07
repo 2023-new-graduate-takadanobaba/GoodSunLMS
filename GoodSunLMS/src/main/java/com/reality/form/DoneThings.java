@@ -2,7 +2,7 @@ package com.reality.form;
 
 public class DoneThings {
 	// やったこと
-	private String Things;
+	private String things;
 	// 〇△×
 	private String completeness;
 	// 改善
@@ -14,16 +14,16 @@ public class DoneThings {
 	}
 	public DoneThings(String things, String completeness, String improvement) {
 		super();
-		Things = things;
+		this.things = things;
 		this.completeness = completeness;
 		this.improvement = improvement;
 	}
 	
 	public String getThings() {
-		return Things;
+		return things;
 	}
 	public void setThings(String things) {
-		Things = things;
+		this.things = things;
 	}
 	public String getCompleteness() {
 		return completeness;

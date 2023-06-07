@@ -20,6 +20,7 @@ import org.springframework.ui.Model;
 
 import com.reality.form.DailyReportForm;
 
+import jakarta.mail.Session;
 import jakarta.servlet.http.HttpSession;
 
 public class Form2Excel {
@@ -40,8 +41,9 @@ public class Form2Excel {
 	
 	private DailyReportForm dailyReportForms = new DailyReportForm();
 	
-	public void runForm2Excel() {
-		
+	public void runForm2Excel(DailyReportForm drf, HttpSession session) throws Exception {
+		doExcel(drf);
+		buildExcel(session);
 	}
 	
 	

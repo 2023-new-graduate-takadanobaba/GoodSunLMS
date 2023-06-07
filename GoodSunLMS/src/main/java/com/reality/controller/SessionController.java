@@ -26,8 +26,7 @@ public class SessionController {
 			session.setAttribute("userName", form.getUserName());
 			Date date = new Date();
 			SimpleDateFormat sdf= new SimpleDateFormat("yyyy/MM/dd");
-			session.setAttribute("date", sdf);
-			
+			session.setAttribute("date", sdf.format(date));
 			return "select";
 		}
 	

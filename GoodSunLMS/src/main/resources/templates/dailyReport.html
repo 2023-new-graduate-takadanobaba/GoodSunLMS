@@ -9,7 +9,8 @@
 <body>
 	<p>日報</p>
 	<p th:text="${session.sdf}"></p>
-	<span th:text="${#dates.format(session.date, 'yyyy/MM/dd')}"></span>
+<!--	<span th:text="${#dates.format(session.date, 'yyyy/MM/dd')}"></span>-->
+	<p th:text="${session.date}"></p>
 	<form method="post" th:action="@{/}">
 		<table>
 			<tr>

@@ -1,25 +1,37 @@
 package com.reality.controller;
 
 import org.springframework.stereotype.Controller;
+import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.PostMapping;
-import org.springframework.web.bind.annotation.RequestMapping;
+
+import com.reality.form.LoginForm;
+
+import jakarta.servlet.http.HttpSession;
 
 @Controller
 public class SessionController {
 //	@Autowired
 	
-	@RequestMapping("/index")
+	@GetMapping("/index")
 	public String index() {
 		return "index";
 	}
 	
 	@PostMapping("/login")
-		public String doLogin() {
+		public String doLogin(LoginForm form, HttpSession session) {
+			session.setAttribute("userName", form.getUserName());
 			return "select";
 		}
 	
-	@RequestMapping("/select")
+	@GetMapping("/select")
 		public String select() {
 		return "select";
 	}
+	
+	@GetMapping("/logout")
+	public String logout(HttpSession session) {
+		session.invalidate();
+		return "index";
+	}
+	
 }

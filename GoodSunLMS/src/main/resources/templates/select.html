@@ -5,7 +5,16 @@
 <title>Insert title here</title>
 </head>
 <body>
+<p>
+	ユーザー名：<span th:text="${session.userName}"></span>
+</p>
+
 <a th:href="@{/dailyReport}">日報</a>
+<a th:href="@{/attendanceSystem}">勤怠登録</a>
+
+<p>
+	<a th:href="@{/logout}">ログアウト</a>
+</p>
 
 </body>
 </html>

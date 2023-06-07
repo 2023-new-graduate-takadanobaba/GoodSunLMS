@@ -23,7 +23,7 @@ public class SelectController {
 		Form2Excel excel = new Form2Excel();
 		excel.runForm2Excel(dailyReportForm, session);
 		session.setAttribute("done", true);
-		return "redirect:/";
+		return "redirect:.";
 	}
 	
 	@GetMapping("/attendanceSystem")

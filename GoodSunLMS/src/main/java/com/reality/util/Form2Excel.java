@@ -4,26 +4,21 @@ import java.io.File;
 import java.io.FileOutputStream;
 import java.io.IOException;
 import java.io.InputStream;
-import java.io.OutputStream;
 import java.nio.file.Files;
 import java.text.SimpleDateFormat;
-import java.util.ArrayList;
 import java.util.Date;
 
 import javax.swing.filechooser.FileSystemView;
 
-import org.apache.poi.hssf.usermodel.HSSFCell;
-import org.apache.poi.hssf.usermodel.HSSFSheet;
-import org.apache.poi.hssf.usermodel.HSSFWorkbook;
+import org.apache.poi.ss.usermodel.HorizontalAlignment;
+import org.apache.poi.ss.usermodel.VerticalAlignment;
 import org.apache.poi.xssf.usermodel.XSSFCell;
+import org.apache.poi.xssf.usermodel.XSSFCellStyle;
 import org.apache.poi.xssf.usermodel.XSSFSheet;
 import org.apache.poi.xssf.usermodel.XSSFWorkbook;
-import org.hibernate.validator.internal.util.privilegedactions.NewInstance;
-import org.springframework.ui.Model;
 
 import com.reality.form.DailyReportForm;
 
-import jakarta.mail.Session;
 import jakarta.servlet.http.HttpSession;
 
 public class Form2Excel {
@@ -66,25 +61,32 @@ public class Form2Excel {
 		
 		// Cell処理...
 		int row_pos = 4;
-		int col_pos = 1;
+		XSSFCellStyle comStyle = wb.createCellStyle();
+		XSSFCellStyle refStyle = wb.createCellStyle();
+		comStyle.setAlignment(HorizontalAlignment.CENTER);
+		refStyle.setVerticalAlignment(VerticalAlignment.TOP);
 		// 日付
 		this.setValue(2, 1, sdf.format(new Date()));
 		// 今やったこと
 		for (int i = 0; i < dailyReportForms.getDoneThingsList().size(); i++) {
+			int col_pos = 1;
 			// 1行15字
 			this.setValue(row_pos, col_pos++, dailyReportForms.getDoneThingsList().get(i).getThings());
+//			ws.getRow(row_pos).getCell(col_pos).setCellStyle(comStyle);
 			this.setValue(row_pos, col_pos++, dailyReportForms.getDoneThingsList().get(i).getCompleteness());
 			// 1行20字
 			this.setValue(row_pos, col_pos++, dailyReportForms.getDoneThingsList().get(i).getImprovement());
 			row_pos++;
 		}
 		// 所感 1行40字
+//		ws.getRow(11).getCell(1).setCellStyle(refStyle);
 		this.setValue(11, 1, dailyReportForms.getReflection());	
 		
 		// output
 		
  		File desktopDir = FileSystemView.getFileSystemView().getHomeDirectory();
-		String outputFilePath = desktopDir.getAbsolutePath()+"\\desktop";
+		String outputFilePath = desktopDir.getAbsolutePath()+"\\";
+		System.out.println(fileSdf.format(new Date()));
 		String outputFileName = fileSdf.format(new Date()) +"_" + session.getAttribute("userName") + ".xlsx";
 		Files.createDirectories(new File(outputFilePath).toPath());
 		FileOutputStream stream = new FileOutputStream(outputFilePath + outputFileName);
@@ -102,10 +104,10 @@ public class Form2Excel {
 		for (int i = 0; i < drf.getDoneThingsList().size(); i++) {
 			// やったことある？と判断
 			// ないだったら削除
-			if (drf.getDoneThingsList().get(i).getThings()==null||drf.getDoneThingsList().get(i).getThings().isEmpty()) {
-				drf.getDoneThingsList().remove(i);
-				i--;
-			}
+//			if (drf.getDoneThingsList().get(i).getThings()==null||drf.getDoneThingsList().get(i).getThings().isEmpty()) {
+//				drf.getDoneThingsList().remove(i);
+//				i--;
+//			}
 			// 改行
 			drf.getDoneThingsList().get(i).getThings().replaceAll("(.{15})", "\n");
 			drf.getDoneThingsList().get(i).getImprovement().replaceAll("(.{20})", "\n");
@@ -116,7 +118,7 @@ public class Form2Excel {
 		dailyReportForms.setDoneThings(drf.getDoneThings());
 		dailyReportForms.setReflection(drf.getReflection());
 		
-		dailyReportForms.getDoneThingsList().forEach(s->{System.out.println(s.getThings());});
+//		dailyReportForms.getDoneThingsList().forEach(s->{System.out.println(s.getThings());});
 				
 	}
 	
@@ -128,7 +130,7 @@ public class Form2Excel {
 		if (ws.getRow(row_pos).getCell(col_pos) == null) {
 			XSSFCell newCell = ws.getRow(row_pos).createCell(col_pos);
 			try {
-				newCell.setCellStyle(ws.getRow(2).getCell(1).getCellStyle());
+				newCell.setCellStyle(ws.getRow(row_pos).getCell(col_pos).getCellStyle());
 			} catch (Exception ex) {
 				String exm = ex.getMessage();
 				System.out.println(exm);

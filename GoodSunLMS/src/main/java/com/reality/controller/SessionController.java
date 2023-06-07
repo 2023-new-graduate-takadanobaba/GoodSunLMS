@@ -1,5 +1,6 @@
 package com.reality.controller;
 
+import java.text.SimpleDateFormat;
 import java.util.Date;
 
 import org.springframework.stereotype.Controller;
@@ -24,7 +25,9 @@ public class SessionController {
 		public String doLogin(LoginForm form, HttpSession session) {
 			session.setAttribute("userName", form.getUserName());
 			Date date = new Date();
-			session.setAttribute("date", date);
+			SimpleDateFormat sdf= new SimpleDateFormat("yyyy/MM/dd");
+			session.setAttribute("date", sdf);
+			
 			return "select";
 		}
 	

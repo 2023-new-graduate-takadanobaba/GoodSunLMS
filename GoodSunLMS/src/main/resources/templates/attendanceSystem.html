@@ -2,9 +2,28 @@
 <html xmlns:th="http://www.thymeleaf.org">
 <head>
 <meta charset="UTF-8">
-<title>Insert title here</title>
+<title>勤怠登録</title>
 </head>
 <body>
+<p>
+	ユーザー名：<span th:text="${session.userName}"></span>
+</p>
+<p>
+	<a th:href="@{/attendanceRegister}">出勤登録</a>
+</p>
 
+<p>
+	愚痴相談登録
+	<form method="post" th:action="@{/complaints}">
+		<input type="time" name="startTime" />
+		<input type="submit" value="登録"/>
+	</form>
+</p>
+
+
+
+<p>
+	<a th:href="@{/return}">戻る</a>
+</p>
 </body>
 </html>

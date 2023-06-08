@@ -1,6 +1,7 @@
 package com.reality.controller;
 
 import org.springframework.stereotype.Controller;
+import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.ModelAttribute;
 import org.springframework.web.bind.annotation.PostMapping;
@@ -34,6 +35,12 @@ public class SelectController {
 	@PostMapping("/attendanceRegister")
 	public String attendanceRegister() {
 		return "select";
+	}
+	
+	@GetMapping("/findAllAttendance")
+	public String findAllAttendance(Model model) {
+//		model.addAllAttributes("attendance", attendanceRepository.findAll());
+		return "findAllAttendance";
 	}
 	
 	@GetMapping("/return")

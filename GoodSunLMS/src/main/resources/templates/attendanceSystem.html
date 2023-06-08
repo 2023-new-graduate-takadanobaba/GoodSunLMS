@@ -8,6 +8,7 @@
 <p>
 	ユーザー名：<span th:text="${session.userName}"></span>
 </p>
+
 <p>
 	<form method="post" th:action="@{/attendanceRegister}">
 		<input type="submit" value="出勤登録" />
@@ -22,7 +23,10 @@
 		<input type="submit" value="登録"/>
 	</form>
 </p>
-
+	
+<p>
+	<a th:href="@{/findAllAttendance}">勤怠情報一覧</a>
+</p>
 
 
 <p>

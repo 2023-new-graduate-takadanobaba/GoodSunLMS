@@ -23,8 +23,7 @@ public class SelectController {
 	public String doDailyReport(@ModelAttribute DailyReportForm dailyReportForm, HttpSession session) throws Exception {
 		Form2Excel excel = new Form2Excel();
 		excel.runForm2Excel(dailyReportForm, session);
-		session.setAttribute("done", true);
-		return "redirect:./select";
+		return "redirect:./loading";
 	}
 	
 	@GetMapping("/attendanceSystem")

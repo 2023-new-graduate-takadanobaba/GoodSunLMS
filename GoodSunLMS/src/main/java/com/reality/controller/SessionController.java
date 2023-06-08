@@ -21,8 +21,13 @@ public class SessionController {
 		return "index";
 	}
 	
+	@GetMapping("/loading")
+	public String loading() {
+		return "loading";
+	}
+	
 	@GetMapping("/select")
-	public String login() {
+	public String login(HttpSession session) {
 		return "select";
 	}
 	
@@ -32,7 +37,6 @@ public class SessionController {
 			Date date = new Date();
 			SimpleDateFormat sdf= new SimpleDateFormat("yyyy/MM/dd");
 			session.setAttribute("date", sdf.format(date));
-			session.removeAttribute("done");
 			return "select";
 		}
 	

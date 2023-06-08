@@ -1,24 +1,19 @@
 <!DOCTYPE html>
 <html xmlns:th="http://www.thymeleaf.org">
 
-<script src="https://code.jquery.com/jquery-2.2.4.min.js" integrity="sha256-BbhdlvQf/xTY9gja0Dq3HiwQF8LaCRTXxZKRutelT44=" crossorigin="anonymous"></script>
-<script type="text/javascript">
-	$("input[name='submit']").click(function(){
-		if($("input[name='done']").val()){
-			alert('job done!');
-		}		
-	})
-</script>
-
 <head>
 	<meta charset="UTF-8">
 	<title>日報</title>
 </head>
-
+<script src="https://code.jquery.com/jquery-2.2.4.min.js" integrity="sha256-BbhdlvQf/xTY9gja0Dq3HiwQF8LaCRTXxZKRutelT44=" crossorigin="anonymous"></script>
+<script type="text/javascript">
+	$("input[name='submit']").click(function(){
+		alert('job done!');		
+	})
+</script>
 <body></body>
 	<h2>日報</h2>
 	<p th:text="${session.date}"></p>
-	<input type="hidden" name="done" th:if="${done}" th:value="${done}"/>
 	<form method="post" th:action="@{/doDailyReport}" th:object="${dailyReportForm}">
 		<p>
 		<table>
@@ -80,4 +75,4 @@
 		<input name="submit" type="submit" value="提出">
 	</form>
 	<br>
-	<a th:href="@{/return}">戻る</a>
+	<a th:href="@{/select}">戻る</a>

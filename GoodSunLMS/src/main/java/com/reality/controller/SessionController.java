@@ -32,6 +32,7 @@ public class SessionController {
 			Date date = new Date();
 			SimpleDateFormat sdf= new SimpleDateFormat("yyyy/MM/dd");
 			session.setAttribute("date", sdf.format(date));
+			session.removeAttribute("done");
 			return "select";
 		}
 	

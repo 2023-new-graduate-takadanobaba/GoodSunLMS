@@ -33,7 +33,7 @@ public class SelectController {
 	
 	@PostMapping("/attendanceRegister")
 	public String attendanceRegister() {
-		return "select";
+		return "redirect:./attendanceMessage";
 	}
 	
 	@GetMapping("/findAllAttendance")

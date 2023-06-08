@@ -17,10 +17,10 @@ public class Attendance {
 //	private Date date;
 //	
 //	@Column 
-//	private String Division;
+//	private String division;
 //	
 //	@Column
-//	private String time;
+//	private String workHours;
 //	
 //	@Column
 //	private String project;
@@ -48,19 +48,19 @@ public class Attendance {
 //	}
 //
 //	public String getDivision() {
-//		return Division;
+//		return division;
 //	}
 //
 //	public void setDivision(String division) {
-//		Division = division;
+//		this.division = division;
 //	}
 //
-//	public String getTime() {
-//		return time;
+//	public String getWorkHours() {
+//		return workHours;
 //	}
 //
-//	public void setTime(String time) {
-//		this.time = time;
+//	public void setWorkHours(String workHours) {
+//		this.workHours = workHours;
 //	}
 //
 //	public String getProject() {

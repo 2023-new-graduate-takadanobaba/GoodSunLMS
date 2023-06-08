@@ -31,6 +31,11 @@ public class SelectController {
 		return "attendanceSystem";
 	}
 	
+	@GetMapping("/attendanceRegister")
+	public String attendanceRegister() {
+		return "redirect:/select";
+	}
+	
 	@GetMapping("/return")
 	public String returnToSelect() {
 		return "select";

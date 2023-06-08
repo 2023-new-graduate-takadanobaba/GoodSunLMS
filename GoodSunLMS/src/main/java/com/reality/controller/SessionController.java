@@ -21,6 +21,11 @@ public class SessionController {
 		return "index";
 	}
 	
+	@GetMapping("/select")
+	public String login() {
+		return "select";
+	}
+	
 	@PostMapping("/select")
 		public String doLogin(LoginForm form, HttpSession session) {
 			session.setAttribute("userName", form.getUserName());

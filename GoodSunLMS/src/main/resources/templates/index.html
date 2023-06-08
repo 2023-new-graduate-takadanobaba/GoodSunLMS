@@ -3,14 +3,30 @@
 <head>
 <meta charset="UTF-8">
 <title>GoodSunLMS ログイン</title>
+
+<style>
+body{
+		background:aliceblue;
+}
+
+#login{
+		text-align:center;
+		background:#cab8d9;
+		margin:100px;
+		padding:100px;
+}
+</style>
+
 </head>
 <body>
-
-<form method="post" th:action="@{/select}">
-	ID:<input type="text" name="userName"/>
-	password:<input type="password" name="password" />
-	<input type="submit" value="ログイン" />
+<div id="login">
+	<form method="post" th:action="@{/select}">
+	<p>　userID:<input type="text" name="userName"/></p>
+	<p>password:<input type="password" name="password" /></p>
+	<p><input type="submit" value="ログイン" /></p>
 </form>
+</div>
+
 
 </body>
 </html>

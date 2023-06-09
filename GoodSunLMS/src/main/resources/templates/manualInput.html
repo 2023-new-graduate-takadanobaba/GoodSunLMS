@@ -12,14 +12,23 @@
 		<br />
 		区分◆<input type="text" name="division" />
 		<br />
-		プロジェクト◆<input type="text" name="project" list="project" placeholder="入力" autocomplete="off"/>
+		プロジェクト◆<input type="text" name="project" list="project" placeholder="選択または入力" autocomplete="off"/>
 			<datalist id="project">
-				<option 
+				<option value="新入社員研修">
+				<option value="新人教育（愚痴相談）">
 			</datalist>
 		<br />
-		作業場所◆<input type="text" name="place" />
+		作業場所◆<input type="text" name="place" list="place" placeholder="選択または入力" autocomplete="off"/>
+			<datalist id="place">
+				<option value="高田馬場">
+				<option value="中野">
+				<option value="在宅">
+			</datalist>
 		<br />
-		備考◆<input type="text" name="remarks" />
+		備考◆<input type="text" name="remarks" list="remarks" placeholder="選択または入力" autocomplete="off"/>
+			<datalist id="remarks">
+				<option value="やっとむ屋">
+			</datalist>
 		<br />
 		<input type="submit"value="登録" />
 	</form>

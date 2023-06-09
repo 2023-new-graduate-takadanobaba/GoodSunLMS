@@ -20,4 +20,6 @@ public class ManualnputController {
 	public String manualInput() {
 		return "manualInput";
 	}
+	
+	
 }

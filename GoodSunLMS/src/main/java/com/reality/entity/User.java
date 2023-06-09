@@ -1,13 +1,13 @@
-package com.reality.entity;
-
-//import javax.persistence.Table;
+//package com.reality.entity;
+//
+//import javax.persistence.Column;
 //import javax.persistence.Entity;
 //import javax.persistence.Id;
-//import javax.persistence.Column;
+//import javax.persistence.Table;
 //
 //@Entity
 //@Table(name = "user")
-public class User {
+//public class User {
 //	@Id
 //	private Integer userId;
 //	
@@ -40,7 +40,7 @@ public class User {
 //	public void setPassword(String password) {
 //		this.password = password;
 //	}
-	
-	
-
-}
+//	
+//	
+//
+//}

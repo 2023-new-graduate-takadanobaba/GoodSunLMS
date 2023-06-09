@@ -9,6 +9,24 @@
 	ユーザー名：<span th:text="${session.userName}"></span>
 </p>
 
+<table border=1>
+	<tr>
+		<th>日付</th>
+		<th>区分</th>
+		<th>勤務時間</th>
+		<th>プロジェクト</th>
+		<th>場所</th>
+		<th>備考</th>
+	</tr>
+	<tr th:each="attendance: ${attendance}">
+		<td th:text="${attendance.date}"></td>
+		<td th:text="${attendance.division}"></td>
+		<td th:text="${attendance.workHours}"></td>
+		<td th:text="${attendance.project}"></td>
+		<td th:text="${attendance.place}"></td>
+		<td th:text="${attendance.remarks}"></td>
+	</tr>
+</table>
 
 </body>
 </html>

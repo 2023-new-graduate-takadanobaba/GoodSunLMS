@@ -39,5 +39,6 @@ footer {
 form{
 	margin:0 auto;
 	/*formを丁度良い場所に置きたい*/
-	padding:50px;
+	/*padding:50px;*/
+	margin: 25px 0 0 50px;
 }

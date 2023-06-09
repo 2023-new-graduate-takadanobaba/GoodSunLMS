@@ -2,16 +2,20 @@
 <html xmlns:th="http://www.thymeleaf.org">
 <head>
 <meta charset="UTF-8">
+<link th:href="@{/css/user.css}" rel="stylesheet" type="text/css" />
 <title>User</title>
 </head>
 <body>
-	Username: 
+<div class="form">
+<div class="infoForm">
+	<span class="label">Username:</span> 
 	<span th:text="${loginForm.userName}"></span>
 	<br>
-	Password:
+	<span class="label">Password:</span>
 	<span th:text="${loginForm.password}"></span>
 	<br>
-	<button onclick="window.location.href = './index'" >back to login</button>
-
+</div>		
+	<button class="back" onclick="window.location.href = './index'" >back to login</button>
+</div>
 </body>
 </html>

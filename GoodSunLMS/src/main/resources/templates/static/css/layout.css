@@ -1,0 +1,24 @@
+@charset "UTF-8";
+
+header {
+ background-color: #c0c0c0;
+ height: 80px;
+}
+article#container {
+ border:1px gray solid;
+}
+aside {
+ background-color: #808080;
+ float: left;
+ height: 200px;
+ width: 150px;
+}
+main {
+ float: left;
+ height: 200px;
+}
+footer {
+ background-color: #c0c0c0;
+ clear: left;
+ height: 80px;
+}

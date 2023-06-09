@@ -14,7 +14,11 @@ import jakarta.servlet.http.HttpSession;
 @Controller
 public class SessionController {
 //	@Autowired
-
+	
+	@GetMapping("/layout_view")
+	public String layout_view() {
+		return "layout_view";
+	}
 	
 	@GetMapping("/index")
 	public String index() {

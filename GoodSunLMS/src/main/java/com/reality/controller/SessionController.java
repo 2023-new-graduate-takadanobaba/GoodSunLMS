@@ -68,7 +68,7 @@ public class SessionController {
 		}
 	
 	@GetMapping("/logout")
-	public String logout(HttpSession session) {
+	public String logout(@ModelAttribute LoginForm form, HttpSession session) {
 		session.invalidate();
 		return "index";
 	}

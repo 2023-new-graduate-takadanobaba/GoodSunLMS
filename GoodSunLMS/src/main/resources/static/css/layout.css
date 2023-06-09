@@ -1,14 +1,14 @@
 @charset "UTF-8";
 
 header {
- background-color: #c0c0c0;
+ background-color:#ffdead;
  height: 80px;
 }
 article#container {
  border:1px gray solid;
 }
 aside {
- background-color: #808080;
+ background-color: #ffefd5;
  float: left;
  height: 200px;
  width: 150px;
@@ -18,7 +18,7 @@ main {
  height: 200px;
 }
 footer {
- background-color: #c0c0c0;
+ background-color: #ffdead;
  clear: left;
  height: 80px;
 }

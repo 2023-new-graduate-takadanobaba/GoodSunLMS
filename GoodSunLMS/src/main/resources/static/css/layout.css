@@ -4,12 +4,13 @@ header {
  background-color:#ffdead;
  height: 80px;
 }
-article#container {
- border:1px gray solid;
+
+article{
+ display:flex;
 }
 aside {
  background-color: #ffefd5;
- float: left;
+ 
  height: 200px;
  width: 150px;
 }

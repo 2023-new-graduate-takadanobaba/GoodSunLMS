@@ -6,17 +6,15 @@ th:replace="~{common/layout :: layout(~{::title},~{::body/content()})}">
 <title>メニュー</title>
 </head>
 <body>
-<p>
-	ユーザー名：<span th:text="${session.userName}"></span>
-</p>
+<div class="select">
 
-<a th:href="@{/dailyReport}">日報</a>
-<br/>
-<a th:href="@{/attendanceSystem}">勤怠登録</a>
+<p><a th:href="@{/dailyReport}">日報</a></p>
+
+<p><a th:href="@{/attendanceSystem}">勤怠登録</a></p>
 
 <p>
 	<a th:href="@{/logout}">ログアウト</a>
 </p>
-
+</div>
 </body>
 </html>

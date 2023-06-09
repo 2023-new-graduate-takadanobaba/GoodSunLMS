@@ -5,6 +5,8 @@
 <title>Insert title here</title>
 </head>
 <body>
-	<header id="header" th:fragment="layout-header">ヘッダー</header>
+	<header id="header" th:fragment="layout-header">
+			ユーザー名：<span th:text="${session.userName}"></span>
+	</header>
 </body>
 </html>

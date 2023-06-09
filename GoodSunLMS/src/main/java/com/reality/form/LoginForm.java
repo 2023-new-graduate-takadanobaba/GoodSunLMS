@@ -1,7 +1,13 @@
 package com.reality.form;
 
+import jakarta.validation.constraints.NotBlank;
+import jakarta.validation.constraints.NotNull;
+
 public class LoginForm {
+	
+	@NotBlank
 	private String userName;
+	@NotBlank
 	private String password;
 	
 	public String getUserName() {

@@ -5,13 +5,15 @@
 <title>AddUser</title>
 </head>
 <body>
-<form th:action="@{/adduser}" method="post" th:object="${user}">
+<form th:action="@{/adduser}" method="post" th:object="${loginForm}">
 	Username: 
 	<input type="text" name="username" th:field="*{userName}"/>
 	<br>
+	<span class="error" th:errors="*{userName}"></span><br>
 	Password:
 	<input type="password" name="password" th:field="*{password}"/>
 	<br>
+	<span class="error" th:errors="*{password}"></span><br>
 	<input type="submit" value="sign up"/>
 </form>
 

@@ -2,38 +2,28 @@
 <html xmlns:th="http://www.thymeleaf.org">
 <head>
 <meta charset="UTF-8">
+<link th:href="@{/css/index.css}" rel="stylesheet" type="text/css" />
 <title>GoodSunLMS ログイン</title>
-
-<style>
-body{
-		background:aliceblue;
-}
-
-#login{
-		text-align:center;
-		background:#cab8d9;
-		margin:100px;
-		padding:100px;
-}
-.error{
-	color:red;
-}
-</style>
 
 </head>
 <body>
-<div id="login">
-	<form method="post" th:action="@{/login}" th:object="${loginForm}">
-	userName:<input type="text" th:field="*{userName}"/><br>
-	<span class="error" th:errors="*{userName}"></span><br>
-	password:<input type="password" th:field="*{password}" /><br>
-	<span class="error" th:errors="*{password}"></span><br>
-	<span class="error" th:if="${errMessage}" th:text="${errMessage}"></span><br>
-	<p><input type="submit" value="ログイン" /></p>
-</form>
-<button onclick="window.location.href = './adduser'" >新規登録</button>
+<div class="bg">
+	<div class="login">
+		<form method="post" th:action="@{/login}" th:object="${loginForm}">
+		<div class="form">
+			<p>UserName:</p>
+			<a th:href="@{/adduser}" ><div class="new">新規登録</div></a>
+			<input type="text" th:field="*{userName}"/>
+			<span class="error" th:errors="*{userName}"></span>
+			<p>Password:</p>
+			<input type="password" th:field="*{password}" />
+			<span class="error" th:errors="*{password}"></span>
+			<span class="error" th:if="${errMessage}" th:text="${errMessage}"></span>
+		</div>			
+			<input class="submit" type="submit" value="ログイン" />
+		</form>
 </div>
-
+</div>
 
 </body>
 </html>

@@ -8,7 +8,7 @@
 <script th:src="@{/js/attendance}" type="text/jacascript"></script>
 </head>
 <body>
-
+	<div>
 	<form method="post" th:action="@{/attendanceRegister}">
 		<input type="submit" value="出勤登録" onClick="Check();" />
 	</form><br>
@@ -29,5 +29,6 @@
 	<p>
 		<a th:href="@{/select}">戻る</a>
 	</p>
+	</div>
 </body>
 </html>

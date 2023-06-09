@@ -7,11 +7,11 @@
 <title>日報</title>
 </head>
 <body>
+<div class = "wrapper">
 	<h2>日報</h2>
 	<p th:text="${session.date}"></p>
 	<form method="post" th:action="@{/doDailyReport}"
 		th:object="${dailyReportForm}">
-		<p>
 		<table>
 			<tr>
 				<th>やったこと</th>
@@ -85,7 +85,7 @@
 			th:field="*{reflection}"></textarea>
 		<br> <input name="submit" type="submit" value="提出">
 	</form>
-	<br>
 	<a th:href="@{/select}">戻る</a>
+</div>
 </body>
 </html>

@@ -3,10 +3,9 @@
 header {
  background-color:#ffdead;
  height: 80px;
-}
-
-.leftObject {
-	text-align: right;
+ display:flex;
+ justify-content:flex-end;
+ align-items:flex-end;
 }
 
 article{
@@ -18,10 +17,7 @@ aside {
  height: 750px;
  width: 150px;
 }
-main {
- float: left;
- height: 200px;
-}
+
 footer {
  background-color: #ffdead;
  clear: left;

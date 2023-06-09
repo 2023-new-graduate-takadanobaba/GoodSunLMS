@@ -39,7 +39,7 @@ public class Attendance {
 	private String remarks;
 	
 	@ManyToOne
-	@JoinColumn(name = "uid", referencedColumnName = "userId")
+	@JoinColumn(name = "uid", referencedColumnName = "id")
 	private User user;
 
 	public Integer getId() {

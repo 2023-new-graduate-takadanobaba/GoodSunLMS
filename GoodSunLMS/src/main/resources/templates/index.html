@@ -15,14 +15,19 @@ body{
 		margin:100px;
 		padding:100px;
 }
+.error{
+	color:red;
+}
 </style>
 
 </head>
 <body>
 <div id="login">
-	<form method="post" th:action="@{/select}">
-	<p>　userID:<input type="text" name="userName"/></p>
-	<p>password:<input type="password" name="password" /></p>
+	<form method="post" th:action="@{/login}" th:object="${loginForm}">
+	<p>userName:<input type="text" th:field="*{userName}"/>
+	<span class="error" th:errors="*{userName}"></span></p>
+	<p>password:<input type="password" th:field="*{password}" />
+	<span class="error" th:errors="*{password}"></span></p>
 	<p><input type="submit" value="ログイン" /></p>
 </form>
 </div>

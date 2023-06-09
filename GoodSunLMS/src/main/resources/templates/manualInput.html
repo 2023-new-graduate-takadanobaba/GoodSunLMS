@@ -1,0 +1,24 @@
+<!DOCTYPE html>
+<html xmlns:th="http://www.thymeleaf.org">
+<head>
+<meta charset="UTF-8">
+<title>勤怠情報入力</title>
+</head>
+<body>
+<form method="post" th:action="@{/doManualInput}">
+		開始時間◆<input type="time" value="18:30" name="startTime" />
+		終了時間◆<input type="time" value="19:00" name="endTime" />
+		勤務時間◆<input type="time" value="00:00" name="workHours" />
+		<br />
+		区分◆<input type="text" name="division" />
+		<br />
+		プロジェクト◆<input type="text" name="project" list="project" placeholder="入力" autocomplete="off"/>
+		<br />
+		作業場所◆<input type="text" name="place" />
+		<br />
+		備考◆<input type="text" name="remarks" />
+		<br />
+		<input type="submit"value="登録" />
+	</form>
+</body>
+</html>

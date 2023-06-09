@@ -1,0 +1,17 @@
+<!DOCTYPE html>
+<html xmlns:th="http://www.thymeleaf.org">
+<head>
+<meta charset="UTF-8">
+<title>User</title>
+</head>
+<body>
+	Username: 
+	<span th:text="${user.userName}"></span>
+	<br>
+	Password:
+	<span th:text="${user.password}"></span>
+	<br>
+	<button onclick="window.location.href = './index'" >back to login</button>
+
+</body>
+</html>

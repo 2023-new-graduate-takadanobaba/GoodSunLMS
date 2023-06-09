@@ -38,6 +38,29 @@ public class Attendance {
 	@Column
 	private String remarks;
 	
+	@Column
+	private String startTime;
+	
+	@Column
+	private String endTime;
+	
+	
+	public String getStartTime() {
+		return startTime;
+	}
+
+	public void setStartTime(String startTime) {
+		this.startTime = startTime;
+	}
+
+	public String getEndTime() {
+		return endTime;
+	}
+
+	public void setEndTime(String endTime) {
+		this.endTime = endTime;
+	}
+
 	@ManyToOne
 	@JoinColumn(name = "uid", referencedColumnName = "id")
 	private User user;
@@ -96,6 +119,14 @@ public class Attendance {
 
 	public void setRemarks(String remarks) {
 		this.remarks = remarks;
+	}
+
+	public User getUser() {
+		return user;
+	}
+
+	public void setUser(User user) {
+		this.user = user;
 	}
 	
 }

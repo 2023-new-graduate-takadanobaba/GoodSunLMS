@@ -24,8 +24,8 @@
 	<tr th:each="attendance: ${attendance}">
 		<td th:text="${#dates.format(attendance.date, 'MM/dd')}"></td>
 		<td th:text="${#dates.format(attendance.date, 'E')}"></td>
-		<td>####</td>
-		<td>####</td>
+		<td th:text="${attendance.startTime}"></td>
+		<td th:text="${attendance.endTime}"></td>
 		<td th:text="${attendance.division}"></td>
 		<td th:text="${attendance.workHours}"></td>
 		<td th:text="${attendance.project}"></td>

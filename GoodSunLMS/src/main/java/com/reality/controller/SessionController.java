@@ -31,7 +31,6 @@ public class SessionController {
 	@PostMapping("/login")
 	public String doLogin(@Valid @ModelAttribute LoginForm form, BindingResult result, HttpSession session, Model model) {
 		if (result.hasErrors()) {
-			model.addAttribute("errMessage", "ユーザID、またはパスワードが間違っています。");
 			return "index";
 		}
 		

@@ -28,6 +28,7 @@ body{
 	<span class="error" th:errors="*{userName}"></span><br>
 	password:<input type="password" th:field="*{password}" /><br>
 	<span class="error" th:errors="*{password}"></span><br>
+	<span class="error" th:if="${errMessage}" th:text="${errMessage}"></span><br>
 	<p><input type="submit" value="ログイン" /></p>
 </form>
 <button onclick="window.location.href = './adduser'" >新規登録</button>

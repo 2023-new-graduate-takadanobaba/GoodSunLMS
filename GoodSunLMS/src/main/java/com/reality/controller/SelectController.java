@@ -40,6 +40,11 @@ public class SelectController {
 		return "attendanceMessage";
 	}
 	
+	@PostMapping("/complaints")
+	public String complaints() {
+		return "complaintsMessage";
+	}
+	
 	@GetMapping("/findAllAttendance")
 	public String findAllAttendance(Model model) {
 		model.addAttribute("attendance", attendanceRepository.findAll());

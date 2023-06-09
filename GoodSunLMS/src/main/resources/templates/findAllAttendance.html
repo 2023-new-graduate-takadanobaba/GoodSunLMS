@@ -11,7 +11,9 @@
 
 <table border=1>
 	<tr>
-		<th>日付</th>
+		<th colspan="2">日付</th>
+		<th>開始</th>
+		<th>終了</th>
 		<th>区分</th>
 		<th>勤務時間</th>
 		<th>プロジェクト</th>
@@ -19,14 +21,20 @@
 		<th>備考</th>
 	</tr>
 	<tr th:each="attendance: ${attendance}">
-		<td th:text="${attendance.date}"></td>
+		<td th:text="${#dates.format(attendance.date, 'MM/dd')}"></td>
+		<td th:text="${#dates.format(attendance.date, 'E')}"></td>
+		<td>####</td>
+		<td>####</td>
 		<td th:text="${attendance.division}"></td>
 		<td th:text="${attendance.workHours}"></td>
 		<td th:text="${attendance.project}"></td>
-		<td th:text="${attendance.place}"></td>
+			<td th:text="${attendance.place}"></td>
 		<td th:text="${attendance.remarks}"></td>
 	</tr>
 </table>
 
+<p>
+	<a th:href="@{/attendanceSystem}">戻る</a>
+</p>
 </body>
 </html>

@@ -10,7 +10,7 @@
 
 	<h2>日報</h2>
 	<p th:text="${session.date}"></p>
-
+	
 	<form method="post" th:action="@{/doDailyReport}"
 		th:object="${dailyReportForm}">
 		<table>
@@ -79,15 +79,15 @@
 				<td><input type="text" name="improvement"
 					th:field="*{doneThings.improvement}" /></td>
 			</tr>
-		</table>
+		</table><br>
 
 		<label>所感(400文字以内)</label><br>
 		<textarea name="impression" cols="50" rows="8"
 			th:field="*{reflection}"></textarea>
-		<p> <input name="submit" type="submit" value="提出"><a
-			th:href="@{/select}">戻る</a></p>
+		<p> <input name="submit" type="submit" value="提出">
+		<a th:href="@{/select}">戻る</a></p>
 	</form>
-
+	
 
 </body>
 </html>

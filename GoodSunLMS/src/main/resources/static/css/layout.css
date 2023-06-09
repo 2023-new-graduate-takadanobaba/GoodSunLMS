@@ -5,13 +5,17 @@ header {
  height: 80px;
 }
 
+.leftObject {
+	text-align: right;
+}
+
 article{
  display:flex;
 }
 aside {
  background-color: #ffefd5;
  
- height: 200px;
+ height: 750px;
  width: 150px;
 }
 main {
@@ -22,4 +26,5 @@ footer {
  background-color: #ffdead;
  clear: left;
  height: 80px;
+ 
 }

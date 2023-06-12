@@ -26,7 +26,7 @@ body{
 }
 #sidebar {
  background-color: #ffefd5;
- height: 700px;
+/*  height: 700px; */
  width: 150px;
  
  
@@ -42,13 +42,18 @@ footer {
   width: 100%;
  
 }
-form{
+form, .form{
 	margin:0 auto;
 	background-image: url();
 	background-image: no-repeat;
 	/*formを丁度良い場所に置きたい*/
 	padding:50px;
 }
+
+.form {
+	padding-bottom: 0;
+}
+
 .return{
         margin-top: 100px;
     }

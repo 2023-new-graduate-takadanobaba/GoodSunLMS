@@ -25,19 +25,19 @@
 		<input type="submit"value="登録" />
 	</form>
 	
-	<h4>【手動入力】</h4>
-	<a th:href="@{/manualInput}">勤怠情報入力</a>
-	<br />
-	<a th:href="@{/manualDelete}">勤怠情報削除</a>
-
-	<p>
-		<a th:href="@{/findAllAttendance}">勤怠情報一覧</a>
-	</p>
-
-
-	<p>
-		<a th:href="@{/select}">戻る</a>
-	</p>
+	<div class="form">
+		<h4>【手動入力】</h4>
+		<a th:href="@{/manualInput}">勤怠情報入力</a>
+		<br>
+		<a th:href="@{/manualDelete}">勤怠情報削除</a>
+		<p>
+			<a th:href="@{/findAllAttendance}">勤怠情報一覧</a>
+		</p>
+		<p>
+			<a th:href="@{/select}">戻る</a>
+		</p>
+	</div>
+	
 	</div>
 </body>
 </html>

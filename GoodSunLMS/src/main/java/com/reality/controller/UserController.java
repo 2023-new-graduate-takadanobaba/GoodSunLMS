@@ -36,10 +36,4 @@ public class UserController {
 		userRepository.save(user);
 		return "user";
 	}
-	
-	@GetMapping("/error1")
-	public String errorTest(Model model) {
-		model.addAttribute("stat", "error1");
-		return "loading";
-	}
 }

@@ -6,7 +6,7 @@
 </head>
 <body>
 	<header id="header" th:fragment="layout-header">
-			<div>ユーザー名：<span th:text="${session.userName}"></span></div>
+			<div>ユーザー名：<span th:text="${session.userName}"></span>　</div>
 			<a th:href="@{/logout}">ログアウト</a>
 	</header>
 </body>

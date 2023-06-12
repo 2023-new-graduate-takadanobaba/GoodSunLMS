@@ -26,10 +26,13 @@ public class DailyReportController {
 		Form2Excel excel = new Form2Excel();
 		try {
 			excel.runForm2Excel(dailyReportForm, session);
-		} catch (Exception e) {
+		} catch (IOException e) {
 			// TODO Auto-generated catch block
 			e.printStackTrace();
-			return "redirect:./error";
+			return "redirect:./excelError";
+		} catch (Exception e) {
+			// TODO: handle exception
+			e.printStackTrace();
 		}
 		return "redirect:./loading";
 	}

@@ -22,7 +22,7 @@ article{
  display:flex;
  margin-top: 80px;
  width: 100%;
- /*min-height: 100vh;*/
+ min-height: 100vh;
 }
 body{
 	margin: 0px;
@@ -39,8 +39,6 @@ body{
  background-color: #ffdead;
  clear: left;
  height: 80px;
- position: absolute;/*←絶対位置*/
-    bottom: 0; /*下に固定*/
  
 
   width: 100%;

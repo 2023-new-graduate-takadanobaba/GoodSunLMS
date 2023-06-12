@@ -38,13 +38,6 @@ public class ManualnputController {
 			Date date = new Date();
 			SimpleDateFormat sdf = new SimpleDateFormat("yyyy-MM-dd");
 			String dateStr = sdf.format(date);
-			
-			
-			// 14:00
-			Integer intStr = Integer.parseInt(startTime.split(":")[0]); // String[]
-			//String{14, 00}
-			//String[0]
-			  
 			  
 			List<Attendance> attdArr = attendanceRepository.findAll();
 			for (int i = 0; i < attdArr.size(); i++) {

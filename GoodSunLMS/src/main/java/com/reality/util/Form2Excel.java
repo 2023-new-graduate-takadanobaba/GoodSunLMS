@@ -87,7 +87,7 @@ public class Form2Excel {
  		File desktopDir = FileSystemView.getFileSystemView().getHomeDirectory();
 		String outputFilePath = desktopDir.getAbsolutePath()+"\\";
 		System.out.println(fileSdf.format(new Date()));
-		String outputFileName = "新入社員研修_"+"日報_"+fileSdf.format(new Date()) +"_" + session.getAttribute("userName") + ".xlsx";
+		String outputFileName = "新入社員研修_"+"日報_"+fileSdf.format(new Date()) + ".xlsx";
 		Files.createDirectories(new File(outputFilePath).toPath());
 		FileOutputStream stream = new FileOutputStream(outputFilePath + outputFileName);
 		wb.write(stream);

@@ -1,6 +1,6 @@
 @charset "UTF-8";
 
-header {
+#header {
  background-color:#ffdead;
  height: 80px;
  display:flex;
@@ -13,13 +13,18 @@ header {
  left: 0;
 }
 
+
+
 article{
  display:flex;
  margin-top: 80px;
  width: 100%;
- 
+ /*min-height: 100vh;*/
 }
-aside {
+body{
+	margin: 0px;
+}
+#sidebar {
  background-color: #ffefd5;
  height: 700px;
  width: 150px;
@@ -32,13 +37,18 @@ footer {
  clear: left;
  height: 80px;
  
+ 
 
   width: 100%;
  
 }
 form{
 	margin:0 auto;
+	background-image: url();
+	background-image: no-repeat;
 	/*formを丁度良い場所に置きたい*/
-	/*padding:50px;*/
-	margin: 25px 0 0 50px;
+	padding:50px;
 }
+.return{
+        margin-top: 100px;
+    }

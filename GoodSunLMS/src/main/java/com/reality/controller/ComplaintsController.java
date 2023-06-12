@@ -1,6 +1,8 @@
 package com.reality.controller;
 
+import java.text.SimpleDateFormat;
 import java.util.Date;
+import java.util.List;
 
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
@@ -26,6 +28,18 @@ public class ComplaintsController {
 		Attendance attendance = new Attendance();
 		User user = userRepository.findByUserName(session.getAttribute("userName").toString());
 		Date date = new Date();
+		SimpleDateFormat sdf = new SimpleDateFormat("yyyy-MM-dd");
+		String dateStr = sdf.format(date);
+		
+		List<Attendance> attdArr = attendanceRepository.findAll();
+		for (int i = 0; i < attdArr.size(); i++) {
+			if (sdf.format(attdArr.get(i).getDate()).equals(dateStr) && attdArr.get(i).getUser().getId()==user.getId()
+							&& attdArr.get(i).getProject().contains("愚痴相談")) {
+				model.addAttribute("stat", "attendanceError");
+				return "error";
+			}
+		}
+		
 		attendance.setDate(date);
 		attendance.setStartTime(removeFirstChar(startTime));
 		attendance.setEndTime(removeFirstChar(endTime));

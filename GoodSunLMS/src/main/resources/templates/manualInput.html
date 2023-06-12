@@ -2,6 +2,11 @@
 <html xmlns:th="http://www.thymeleaf.org">
 <head>
 <meta charset="UTF-8">
+<style>
+	.return{
+		margin-top: 100px;
+	}
+</style>
 <title>勤怠情報入力</title>
 </head>
 <body>
@@ -33,5 +38,7 @@
 		<br />
 		<input type="submit"value="登録" />
 	</form>
+	
+	<p class="return"><a th:href="@{/attendanceSystem}">戻る</a></p>
 </body>
 </html>

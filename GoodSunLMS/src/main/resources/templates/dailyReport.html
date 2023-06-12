@@ -84,8 +84,10 @@
 		<label>所感(400文字以内)</label><br>
 		<textarea name="impression" cols="50" rows="8"
 			th:field="*{reflection}"></textarea>
-		<p> <input name="submit" type="submit" value="提出">
-		<a th:href="@{/select}">戻る</a></p>
+		<p> <input name="submit" type="submit" value="提出"></p>
+		
+		
+		<p class="return"><a th:href="@{/select}">戻る</a></p>
 	</form>
 	
 

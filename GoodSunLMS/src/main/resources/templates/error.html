@@ -9,6 +9,7 @@
 	$(document).ready(function(){
 		if($("input").val()=="excelUsed"){
 			alert("エラーが出ます。\n もしかしてexcelファイルは別のプロセスが使用中ですか？");
+			window.location.href = "./select";
 		} else if($("input").val()== "attendanceError") {
 			alert("登録済みです");
 			window.location.href = "./findAllAttendance";
@@ -16,7 +17,7 @@
 		else{
 			alert("エラーが出ます。\n"+$("input").val());
 		}	
-		window.location.href = "./select";
+		window.location.href = "./index";
 	})
 </script>
 <body>

@@ -13,7 +13,10 @@
  left: 0;
 }
 
-
+#container{
+	background-image: url();
+	background-size: cover;
+}
 
 article{
  display:flex;
@@ -44,8 +47,7 @@ footer {
 }
 form{
 	margin:0 auto;
-	background-image: url();
-	background-image: no-repeat;
+	
 	/*formを丁度良い場所に置きたい*/
 	padding:50px;
 }

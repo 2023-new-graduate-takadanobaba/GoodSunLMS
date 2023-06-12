@@ -1,5 +1,7 @@
 package com.reality.controller;
+import java.text.SimpleDateFormat;
 import java.util.Date;
+import java.util.List;
 
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
@@ -34,6 +36,26 @@ public class ManualnputController {
 			Attendance attendance = new Attendance();
 			User user = userRepository.findByUserName(session.getAttribute("userName").toString());
 			Date date = new Date();
+			SimpleDateFormat sdf = new SimpleDateFormat("yyyy-MM-dd");
+			String dateStr = sdf.format(date);
+			
+			
+			// 14:00
+			Integer intStr = Integer.parseInt(startTime.split(":")[0]); // String[]
+			//String{14, 00}
+			//String[0]
+			  
+			  
+			List<Attendance> attdArr = attendanceRepository.findAll();
+			for (int i = 0; i < attdArr.size(); i++) {
+				if (sdf.format(attdArr.get(i).getDate()).equals(dateStr) && attdArr.get(i).getUser().getId()==user.getId()) {
+					if(removeFirstChar(startTime).equals("9:00") || removeFirstChar(endTime).equals("18:00")) {
+						model.addAttribute("stat", "attendanceError");
+						return "error";
+					}	
+				}
+			}
+			
 			attendance.setDate(date);
 			attendance.setStartTime(removeFirstChar(startTime));
 			attendance.setEndTime(removeFirstChar(endTime));

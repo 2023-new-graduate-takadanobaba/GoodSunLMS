@@ -41,7 +41,7 @@ public class AttendanceController {
 		
 		List<Attendance> attdArr = attendanceRepository.findAll();
 		for(int i=0; i<attdArr.size(); i++) {
-			if(sdf.format(attdArr.get(i).getDate()).equals(dateStr)) {
+			if(sdf.format(attdArr.get(i).getDate()).equals(dateStr) && attdArr.get(i).getUser().getId()==user.getId()) {
 				model.addAttribute("stat", "attendanceError");
 				return "error";
 			}
@@ -63,8 +63,9 @@ public class AttendanceController {
 
 	
 	@GetMapping("/findAllAttendance")
-	public String findAllAttendance(Model model) {
-		model.addAttribute("attendance", attendanceRepository.findAll());
+	public String findAllAttendance(Model model, HttpSession session) {
+		User user = userRepository.findByUserName(session.getAttribute("userName").toString());
+		model.addAttribute("attendance", attendanceRepository.findByUser(user));
 		return "findAllAttendance";
 	}
 }

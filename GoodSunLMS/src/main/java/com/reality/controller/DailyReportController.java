@@ -29,11 +29,15 @@ public class DailyReportController {
 		} catch (IOException e) {
 			// TODO Auto-generated catch block
 			e.printStackTrace();
-			return "redirect:./excelError";
+			model.addAttribute("stat", "excelUsed");
+			return "error";
 		} catch (Exception e) {
 			// TODO: handle exception
+			model.addAttribute("stat", "error");
 			e.printStackTrace();
+			return "error";
 		}
-		return "redirect:./loading";
+		model.addAttribute("stat", "dailyDone");
+		return "loading";
 	}
 }

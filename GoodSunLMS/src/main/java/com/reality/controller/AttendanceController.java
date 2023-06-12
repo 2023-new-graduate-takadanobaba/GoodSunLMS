@@ -42,7 +42,8 @@ public class AttendanceController {
 		List<Attendance> attdArr = attendanceRepository.findAll();
 		for(int i=0; i<attdArr.size(); i++) {
 			if(sdf.format(attdArr.get(i).getDate()).equals(dateStr)) {
-				return "attendanceError";
+				model.addAttribute("stat", "attendanceError");
+				return "error";
 			}
 		}
 		attendance.setDate(date);
@@ -55,7 +56,8 @@ public class AttendanceController {
 		attendance.setUser(user);
 		attendanceRepository.save(attendance);
 		model.addAttribute("attendance", attendance);
-		return "attendanceMessage";
+		model.addAttribute("stat", "attendance");
+		return "loading";
 	}
 	
 

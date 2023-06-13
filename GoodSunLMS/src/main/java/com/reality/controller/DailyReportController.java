@@ -22,10 +22,10 @@ public class DailyReportController {
 	}
 	
 	@PostMapping("/doDailyReport")
-	public String doDailyReport(@ModelAttribute DailyReportForm dailyReportForm, HttpSession session, Model model) {
+	public String doDailyReport(@ModelAttribute DailyReportForm dailyReportForm, Model model) {
 		Form2Excel excel = new Form2Excel();
 		try {
-			excel.runForm2Excel(dailyReportForm, session);
+			excel.runForm2Excel(dailyReportForm);
 		} catch (IOException e) {
 			// TODO Auto-generated catch block
 			e.printStackTrace();

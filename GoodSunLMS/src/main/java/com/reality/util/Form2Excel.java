@@ -40,13 +40,13 @@ public class Form2Excel {
 	
 	private DailyReportForm dailyReportForms = new DailyReportForm();
 	
-	public void runForm2Excel(DailyReportForm drf, HttpSession session) throws Exception {
+	public void runForm2Excel(DailyReportForm drf) throws Exception {
 		doExcel(drf);
-		buildExcel(session);
+		buildExcel();
 	}
 	
 	
-	private void buildExcel(HttpSession session) throws Exception {
+	private void buildExcel() throws Exception {
 		// excel生成
 		
 		// template利用
@@ -70,24 +70,17 @@ public class Form2Excel {
 		for (int i = 0; i < dailyReportForms.getDoneThingsList().size(); i++) {
 			int col_pos = 1;
 			// 1行15字
-//			ws.getRow(row_pos).getCell(col_pos).setCellStyle(wrapStyle);
-//			ws.getRow(row_pos).getCell(col_pos).getCellStyle().setBorderRight(BorderStyle.THICK);
-//			ws.getRow(row_pos).getCell(col_pos).getCellStyle().setBorderLeft(BorderStyle.THIN);
-			this.setValue(row_pos, col_pos++, dailyReportForms.getDoneThingsList().get(i).getThings().replaceAll("(.{15})", "$1\r\n"));
-//			ws.getRow(row_pos).getCell(col_pos).setCellStyle(wrapStyle);
+			this.setValue(row_pos, col_pos++, dailyReportForms.getDoneThingsList().get(i).getThings());
 			this.setValue(row_pos, col_pos++, dailyReportForms.getDoneThingsList().get(i).getCompleteness());
 			// 1行20字
-//			ws.getRow(row_pos).getCell(col_pos).setCellStyle(wrapStyle);
-			this.setValue(row_pos, col_pos++, dailyReportForms.getDoneThingsList().get(i).getImprovement().replaceAll("(.{20})", "$1\r\n"));
+			this.setValue(row_pos, col_pos++, dailyReportForms.getDoneThingsList().get(i).getImprovement());
 
 			row_pos++;
 		}
 		// 所感 1行40字
-//		ws.getRow(11).getCell(1).setCellStyle(refStyle);
-		this.setValue(11, 1, dailyReportForms.getReflection().replaceAll("(.{40})", "$1\r\n"));	
-//		ws.getRow(11).getCell(1).setCellStyle(wrapStyle);
-//		ws.getRow(11).getCell(1).getCellStyle().setBorderRight(BorderStyle.MEDIUM);
-//		ws.getRow(11).getCell(1).getCellStyle().setBorderLeft(BorderStyle.MEDIUM);
+//		this.setValue(11, 1, dailyReportForms.getReflection().replaceAll("(.{40})", "$1\n"));	
+		this.setValue(11, 1, dailyReportForms.getReflection());	
+
 		
 		// output
 		
@@ -108,21 +101,16 @@ public class Form2Excel {
 	private void doExcel(DailyReportForm drf) throws IOException {
 		// form情報整え
 		
-		System.out.println(drf.getDoneThingsList().size());
 		for (int i = 0; i < drf.getDoneThingsList().size(); i++) {
 			// 改行
 			String tStr = drf.getDoneThingsList().get(i).getThings().replaceAll("(.{15})", "$1\n");
-			System.out.println("for1: "+tStr+"/");
 			drf.getDoneThingsList().get(i).setThings(tStr);
 			tStr = drf.getDoneThingsList().get(i).getImprovement().replaceAll("(.{20})", "$1\n");
-			System.out.println("for2: "+tStr+"/");
 			drf.getDoneThingsList().get(i).setImprovement(tStr);
 		}
 		
 		dailyReportForms.setDoneThings(drf.getDoneThings());
 		dailyReportForms.setReflection(drf.getReflection().replaceAll("(.{40})", "$1\n"));
-//		System.out.println("t:"+dailyReportForms.getDoneThings().getImprovement()+"/");
-//		System.out.println("r:"+dailyReportForms.getReflection()+"/");
 		
 //		dailyReportForms.getDoneThingsList().forEach(s->{System.out.println(s.getThings());});
 				

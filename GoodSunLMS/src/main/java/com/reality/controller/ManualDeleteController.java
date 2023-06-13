@@ -39,7 +39,7 @@ public class ManualDeleteController {
 		Date dateStr = new SimpleDateFormat("yyyy-MM-dd").parse(date);
 		startTime = removeFirstChar(startTime);
 		
-		attendanceRepository.deleteByDateAndStartTime(dateStr, startTime);
+		attendanceRepository.deleteByDateAndStartTimeAndUser(dateStr, startTime, user);
 		return "redirect:/findAllAttendance";
 	}
 	

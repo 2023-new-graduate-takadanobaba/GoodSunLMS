@@ -11,5 +11,5 @@ public interface AttendanceRepository extends JpaRepository<Attendance, Integer>
 	Attendance findByDate(Date date);
 	List<Attendance> findByUser(User user);
 	List<Attendance> findByDateAndStartTime(Date date, String startTime);
-	void deleteByDateAndStartTime(Date date, String startTime);
+	void deleteByDateAndStartTimeAndUser(Date date, String startTime, User user);
 }

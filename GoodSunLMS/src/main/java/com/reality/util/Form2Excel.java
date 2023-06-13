@@ -70,7 +70,7 @@ public class Form2Excel {
 		for (int i = 0; i < dailyReportForms.getDoneThingsList().size(); i++) {
 			int col_pos = 1;
 			// 1行15字
-			ws.getRow(row_pos).getCell(col_pos).setCellStyle(wrapStyle);
+//			ws.getRow(row_pos).getCell(col_pos).setCellStyle(wrapStyle);
 //			ws.getRow(row_pos).getCell(col_pos).getCellStyle().setBorderRight(BorderStyle.THICK);
 //			ws.getRow(row_pos).getCell(col_pos).getCellStyle().setBorderLeft(BorderStyle.THIN);
 			this.setValue(row_pos, col_pos++, dailyReportForms.getDoneThingsList().get(i).getThings().replaceAll("(.{15})", "$1\r\n"));
@@ -85,9 +85,9 @@ public class Form2Excel {
 		// 所感 1行40字
 //		ws.getRow(11).getCell(1).setCellStyle(refStyle);
 		this.setValue(11, 1, dailyReportForms.getReflection().replaceAll("(.{40})", "$1\r\n"));	
-		ws.getRow(11).getCell(1).setCellStyle(wrapStyle);
-		ws.getRow(11).getCell(1).getCellStyle().setBorderRight(BorderStyle.MEDIUM);
-		ws.getRow(11).getCell(1).getCellStyle().setBorderLeft(BorderStyle.MEDIUM);
+//		ws.getRow(11).getCell(1).setCellStyle(wrapStyle);
+//		ws.getRow(11).getCell(1).getCellStyle().setBorderRight(BorderStyle.MEDIUM);
+//		ws.getRow(11).getCell(1).getCellStyle().setBorderLeft(BorderStyle.MEDIUM);
 		
 		// output
 		

@@ -32,22 +32,29 @@ public class ManualDeleteController {
 		return "manualDelete";
 	}
 	
-	@PostMapping("/doManualDelete")
+//	@PostMapping("/doManualDelete")
+//	@Transactional(rollbackFor = Exception.class)
+//	public String doManualDelete(String date, String startTime, Model model, HttpSession session) throws ParseException {
+//		User user = userRepository.getReferenceById(Integer.parseInt(session.getAttribute("userId").toString()));
+//		Date dateTemp = new SimpleDateFormat("yyyy-MM-dd").parse(date);
+//		startTime = removeFirstChar(startTime);
+//		
+//		attendanceRepository.deleteByDateAndStartTimeAndUser(dateTemp, startTime, user);
+//		return "redirect:/findAllAttendance";
+//	}
+	
+	@PostMapping("/doManualDelete1")
 	@Transactional(rollbackFor = Exception.class)
-	public String doManualDelete(String date, String startTime, Model model, HttpSession session) throws ParseException {
-		User user = userRepository.getReferenceById(Integer.parseInt(session.getAttribute("userId").toString()));
-		Date dateTemp = new SimpleDateFormat("yyyy-MM-dd").parse(date);
-		startTime = removeFirstChar(startTime);
-		
-		attendanceRepository.deleteByDateAndStartTimeAndUser(dateTemp, startTime, user);
-		return "redirect:/findAllAttendance";
+	public String doManualDelete1(Integer aId) throws ParseException {
+		attendanceRepository.deleteById(aId);
+		return "redirect:/manualDelete";
 	}
 	
 	//　時刻の入力形式変更 ex) 09:00 >> 9:00
-		private String removeFirstChar (String str) {
-			if(str.startsWith("0")) {
-				str = str.substring(1);
-			}		
-			return str;
-		}
+	private String removeFirstChar (String str) {
+		if(str.startsWith("0")) {
+			str = str.substring(1);
+		}		
+		return str;
+	}
 }

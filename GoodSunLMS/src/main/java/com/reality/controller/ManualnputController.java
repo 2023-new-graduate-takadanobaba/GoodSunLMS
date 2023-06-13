@@ -34,7 +34,7 @@ public class ManualnputController {
 	public String doManualInput(String startTime, String endTime, String workHours,
 			String division, String project, String place, String remarks, Model model, HttpSession session) {
 			Attendance attendance = new Attendance();
-			User user = userRepository.findByUserName(session.getAttribute("userName").toString());
+			User user = userRepository.getReferenceById(Integer.parseInt(session.getAttribute("userId").toString()));
 			Date date = new Date();
 			SimpleDateFormat sdf = new SimpleDateFormat("yyyy-MM-dd");
 			String dateStr = sdf.format(date);

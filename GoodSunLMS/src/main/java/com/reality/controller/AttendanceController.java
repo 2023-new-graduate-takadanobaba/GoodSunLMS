@@ -34,7 +34,7 @@ public class AttendanceController {
 	@PostMapping("/attendanceRegister")
 	public String attendanceRegister(Model model, HttpSession session) {
 		Attendance attendance = new Attendance();
-		User user = userRepository.findByUserName(session.getAttribute("userName").toString());
+		User user = userRepository.getReferenceById(Integer.parseInt(session.getAttribute("userId").toString()));
 		Date date = new Date();
 		SimpleDateFormat sdf = new SimpleDateFormat("yyyy-MM-dd");
 		String dateStr = sdf.format(date);
@@ -64,7 +64,7 @@ public class AttendanceController {
 	
 	@GetMapping("/findAllAttendance")
 	public String findAllAttendance(Model model, HttpSession session) {
-		User user = userRepository.findByUserName(session.getAttribute("userId").toString());
+		User user = userRepository.getReferenceById(Integer.parseInt(session.getAttribute("userId").toString()));
 		model.addAttribute("attendance", attendanceRepository.findByUser(user));
 		return "findAllAttendance";
 	}

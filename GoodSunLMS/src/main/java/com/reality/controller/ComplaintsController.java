@@ -26,7 +26,7 @@ public class ComplaintsController {
 	@PostMapping("/complaints")
 	public String complaints(Model model, HttpSession session, String startTime, String endTime, String place) {
 		Attendance attendance = new Attendance();
-		User user = userRepository.findByUserName(session.getAttribute("userName").toString());
+		User user = userRepository.getReferenceById(Integer.parseInt(session.getAttribute("userId").toString()));
 		Date date = new Date();
 		SimpleDateFormat sdf = new SimpleDateFormat("yyyy-MM-dd");
 		String dateStr = sdf.format(date);

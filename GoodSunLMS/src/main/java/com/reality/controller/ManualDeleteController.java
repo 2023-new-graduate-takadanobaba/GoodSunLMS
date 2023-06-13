@@ -25,14 +25,14 @@ public class ManualDeleteController {
 
 	@GetMapping("/manualDelete")
 	public String manualDelete(Model model, HttpSession session) {
-		User user = userRepository.findByUserName(session.getAttribute("userName").toString());
+		User user = userRepository.getReferenceById(Integer.parseInt(session.getAttribute("userId").toString()));
 		model.addAttribute("attendance", attendanceRepository.findByUser(user));
 		return "manualDelete";
 	}
 	
 	@PostMapping("/doManualDelete")
 	public String doManualDelete(Date date, String startTime, Model model, HttpSession session) {
-		User user = userRepository.findByUserName(session.getAttribute("userName").toString());
+		User user = userRepository.getReferenceById(Integer.parseInt(session.getAttribute("userId").toString()));
 		SimpleDateFormat sdf = new SimpleDateFormat("yyyy-MM-dd");
 		String dateStr = sdf.format(date);
 		startTime = removeFirstChar(startTime);

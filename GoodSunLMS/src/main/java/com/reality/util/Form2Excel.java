@@ -61,26 +61,28 @@ public class Form2Excel {
 		
 		// Cell処理...
 		int row_pos = 4;
-		XSSFCellStyle comStyle = wb.createCellStyle();
-		XSSFCellStyle refStyle = wb.createCellStyle();
-		comStyle.setAlignment(HorizontalAlignment.CENTER);
-		refStyle.setVerticalAlignment(VerticalAlignment.TOP);
+		XSSFCellStyle wrapStyle = wb.createCellStyle();
+		wrapStyle.setWrapText(true);
 		// 日付
 		this.setValue(2, 1, sdf.format(new Date()));
 		// 今やったこと
 		for (int i = 0; i < dailyReportForms.getDoneThingsList().size(); i++) {
 			int col_pos = 1;
 			// 1行15字
-			this.setValue(row_pos, col_pos++, dailyReportForms.getDoneThingsList().get(i).getThings());
-//			ws.getRow(row_pos).getCell(col_pos).setCellStyle(comStyle);
+//			ws.getRow(row_pos).getCell(col_pos).setCellStyle(wrapStyle);
+			this.setValue(row_pos, col_pos++, dailyReportForms.getDoneThingsList().get(i).getThings().replaceAll("(.{15})", "$1CHAR(20)"));
+//			ws.getRow(row_pos).getCell(col_pos).setCellStyle(wrapStyle);
 			this.setValue(row_pos, col_pos++, dailyReportForms.getDoneThingsList().get(i).getCompleteness());
 			// 1行20字
-			this.setValue(row_pos, col_pos++, dailyReportForms.getDoneThingsList().get(i).getImprovement());
+//			ws.getRow(row_pos).getCell(col_pos).setCellStyle(wrapStyle);
+			this.setValue(row_pos, col_pos++, dailyReportForms.getDoneThingsList().get(i).getImprovement().replaceAll("(.{20})", "$1CHAR(20)"));
+
 			row_pos++;
 		}
 		// 所感 1行40字
 //		ws.getRow(11).getCell(1).setCellStyle(refStyle);
-		this.setValue(11, 1, dailyReportForms.getReflection());	
+		this.setValue(11, 1, dailyReportForms.getReflection().replaceAll("(.{40})", "$1CHAR(20)"));	
+//		ws.getRow(11).getCell(1).setCellStyle(wrapStyle);
 		
 		// output
 		
@@ -101,16 +103,21 @@ public class Form2Excel {
 	private void doExcel(DailyReportForm drf) throws IOException {
 		// form情報整え
 		
+		System.out.println(drf.getDoneThingsList().size());
 		for (int i = 0; i < drf.getDoneThingsList().size(); i++) {
 			// 改行
-			drf.getDoneThingsList().get(i).getThings().replaceAll("(.{15})", "\n");
-			drf.getDoneThingsList().get(i).getImprovement().replaceAll("(.{20})", "\n");
+			String tStr = drf.getDoneThingsList().get(i).getThings().replaceAll("(.{15})", "$1\n");
+			System.out.println("for1: "+tStr+"/");
+			drf.getDoneThingsList().get(i).setThings(tStr);
+			tStr = drf.getDoneThingsList().get(i).getImprovement().replaceAll("(.{20})", "$1\n");
+			System.out.println("for2: "+tStr+"/");
+			drf.getDoneThingsList().get(i).setImprovement(tStr);
 		}
 		
-		drf.getReflection().replaceAll("(.{40})", "\n");
-		
 		dailyReportForms.setDoneThings(drf.getDoneThings());
-		dailyReportForms.setReflection(drf.getReflection());
+		dailyReportForms.setReflection(drf.getReflection().replaceAll("(.{40})", "$1\n"));
+//		System.out.println("t:"+dailyReportForms.getDoneThings().getImprovement()+"/");
+//		System.out.println("r:"+dailyReportForms.getReflection()+"/");
 		
 //		dailyReportForms.getDoneThingsList().forEach(s->{System.out.println(s.getThings());});
 				

@@ -7,10 +7,41 @@
 		margin-top: 100px;
 	}
 </style>
-<title>Insert title here</title>
+<title>出勤情報削除</title>
 </head>
 <body>
+	<form method="post" th:action="@{/doManualDelete}">
+		日時◆<input type="date" name="date" />
+		開始時間◆<input type="time" value="09:00" name="startTime" />
+		
+		<input type="submit"value="削除" />
+	</form>
 	
+	<p>
+	<table border=1>
+	<tr>
+		<th colspan="2">日付</th>
+		<th>開始</th>
+		<th>終了</th>
+		<th>区分</th>
+		<th>勤務時間</th>
+		<th>プロジェクト</th>
+		<th>場所</th>
+		<th>備考</th>
+	</tr>
+	<tr th:each="attendance: ${attendance}">
+		<td th:text="${#dates.format(attendance.date, 'MM/dd')}"></td>
+		<td th:text="${#dates.format(attendance.date, 'E')}"></td>
+		<td th:text="${attendance.startTime}"></td>
+		<td th:text="${attendance.endTime}"></td>
+		<td th:text="${attendance.division}"></td>
+		<td th:text="${attendance.workHours}"></td>
+		<td th:text="${attendance.project}"></td>
+			<td th:text="${attendance.place}"></td>
+		<td th:text="${attendance.remarks}"></td>
+	</tr>
+</table>
+	</p>
 	<p class="return"><a th:href="@{/attendanceSystem}">戻る</a></p>
 </body>
 </html>

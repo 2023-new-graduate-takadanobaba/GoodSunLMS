@@ -37,10 +37,10 @@ public class SessionController {
 		
 		if (user != null) {
 			session.setAttribute("fullName", user.getFullName());
-			session.setAttribute("userId",user.getId() );
+			session.setAttribute("userId",user.getId());
 			return "redirect:/select";
 		} else {
-			model.addAttribute("errMessage", "ユーザID、またはパスワードが間違っています。");
+			model.addAttribute("errMessage", "ユーザName、またはパスワードが間違っています。");
 			return "index";
 		}
 	}

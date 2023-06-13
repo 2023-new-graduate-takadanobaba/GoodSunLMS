@@ -19,6 +19,9 @@ public class User {
 	
 	@Column
 	private String password;
+	
+	@Column
+	private String fullName;
 
 	public Integer getId() {
 		return id;
@@ -44,6 +47,12 @@ public class User {
 		this.password = password;
 	}
 	
+	public String getFullName() {
+		return fullName;
+	}
 	
-
+	public void setFullName(String fullName) {
+		this.fullName = fullName;
+	}
+	
 }

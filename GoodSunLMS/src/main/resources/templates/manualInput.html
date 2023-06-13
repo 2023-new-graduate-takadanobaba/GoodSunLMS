@@ -14,8 +14,20 @@
 <body>
 <form method="post" th:action="@{/doManualInput}">
 		日付◆<input type="date" name="date" />
-		開始時間◆<input type="time" value="09:00" name="startTime" />
-		終了時間◆<input type="time" value="18:00" name="endTime" />
+		開始時間◆<input type="time" list="startTime-list" value="09:00" name="startTime" step="900"/>
+			<datalist id="startTime-list">
+				<option value="8:00"></option>
+				<option value="8:30"></option>
+				<option value="9:30"></option>
+				<option value="10:00"></option>
+			</datalist>
+		終了時間◆<input type="time" list="endTime-list" value="18:00" name="endTime" step="900"/>
+			<datalist id="endTime-list">
+				<option value="17:00"></option>
+				<option value="17:30"></option>
+				<option value="18:30"></option>
+				<option value="19:00"></option>
+			</datalist>
 		勤務時間◆<input type="time" value="00:00" name="workHours" />
 		<br />
 		区分◆<input type="text" name="division" />

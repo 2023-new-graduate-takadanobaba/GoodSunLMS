@@ -24,16 +24,18 @@ article{
  width: 100%;
  min-height: 100vh;
 }
+
 body{
 	margin: 0px;
 }
+
 #sidebar {
  background-color: #ffefd5;
 /*  height: 700px; */
  width: 150px;
- 
- 
 }
+
+
 
 #footer {
  background-color: #ffdead;
@@ -42,11 +44,15 @@ body{
  
 
   width: 100%;
- 
+}
+
+.attendance{
+ margin:0 auto;
 }
 
 form, .form{
-	margin:0 auto;
+ 
+ margin:0 auto;
 	
 	/*formを丁度良い場所に置きたい*/
 	padding:50px;

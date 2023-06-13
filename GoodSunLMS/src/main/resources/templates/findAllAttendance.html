@@ -1,6 +1,6 @@
 <!DOCTYPE html>
 <html xmlns:th="http://www.thymeleaf.org"
->
+	th:replace="~{common/layout :: layout(~{::title},~{::body/content()})}">
 <head>
 <meta charset="UTF-8">
 <style>
@@ -11,9 +11,6 @@ table{
 <title>勤怠情報一覧</title>
 </head>
 <body>
-<p>
-	ユーザー名：<span th:text="${session.fullName}"></span>
-</p>
 
 <table border=1>
 	<tr>

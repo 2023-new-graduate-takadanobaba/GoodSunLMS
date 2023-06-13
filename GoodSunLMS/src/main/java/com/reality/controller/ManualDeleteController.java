@@ -1,10 +1,12 @@
 package com.reality.controller;
 
+import java.text.ParseException;
 import java.text.SimpleDateFormat;
 import java.util.Date;
 
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
+import org.springframework.transaction.annotation.Transactional;
 import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.PostMapping;
@@ -31,14 +33,14 @@ public class ManualDeleteController {
 	}
 	
 	@PostMapping("/doManualDelete")
-	public String doManualDelete(Date date, String startTime, Model model, HttpSession session) {
+	@Transactional(rollbackFor = Exception.class)
+	public String doManualDelete(String date, String startTime, Model model, HttpSession session) throws ParseException {
 		User user = userRepository.getReferenceById(Integer.parseInt(session.getAttribute("userId").toString()));
-		SimpleDateFormat sdf = new SimpleDateFormat("yyyy-MM-dd");
-		String dateStr = sdf.format(date);
+		Date dateStr = new SimpleDateFormat("yyyy-MM-dd").parse(date);
 		startTime = removeFirstChar(startTime);
 		
-		attendanceRepository.deleteByDateAndStartTime(date, startTime);
-		return "findAllAttendance";
+		attendanceRepository.deleteByDateAndStartTime(dateStr, startTime);
+		return "redirect:/findAllAttendance";
 	}
 	
 	//　時刻の入力形式変更 ex) 09:00 >> 9:00

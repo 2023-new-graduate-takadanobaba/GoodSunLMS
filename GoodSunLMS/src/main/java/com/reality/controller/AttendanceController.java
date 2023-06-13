@@ -64,7 +64,7 @@ public class AttendanceController {
 	
 	@GetMapping("/findAllAttendance")
 	public String findAllAttendance(Model model, HttpSession session) {
-		User user = userRepository.findByUserName(session.getAttribute("userName").toString());
+		User user = userRepository.findByUserName(session.getAttribute("userId").toString());
 		model.addAttribute("attendance", attendanceRepository.findByUser(user));
 		return "findAllAttendance";
 	}

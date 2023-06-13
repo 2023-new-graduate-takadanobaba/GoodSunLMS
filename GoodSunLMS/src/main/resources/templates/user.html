@@ -9,10 +9,13 @@
 <div class="form">
 <div class="infoForm">
 	<span class="label">Username:</span> 
-	<span th:text="${loginForm.userName}"></span>
+	<span th:text="${userSigninForm.userName}"></span>
+	<br>
+	<span class="label">Fullname:</span> 
+	<span th:text="${userSigninForm.fullName}"></span>
 	<br>
 	<span class="label">Password:</span>
-	<span th:text="${loginForm.password}"></span>
+	<span th:text="${userSigninForm.password}"></span>
 	<br>
 </div>		
 	<button class="back" onclick="window.location.href = './index'" >back to login</button>

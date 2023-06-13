@@ -12,6 +12,7 @@ table{
 </head>
 <body>
 
+<div>
 <table border=1>
 	<tr>
 		<th colspan="2">日付</th>
@@ -35,9 +36,11 @@ table{
 		<td th:text="${attendance.remarks}"></td>
 	</tr>
 </table>
-
 <p>
 	<a th:href="@{/attendanceSystem}">戻る</a>
 </p>
+
+</div>
+
 </body>
 </html>

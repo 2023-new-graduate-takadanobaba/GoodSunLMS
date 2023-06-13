@@ -1,4 +1,5 @@
 package com.reality.controller;
+import java.text.ParseException;
 import java.text.SimpleDateFormat;
 import java.util.Date;
 import java.util.List;
@@ -31,17 +32,16 @@ public class ManualnputController {
 	}
 	
 	@PostMapping("/doManualInput")
-	public String doManualInput(String startTime, String endTime, String workHours,
-			String division, String project, String place, String remarks, Model model, HttpSession session) {
+	public String doManualInput(String date, String startTime, String endTime, String workHours,
+			String division, String project, String place, String remarks, Model model, HttpSession session) throws ParseException {
 			Attendance attendance = new Attendance();
 			User user = userRepository.getReferenceById(Integer.parseInt(session.getAttribute("userId").toString()));
-			Date date = new Date();
 			SimpleDateFormat sdf = new SimpleDateFormat("yyyy-MM-dd");
-			String dateStr = sdf.format(date);
+			Date dateTemp = new SimpleDateFormat("yyyy-MM-dd").parse(date);
 			  
 			List<Attendance> attdArr = attendanceRepository.findAll();
 			for (int i = 0; i < attdArr.size(); i++) {
-				if (sdf.format(attdArr.get(i).getDate()).equals(dateStr) && attdArr.get(i).getUser().getId()==user.getId()) {
+				if (sdf.format(attdArr.get(i).getDate()).equals(date) && attdArr.get(i).getUser().getId()==user.getId()) {
 					if(removeFirstChar(startTime).equals("9:00") || removeFirstChar(endTime).equals("18:00")) {
 						model.addAttribute("stat", "attendanceError");
 						return "error";
@@ -49,7 +49,7 @@ public class ManualnputController {
 				}
 			}
 			
-			attendance.setDate(date);
+			attendance.setDate(dateTemp);
 			attendance.setStartTime(removeFirstChar(startTime));
 			attendance.setEndTime(removeFirstChar(endTime));
 			attendance.setWorkHours(removeFirstChar(workHours));
@@ -60,7 +60,7 @@ public class ManualnputController {
 			attendance.setUser(user);
 			attendanceRepository.save(attendance);
 			model.addAttribute("attendance");
-			return "attendanceMessage";
+			return "redirect:/findAllAttendance";
 		}
 	
 	//　時刻の入力形式変更 ex) 09:00 >> 9:00

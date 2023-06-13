@@ -36,10 +36,10 @@ public class ManualDeleteController {
 	@Transactional(rollbackFor = Exception.class)
 	public String doManualDelete(String date, String startTime, Model model, HttpSession session) throws ParseException {
 		User user = userRepository.getReferenceById(Integer.parseInt(session.getAttribute("userId").toString()));
-		Date dateStr = new SimpleDateFormat("yyyy-MM-dd").parse(date);
+		Date dateTemp = new SimpleDateFormat("yyyy-MM-dd").parse(date);
 		startTime = removeFirstChar(startTime);
 		
-		attendanceRepository.deleteByDateAndStartTimeAndUser(dateStr, startTime, user);
+		attendanceRepository.deleteByDateAndStartTimeAndUser(dateTemp, startTime, user);
 		return "redirect:/findAllAttendance";
 	}
 	

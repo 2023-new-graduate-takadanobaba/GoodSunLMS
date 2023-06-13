@@ -10,6 +10,7 @@ import java.util.Date;
 
 import javax.swing.filechooser.FileSystemView;
 
+import org.apache.poi.ss.usermodel.BorderStyle;
 import org.apache.poi.ss.usermodel.HorizontalAlignment;
 import org.apache.poi.ss.usermodel.VerticalAlignment;
 import org.apache.poi.xssf.usermodel.XSSFCell;
@@ -69,20 +70,24 @@ public class Form2Excel {
 		for (int i = 0; i < dailyReportForms.getDoneThingsList().size(); i++) {
 			int col_pos = 1;
 			// 1行15字
-//			ws.getRow(row_pos).getCell(col_pos).setCellStyle(wrapStyle);
-			this.setValue(row_pos, col_pos++, dailyReportForms.getDoneThingsList().get(i).getThings().replaceAll("(.{15})", "$1CHAR(20)"));
+			ws.getRow(row_pos).getCell(col_pos).setCellStyle(wrapStyle);
+//			ws.getRow(row_pos).getCell(col_pos).getCellStyle().setBorderRight(BorderStyle.THICK);
+//			ws.getRow(row_pos).getCell(col_pos).getCellStyle().setBorderLeft(BorderStyle.THIN);
+			this.setValue(row_pos, col_pos++, dailyReportForms.getDoneThingsList().get(i).getThings().replaceAll("(.{15})", "$1\r\n"));
 //			ws.getRow(row_pos).getCell(col_pos).setCellStyle(wrapStyle);
 			this.setValue(row_pos, col_pos++, dailyReportForms.getDoneThingsList().get(i).getCompleteness());
 			// 1行20字
 //			ws.getRow(row_pos).getCell(col_pos).setCellStyle(wrapStyle);
-			this.setValue(row_pos, col_pos++, dailyReportForms.getDoneThingsList().get(i).getImprovement().replaceAll("(.{20})", "$1CHAR(20)"));
+			this.setValue(row_pos, col_pos++, dailyReportForms.getDoneThingsList().get(i).getImprovement().replaceAll("(.{20})", "$1\r\n"));
 
 			row_pos++;
 		}
 		// 所感 1行40字
 //		ws.getRow(11).getCell(1).setCellStyle(refStyle);
-		this.setValue(11, 1, dailyReportForms.getReflection().replaceAll("(.{40})", "$1CHAR(20)"));	
-//		ws.getRow(11).getCell(1).setCellStyle(wrapStyle);
+		this.setValue(11, 1, dailyReportForms.getReflection().replaceAll("(.{40})", "$1\r\n"));	
+		ws.getRow(11).getCell(1).setCellStyle(wrapStyle);
+		ws.getRow(11).getCell(1).getCellStyle().setBorderRight(BorderStyle.MEDIUM);
+		ws.getRow(11).getCell(1).getCellStyle().setBorderLeft(BorderStyle.MEDIUM);
 		
 		// output
 		
@@ -131,6 +136,7 @@ public class Form2Excel {
 		if (ws.getRow(row_pos).getCell(col_pos) == null) {
 			XSSFCell newCell = ws.getRow(row_pos).createCell(col_pos);
 			try {
+				ws.getRow(row_pos).getCell(col_pos).getCellStyle().setWrapText(true);
 				newCell.setCellStyle(ws.getRow(row_pos).getCell(col_pos).getCellStyle());
 			} catch (Exception ex) {
 				String exm = ex.getMessage();

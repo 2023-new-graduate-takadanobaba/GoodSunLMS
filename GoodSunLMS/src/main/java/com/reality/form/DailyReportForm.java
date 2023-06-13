@@ -31,7 +31,6 @@ public class DailyReportForm {
 		this.doneThings = doneThings;
 		if (doneThings.getThings() != null) {
 			setDoneThingsList(doneThings);
-			System.out.println("i");
 		}		
 	}
 
@@ -51,7 +50,6 @@ public class DailyReportForm {
 		for (int i = 0; i < thingsArr.length; i++) {
 			try {
 				this.doneThingsList.add(new DoneThings(thingsArr[i], comArr[i], impArr[i]));
-				System.out.println("im:"+impArr[i]);
 			} catch (Exception e) {
 				// TODO: handle exception
 				this.doneThingsList.add(new DoneThings(thingsArr[i], comArr[i], ""));

@@ -44,8 +44,9 @@ table {
 		</form>
 
 		<div>
-			<button type="button" th:onclick="gen(this.getAttribute('month'))"
-				th:text="June" th:month="6"></button>
+			<input id="genMM" type="month" value="2023-06" name="month" />
+			<button id="genBtn" type="button" th:onclick="gen(this.getAttribute('month'))"
+				th:text="月報生成" th:month="06"></button>
 		</div>
 
 

@@ -3,8 +3,6 @@
 	th:replace="~{common/layout :: layout(~{::title},~{::body/content()})}">
 <head>
 <meta charset="UTF-8">
-<script src="https://code.jquery.com/jquery-2.2.4.min.js" integrity="sha256-BbhdlvQf/xTY9gja0Dq3HiwQF8LaCRTXxZKRutelT44=" crossorigin="anonymous"></script>
-<script th:src="@{/js/manuallDel.js}" type="text/javascript"></script>
 <style>
 	table{
 	text-align:center;
@@ -24,6 +22,7 @@
 <!-- 	</form> -->
 	
 <!-- 	<p> -->
+<div>
 	<div id="table">
 		<table border=1>
 			<tr>
@@ -50,9 +49,12 @@
 				<td><button th:onclick="del(this.getAttribute('delId'))" type="button" th:delId="${attendance.id}" th:text="delete+${attendance.id}"></button></td>
 			</tr>
 		</table>
-	<p class="return"><a th:href="@{/attendanceSystem}">戻る</a></p>
 	</div>
+	<p class="return"><a th:href="@{/attendanceSystem}">戻る</a></p>
+</div>
 	
 	<!--	/p-->
+	<script src="https://code.jquery.com/jquery-2.2.4.min.js" integrity="sha256-BbhdlvQf/xTY9gja0Dq3HiwQF8LaCRTXxZKRutelT44=" crossorigin="anonymous"></script>
+	<script th:src="@{/js/manuallDel.js}" type="text/javascript"></script>
 </body>
 </html>

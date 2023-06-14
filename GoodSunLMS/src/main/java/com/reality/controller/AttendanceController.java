@@ -2,6 +2,7 @@ package com.reality.controller;
 
 import java.text.ParseException;
 import java.text.SimpleDateFormat;
+import java.util.Calendar;
 import java.util.Date;
 import java.util.List;
 import java.util.regex.Matcher;
@@ -18,6 +19,7 @@ import com.reality.entity.Attendance;
 import com.reality.entity.User;
 import com.reality.repository.AttendanceRepository;
 import com.reality.repository.UserRepository;
+import com.reality.util.Form2ExcelMM;
 
 import jakarta.servlet.http.HttpSession;
 
@@ -83,5 +85,15 @@ public class AttendanceController {
 		
 		model.addAttribute("attendance", attendanceRepository.findByDate(dateTemp));
 		return "redirect:/findAllAttendance";
+	}
+	
+	@PostMapping("/genReport")
+	public String genReport(Integer month, HttpSession session, Model model) throws Exception {
+		List<Attendance> attendances = attendanceRepository.findByMMAndUserId(month, (Integer)session.getAttribute("userId"));
+		String genDate = Calendar.getInstance().get(Calendar.YEAR)+"/"+month; 
+		Form2ExcelMM excelMM = new Form2ExcelMM();
+		excelMM.runForm2Excel(attendances, genDate, session);
+		model.addAttribute("stat", "dailyDone");
+		return "loading";
 	}
 }

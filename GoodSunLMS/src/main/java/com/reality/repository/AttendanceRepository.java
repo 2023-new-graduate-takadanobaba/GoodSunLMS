@@ -4,6 +4,8 @@ import java.util.Date;
 import java.util.List;
 
 import org.springframework.data.jpa.repository.JpaRepository;
+import org.springframework.data.jpa.repository.Query;
+import org.springframework.data.repository.query.Param;
 
 import com.reality.entity.Attendance;
 import com.reality.entity.User;
@@ -13,4 +15,7 @@ public interface AttendanceRepository extends JpaRepository<Attendance, Integer>
 	List<Attendance> findByDateAndStartTime(Date date, String startTime);
 	void deleteByDateAndStartTimeAndUser(Date date, String startTime, User user);
 	List<Attendance> findByDateContaining(Date date);
+	
+	@Query(value = "select * from attendance where month(date) = :month and uid = :uid", nativeQuery = true)
+	List<Attendance> findByMMAndUserId(@Param("month") Integer month, @Param("uid") Integer uid);
 }

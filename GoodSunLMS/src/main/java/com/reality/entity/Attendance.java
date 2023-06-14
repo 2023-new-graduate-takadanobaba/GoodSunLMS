@@ -44,7 +44,28 @@ public class Attendance {
 	@Column
 	private String endTime;
 	
-	
+	public Attendance() {
+		super();
+		// TODO Auto-generated constructor stub
+	}
+
+	public Attendance(Integer id, Date date, String division, String workHours, String project, String place,
+			String remarks, String startTime, String endTime, User user) {
+		super();
+		this.id = id;
+		this.date = date;
+		this.division = division;
+		this.workHours = workHours;
+		this.project = project;
+		this.place = place;
+		this.remarks = remarks;
+		this.startTime = startTime;
+		this.endTime = endTime;
+		this.user = user;
+	}
+
+
+
 	public String getStartTime() {
 		return startTime;
 	}

@@ -12,6 +12,7 @@ import com.reality.entity.User;
 public interface AttendanceRepository extends JpaRepository<Attendance, Integer>{
 	Attendance findByDate(Date date);
 	List<Attendance> findByUser(User user);
+	List<Attendance> findByUserOrderByDateAsc(User user);
 	List<Attendance> findByDateAndStartTime(Date date, String startTime);
 	void deleteByDateAndStartTimeAndUser(Date date, String startTime, User user);
 //	List<Attendance> findByDateContaining(Date date);

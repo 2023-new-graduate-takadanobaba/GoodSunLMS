@@ -13,10 +13,12 @@ import java.util.List;
 import javax.swing.filechooser.FileSystemView;
 
 import org.apache.poi.ss.usermodel.BorderStyle;
+import org.apache.poi.ss.usermodel.CellType;
 import org.apache.poi.ss.usermodel.HorizontalAlignment;
 import org.apache.poi.ss.usermodel.VerticalAlignment;
 import org.apache.poi.xssf.usermodel.XSSFCell;
 import org.apache.poi.xssf.usermodel.XSSFCellStyle;
+import org.apache.poi.xssf.usermodel.XSSFCreationHelper;
 import org.apache.poi.xssf.usermodel.XSSFSheet;
 import org.apache.poi.xssf.usermodel.XSSFWorkbook;
 import org.springframework.beans.factory.annotation.Autowired;
@@ -51,7 +53,13 @@ public class Form2ExcelMM {
 		
 		SimpleDateFormat sdf = new SimpleDateFormat("MM/dd");
 		SimpleDateFormat sdfE = new SimpleDateFormat("E");
-		SimpleDateFormat fileSdf = new SimpleDateFormat("YYYYMM");
+		SimpleDateFormat fileSdf = new SimpleDateFormat("h:mm");
+		
+		XSSFCreationHelper createHelper = wb.getCreationHelper();
+
+		XSSFCellStyle cellStyle = wb.createCellStyle();
+//
+//		cellStyle.setDataFormat(createHelper.createDataFormat().getFormat("MMMM dd, yyyy"));
 
 		String yyyy = date.split("/")[0];
 		String mm = Integer.parseInt(date.split("/")[1])<10?"0"+date.split("/")[1]:date.split("/")[1];
@@ -69,13 +77,16 @@ public class Form2ExcelMM {
 			// 日付
 			this.setValue(row_pos, col_pos++, sdf.format(list.get(i).getDate()));
 			this.setValue(row_pos, col_pos++, sdfE.format(list.get(i).getDate()));
-			// 開始終了
-			this.setValue(row_pos, col_pos++, list.get(i).getStartTime());
+			// 開始終了			
+			this.setValue(row_pos, col_pos++, "09:00");
+			ws.getRow(row_pos).getCell(col_pos-1).getCellStyle().setDataFormat(createHelper.createDataFormat().getFormat("h:mm"));
+//			ws.getRow(row_pos).getCell(col_pos-1).setCellType(CellType.NUMERIC);
 			this.setValue(row_pos, col_pos++, list.get(i).getEndTime());
+//			ws.getRow(row_pos).getCell(col_pos-1).setCellType(CellType.NUMERIC);
 			// 区分
 			this.setValue(row_pos, col_pos++, list.get(i).getDivision());
 			// 時間
-			col_pos++;
+			this.setValue(row_pos, col_pos++, list.get(i).getWorkHours());
 			// プロジェクト
 			this.setValue(row_pos, col_pos++, list.get(i).getProject());
 			// 作業場所

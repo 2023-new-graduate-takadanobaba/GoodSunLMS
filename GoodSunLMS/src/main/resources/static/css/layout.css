@@ -35,7 +35,7 @@ body{
  margin-top: 50px;
 }
 
-.findAll{
+.list{
  margin-left: 10%;
  margin-right:20%;
  margin-top: 50px;
@@ -48,11 +48,6 @@ body{
 h2{
  white-space: nowrap;
  padding-left: 3%
-}
-
-.delete{
- margin-left: 10%;
- margin-right: auto;
 }
 
 #sidebar {
@@ -84,9 +79,6 @@ form, .form{
 	padding:50px;
 }
 
-.form {
-	padding-bottom: 0;
-}
 
 .return{
         margin-top: 100px;

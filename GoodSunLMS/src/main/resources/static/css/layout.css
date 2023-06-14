@@ -29,6 +29,14 @@ body{
 	margin: 0px;
 }
 
+.select{
+ margin-left: 10px;
+ margin-right:10px;
+ margin-top: 50px;
+ 
+
+}
+
 #sidebar {
  background-color: #ffefd5;
 /*  height: 700px; */

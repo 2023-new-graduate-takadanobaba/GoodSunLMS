@@ -1,11 +1,7 @@
 $(document).ready(function(){
 	$("input[name='workHours']").val(calcTime());
 	
-	$("input[name='endTime']").change(function(){
-		$("input[name='workHours']").val(calcTime());
-	})
-	
-	$("input[name='project']").change(function(){
+	$("input[name='startTime'], input[name='endTime'], input[name='project']").change(function(){
 		$("input[name='workHours']").val(calcTime());
 	})
 })

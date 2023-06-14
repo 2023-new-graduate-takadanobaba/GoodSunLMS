@@ -1,13 +1,17 @@
 package com.reality.controller;
 
+import java.text.ParseException;
 import java.text.SimpleDateFormat;
 import java.util.Date;
 import java.util.List;
+import java.util.regex.Matcher;
+import java.util.regex.Pattern;
 
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.GetMapping;
+import org.springframework.web.bind.annotation.PathVariable;
 import org.springframework.web.bind.annotation.PostMapping;
 
 import com.reality.entity.Attendance;
@@ -67,5 +71,17 @@ public class AttendanceController {
 		User user = userRepository.getReferenceById(Integer.parseInt(session.getAttribute("userId").toString()));
 		model.addAttribute("attendance", attendanceRepository.findByUser(user));
 		return "findAllAttendance";
+	}
+	
+	
+	@GetMapping("/findByMonth/{month}")
+	public String findByMonth(@PathVariable String date, Model model, HttpSession session) throws ParseException {
+		User user = userRepository.getReferenceById(Integer.parseInt(session.getAttribute("userId").toString()));
+		Pattern p = Pattern.compile("~[0-1][0-9]");
+		Matcher m = p.matcher(date);
+		Date dateTemp = new SimpleDateFormat("yyyy-MM-dd").parse(date);
+		
+		model.addAttribute("attendance", attendanceRepository.findByDate(dateTemp));
+		return "redirect:/findAllAttendance";
 	}
 }

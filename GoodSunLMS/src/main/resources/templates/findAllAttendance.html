@@ -36,8 +36,18 @@ table{
 		<td th:text="${attendance.remarks}"></td>
 	</tr>
 </table>
+
+
+<form th:action="@{/findByMonth/{month}}" method="get">
+	<input type="month" value="2023-06" name="month"/>
+	<input type="submit" />
+	</form>
+
+
+
 <p>
 	<a th:href="@{/attendanceSystem}">戻る</a>
+	
 </p>
 
 </div>

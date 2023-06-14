@@ -13,6 +13,12 @@ table {
 <body>
 
 	<div>
+	
+	<form th:action="@{/findByMonth}" method="get">
+			月別検索◆<input type="month" value="2023-06" name="month" />
+			<input type="submit" value="検索"/>
+	</form>
+	
 		<table border=1>
 			<tr>
 				<th colspan="2">日付</th>
@@ -37,11 +43,6 @@ table {
 			</tr>
 		</table>
 
-
-		<form th:action="@{/findByMonth/{month}}" method="get">
-			<input type="month" value="2023-06" name="month" /> <input
-				type="submit" />
-		</form>
 
 		<div class="form">
 			<input id="genMM" type="month" value="2023-06" name="month" />

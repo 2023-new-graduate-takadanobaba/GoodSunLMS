@@ -84,6 +84,13 @@ form, .form{
 }
 
 
+
+td {
+	text-align: center;
+}
+
+
+
 .return{
         margin-top: 100px;
     }

@@ -1,8 +1,6 @@
 package com.reality.controller;
 
 import java.text.ParseException;
-import java.text.SimpleDateFormat;
-import java.util.Date;
 
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
@@ -28,7 +26,7 @@ public class ManualDeleteController {
 	@GetMapping("/manualDelete")
 	public String manualDelete(Model model, HttpSession session) {
 		User user = userRepository.getReferenceById(Integer.parseInt(session.getAttribute("userId").toString()));
-		model.addAttribute("attendance", attendanceRepository.findByUser(user));
+		model.addAttribute("attendance", attendanceRepository.findByUserOrderByDateAsc(user));
 		return "manualDelete";
 	}
 	

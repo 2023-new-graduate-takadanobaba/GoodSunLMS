@@ -1,0 +1,23 @@
+<!DOCTYPE html>
+<html xmlns:th="http://www.thymeleaf.org">
+<head>
+<meta charset="UTF-8">
+<title>メールテンプレート</title>
+</head>
+<body>
+
+<div th:text="${recipient}"></div>
+<div th:text="${contents}"></div>
+<div th:if="${#strings.equals(contents, 'absence')}">
+A
+</div>
+<div th:if="${#strings.equals(contents, 'docSubmit')}">
+B
+</div>
+<div th:if="${#strings.equals(contents, 'greeting')}">
+C
+</div>
+
+<p class="return"><a th:href="@{/mail}">戻る</a></p>
+</body>
+</html>

@@ -2,38 +2,26 @@ package com.reality.util;
 
 import java.io.File;
 import java.io.FileOutputStream;
-import java.io.IOException;
 import java.io.InputStream;
 import java.nio.file.Files;
-import java.sql.Time;
 import java.text.SimpleDateFormat;
-import java.util.ArrayList;
-import java.util.Calendar;
 import java.util.Date;
-import java.util.Iterator;
 import java.util.List;
 
 import javax.swing.filechooser.FileSystemView;
 
-import org.apache.poi.ss.usermodel.BorderStyle;
-import org.apache.poi.ss.usermodel.CellCopyPolicy;
-import org.apache.poi.ss.usermodel.CellType;
 import org.apache.poi.ss.usermodel.DateUtil;
-import org.apache.poi.ss.usermodel.HorizontalAlignment;
 import org.apache.poi.ss.usermodel.Row;
-import org.apache.poi.ss.usermodel.VerticalAlignment;
 import org.apache.poi.xssf.usermodel.XSSFCell;
 import org.apache.poi.xssf.usermodel.XSSFCellStyle;
 import org.apache.poi.xssf.usermodel.XSSFCreationHelper;
 import org.apache.poi.xssf.usermodel.XSSFRow;
 import org.apache.poi.xssf.usermodel.XSSFSheet;
 import org.apache.poi.xssf.usermodel.XSSFWorkbook;
-import org.springframework.beans.factory.annotation.Autowired;
-import org.springframework.stereotype.Component;
+
 
 import com.reality.entity.Attendance;
-import com.reality.form.DailyReportForm;
-import com.reality.repository.AttendanceRepository;
+
 
 import jakarta.servlet.http.HttpSession;
 
@@ -63,36 +51,13 @@ public class Form2ExcelMM {
 		SimpleDateFormat fileSdf = new SimpleDateFormat("h:mm");
 		XSSFCreationHelper createHelper = wb.getCreationHelper();
 		
-//		XSSFCellStyle cellStyle = ws.getRow(4).getCell(col_pos).getCellStyle();
-		
 		Row row = ws.getRow(4);
 
 		String yyyy = date.split("/")[0];
 		String mm = Integer.parseInt(date.split("/")[1])<10?"0"+date.split("/")[1]:date.split("/")[1];
 			
 		// Cell処理...
-		// row=4,cell=(0-8)
 		int row_pos = 4;
-		
-//		CellCopyPolicy policy = new CellCopyPolicy();
-//		policy.setCopyCellStyle(CellCopyPolicy.DEFAULT_COPY_CELL_STYLE_POLICY);
-		if (list.size()>3) {
-//			ws.shiftRows(34, 34+list.size()-31, 1);
-//			System.out.println(ws.getLastRowNum());
-//			ws.shiftRows(6, 35, 3, true, false);
-//			for (int i = 6; i < 9; i++) {
-//				int cellCount = 0;
-//				do {
-////					System.out.println("row: "+i+";cell: "+cellCount);
-//					XSSFCell cell = ws.createRow(i).createCell(cellCount);
-//					cell.setCellStyle(ws.getRow(4).getCell(cellCount).getCellStyle());
-//					cellCount++;
-//				} while (ws.getRow(4).getCell(cellCount)!=null);
-//			}
-////			ws.copyRows(0, 1, 7, policy.createBuilder().build());
-//			System.out.println(ws.getRow(5).getCell(5));
-			
-		}
 		
 		XSSFCellStyle wrapStyle = wb.createCellStyle();
 		wrapStyle.setWrapText(true);
@@ -101,7 +66,7 @@ public class Form2ExcelMM {
 		// 氏名
 		this.setValue(1, 7, session.getAttribute("fullName").toString());
 		for (int i = 0; i < list.size(); i++) {
-			if (row_pos>6) {
+			if (row_pos>34) {
 				insertRow(wb, ws, row_pos-1, 1);
 			}
 			int col_pos = 0;
@@ -109,9 +74,7 @@ public class Form2ExcelMM {
 			this.setValue(row_pos, col_pos++, sdf.format(list.get(i).getDate()));
 			this.setValue(row_pos, col_pos++, sdfE.format(list.get(i).getDate()));
 			// 開始終了
-//			ws.getRow(row_pos).getCell(col_pos).setCellType(CellType.NUMERIC);
 			this.setValue(row_pos, col_pos++, list.get(i).getStartTime());			
-//			ws.getRow(row_pos).getCell(col_pos).setCellType(CellType.NUMERIC);
 			this.setValue(row_pos, col_pos++, list.get(i).getEndTime());
 			
 			// 区分
@@ -180,7 +143,7 @@ public class Form2ExcelMM {
 		}		
 	}
 	
-	private static void insertRow(XSSFWorkbook workbook, XSSFSheet sheet, int startRow , int rows) {
+	private void insertRow(XSSFWorkbook workbook, XSSFSheet sheet, int startRow , int rows) {
 		sheet.shiftRows(startRow+1, sheet.getLastRowNum(), rows, true, false);
 		System.out.println(sheet.getLastRowNum());
 		
@@ -195,9 +158,7 @@ public class Form2ExcelMM {
 			tgtRow = sheet.createRow(startRow+1);
 			tgtRow.setHeight(srcRow.getHeight());
 			
-//			System.out.println(startRow+","+srcRow.getFirstCellNum());
 			for (int j = srcRow.getFirstCellNum(); j < 9; j++) {
-//				System.out.println("cell:"+j);
 				srcCell = srcRow.getCell(j);
 				tgtCell = tgtRow.createCell(j);
 				

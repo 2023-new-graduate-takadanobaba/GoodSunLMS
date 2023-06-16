@@ -79,13 +79,13 @@ public class AttendanceController {
 		// 2023-06
 		String[] yearMonth = month.split("-");
 		Integer numMonth = Integer.parseInt(yearMonth[1]);
-		model.addAttribute("attendance", attendanceRepository.findByMMAndUserId(numMonth, (Integer)session.getAttribute("userId")));
+		model.addAttribute("attendance", attendanceRepository.findByMMAndUserIdOrderByDateAsc(numMonth, (Integer)session.getAttribute("userId")));
 		return "findAllAttendance";
 	}
 	
 	@PostMapping("/genReport")
 	public String genReport(Integer month, HttpSession session, Model model) throws Exception {
-		List<Attendance> attendances = attendanceRepository.findByMMAndUserId(month, (Integer)session.getAttribute("userId"));
+		List<Attendance> attendances = attendanceRepository.findByMMAndUserIdOrderByDateAsc(month, (Integer)session.getAttribute("userId"));
 		String genDate = Calendar.getInstance().get(Calendar.YEAR)+"/"+month; 
 		Form2ExcelMM excelMM = new Form2ExcelMM();
 		excelMM.runForm2Excel(attendances, genDate, session);

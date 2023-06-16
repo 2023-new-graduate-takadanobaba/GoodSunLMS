@@ -17,6 +17,6 @@ public interface AttendanceRepository extends JpaRepository<Attendance, Integer>
 	void deleteByDateAndStartTimeAndUser(Date date, String startTime, User user);
 //	List<Attendance> findByDateContaining(Date date);
 	
-	@Query(value = "select * from attendance where month(date) = :month and uid = :uid", nativeQuery = true)
-	List<Attendance> findByMMAndUserId(@Param("month") Integer month, @Param("uid") Integer uid);
+	@Query(value = "select * from attendance where month(date) = :month and uid = :uid order by date asc", nativeQuery = true)
+	List<Attendance> findByMMAndUserIdOrderByDateAsc(@Param("month") Integer month, @Param("uid") Integer uid);
 }

@@ -8,13 +8,11 @@
  align-items:flex-end;
  width: 100%;
  position: fixed;
- top: 0;
- left: 0;
+ top: 0px;
  background-image: url();
  background-size: cover;
  background-position: 50% 25%; /* 横 縦 */
-}
- 
+ justify-content: space-between;
 }
 
 #container{
@@ -53,14 +51,6 @@ h2{
  white-space: nowrap;
  padding-left: 3%
 }
-
-#sidebar {
- background-color: #ffefd5;
-/*  height: 700px; */
- width: 150px;
-}
-
-
 
 #footer {
  background-color: #ffdead;

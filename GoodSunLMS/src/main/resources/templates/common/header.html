@@ -6,8 +6,17 @@
 </head>
 <body>
 	<header id="header" th:fragment="layout-header">
-			<div>ユーザー名：<span th:text="${session.fullName}"></span>&emsp;</div>
-			<a th:href="@{/logout}">ログアウト</a>
+		<div>
+			<p>
+				&emsp; <a th:href="@{/dailyReport}">日報</a>
+				&emsp; <a th:href="@{/attendanceSystem}">勤怠登録</a>
+				&emsp; <a href="/goodsunlms/mail">メールテンプレート</a>
+			</p>
+		</div>
+		<div>
+			ユーザー名：<span th:text="${session.fullName}"></span>&emsp; <a
+				th:href="@{/logout}">ログアウト</a>
+		</div>
 	</header>
 </body>
 </html>

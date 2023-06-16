@@ -1,18 +1,15 @@
 <!DOCTYPE html>
 <html xmlns:th="http://www.thymeleaf.org"
-	th:replace="~{common/layout :: layout(~{::title},~{::body/content()})}">
+th:replace="~{common/layout :: layout(~{::title},~{::body/content()})}">
 <head>
 <meta charset="UTF-8">
-<style>
-	.attention{
-		color:red;
-		font-weight: bold;
-	}
-</style>
+
+
 <title>メールテンプレート</title>
 </head>
 <body>
-<div class="attention">
+
+<div id="attention">
 ※このテンプレートはあくまで一例です。<br/>
 　必ずしも正解のテンプレートとは限りません。<br/>
 </div>

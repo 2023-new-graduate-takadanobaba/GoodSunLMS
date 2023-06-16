@@ -119,7 +119,7 @@ public class Form2ExcelMM {
 			// 時間
 //			System.out.println("row: "+row_pos+";cell: "+col_pos);
 			ws.getRow(row_pos).getCell(col_pos).getCellStyle().setDataFormat(createHelper.createDataFormat().getFormat("[h]:mm"));
-			ws.getRow(row_pos).getCell(col_pos++).setCellValue(DateUtil.convertTime("8:00"));		
+			ws.getRow(row_pos).getCell(col_pos++).setCellValue(DateUtil.convertTime(list.get(i).getWorkHours()));		
 			// プロジェクト
 			this.setValue(row_pos, col_pos++, list.get(i).getProject());
 			// 作業場所

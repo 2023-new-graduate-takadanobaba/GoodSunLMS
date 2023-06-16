@@ -1,8 +1,11 @@
 <!DOCTYPE html>
-<html xmlns:th="http://www.thymeleaf.org">
+<html xmlns:th="http://www.thymeleaf.org"
+	th:replace="~{common/layout :: layout(~{::title},~{::body/content()})}">
+
 <head>
 <meta charset="UTF-8">
 <title>メールテンプレート</title>
+
 </head>
 <body>
 
@@ -35,6 +38,8 @@
 <button type="button" id="copy_absence">本文をコピー</button>
 </p>
 
+<p class="return"><a th:href="@{/mail}">戻る</a></p>
+
 </div>
 
 
@@ -64,6 +69,8 @@
 <button type="button" id="copy_docSubmit_link">本文をコピー</button>
 </p>
 
+<p class="return"><a th:href="@{/mail}">戻る</a></p>
+
 </div>
 
 <div th:if="${#strings.equals(contents, 'docSubmit_att')}">
@@ -90,6 +97,8 @@
 <button type="button" id="copy_docSubmit_att">本文をコピー</button>
 </p>
 
+<p class="return"><a th:href="@{/mail}">戻る</a></p>
+
 </div>
 
 <div th:if="${#strings.equals(contents, 'greeting')}">
@@ -112,12 +121,12 @@
 
 <p>
 <button type="button" id="copy_greeting">本文をコピー</button>
+
 </p>
 
-</div>
-
-
 <p class="return"><a th:href="@{/mail}">戻る</a></p>
+
+</div>
 
 
 <script src="https://code.jquery.com/jquery-2.2.4.min.js" integrity="sha256-BbhdlvQf/xTY9gja0Dq3HiwQF8LaCRTXxZKRutelT44=" crossorigin="anonymous"></script>

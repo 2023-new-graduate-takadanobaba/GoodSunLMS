@@ -104,16 +104,8 @@ public class Form2Excel {
 	private void doExcel(DailyReportForm drf) throws IOException {
 		// form情報整え
 		
-//		for (int i = 0; i < drf.getDoneThingsList().size(); i++) {
-//			// 改行
-//			String tStr = drf.getDoneThingsList().get(i).getThings().replaceAll("(.{15})", "$1\n");
-//			drf.getDoneThingsList().get(i).setThings(tStr);
-//			tStr = drf.getDoneThingsList().get(i).getImprovement().replaceAll("(.{20})", "$1\n");
-//			drf.getDoneThingsList().get(i).setImprovement(tStr);
-//		}
-		
 		dailyReportForms.setDoneThings(drf.getDoneThings());
-		dailyReportForms.setReflection(drf.getReflection().replaceAll("(.{40})", "$1\n"));
+//		dailyReportForms.setReflection(drf.getReflection().replaceAll("(.{40})", "$1\n"));
 		
 //		dailyReportForms.getDoneThingsList().forEach(s->{System.out.println(s.getThings());});
 				

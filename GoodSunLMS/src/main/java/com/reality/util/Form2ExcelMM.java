@@ -29,6 +29,7 @@ public class Form2ExcelMM {
 	
 	XSSFWorkbook wb;
 	XSSFSheet ws;
+	boolean isCal = false;
 	
 	public void runForm2Excel(List<Attendance> list, String date, HttpSession session) throws Exception {
 //		doExcel(list, session);
@@ -68,6 +69,7 @@ public class Form2ExcelMM {
 		for (int i = 0; i < list.size(); i++) {
 			if (row_pos>34) {
 				insertRow(wb, ws, row_pos-1, 1);
+				isCal = true;
 			}
 			int col_pos = 0;
 			// 日付
@@ -92,6 +94,11 @@ public class Form2ExcelMM {
 
 			row_pos++;
 		}
+		
+		if (isCal) {
+			ws.getRow(row_pos).getCell(5).setCellFormula("SUM(F5:F"+Integer.toString(row_pos)+")");
+		}
+		
 		wb.setForceFormulaRecalculation(true);
 		wb.getCreationHelper().createFormulaEvaluator().evaluateAll();
 		// output

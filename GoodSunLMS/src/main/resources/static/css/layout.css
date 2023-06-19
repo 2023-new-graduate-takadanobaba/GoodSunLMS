@@ -58,7 +58,9 @@ h2{
  
 }
 
-
+[list]::-webkit-calendar-picker-indicator { 
+   display: block; 
+ } 
 
 
 form, .form{

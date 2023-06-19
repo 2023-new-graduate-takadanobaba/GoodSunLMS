@@ -9,7 +9,7 @@
 </head>
 <body>
 
-<div th:if="${#strings.equals(contents, 'absence')}">
+<div th:if="${#strings.equals(contents, 'absence')}" class="select">
 
 <p class="attention">※当日の欠勤連絡は電話でお伝えする方が確実です</p>
 
@@ -43,7 +43,7 @@
 </div>
 
 
-<div th:if="${#strings.equals(contents, 'docSubmit_link')}">
+<div th:if="${#strings.equals(contents, 'docSubmit_link')}" class="select">
 <p>
 件名:<br/>
 ●●ご確認のお願い
@@ -73,7 +73,7 @@
 
 </div>
 
-<div th:if="${#strings.equals(contents, 'docSubmit_att')}">
+<div th:if="${#strings.equals(contents, 'docSubmit_att')}" class="select">
 <p>
 件名:<br/>
 ●●ご確認のお願い
@@ -101,7 +101,7 @@
 
 </div>
 
-<div th:if="${#strings.equals(contents, 'greeting')}">
+<div th:if="${#strings.equals(contents, 'greeting')}" class="select">
 
 <div id="text_greeting" class="bg-light rounded p-3">
 <span th:text="${recipient}"></span>さん<br/>

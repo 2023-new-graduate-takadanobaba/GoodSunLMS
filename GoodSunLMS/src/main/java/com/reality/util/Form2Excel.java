@@ -105,7 +105,7 @@ public class Form2Excel {
 		// form情報整え
 		
 		dailyReportForms.setDoneThings(drf.getDoneThings());
-//		dailyReportForms.setReflection(drf.getReflection().replaceAll("(.{40})", "$1\n"));
+		dailyReportForms.setReflection(drf.getReflection().replaceAll("(.{40})", "$1\n"));
 		
 //		dailyReportForms.getDoneThingsList().forEach(s->{System.out.println(s.getThings());});
 				

@@ -4,15 +4,15 @@
  background-color:#ffdead;
  height: 80px;
  display:flex;
- justify-content:flex-end;
+ justify-content: space-between;
  align-items:flex-end;
+ 
  width: 100%;
  position: fixed;
  top: 0px;
  background-image: url();
  background-size: cover;
  background-position: 50% 25%; /* 横 縦 */
- justify-content: space-between;
 }
 
 #container{
@@ -62,10 +62,8 @@ h2{
 
 
 form, .form{
- margin:0 auto;
-	
-	/*formを丁度良い場所に置きたい*/
-	padding:50px;
+ margin-left: 3%;
+ padding:50px;
 }
 
 th, td {

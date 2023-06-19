@@ -1,11 +1,5 @@
-$(document).ready(function(){
-	$("#genBtn").attr("month", $("#genMM").val().split("-")[1])
-	$("#genMM").change(function(){
-		
-	})
-})
-
-function gen(month){
+function gen(){
+	let month = $("#genMM").val().split("-")[1];
 	$.post('./genReport',{month:month}, function(){
 		console.log(month);
 		alert("done")

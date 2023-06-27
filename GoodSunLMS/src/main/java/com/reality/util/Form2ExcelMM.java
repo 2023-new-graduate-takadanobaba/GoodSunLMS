@@ -2,21 +2,13 @@ package com.reality.util;
 
 import java.io.*;
 import java.net.URLEncoder;
-import java.net.http.HttpResponse;
-import java.nio.file.Files;
-import java.nio.file.Path;
 import java.text.SimpleDateFormat;
 import java.util.Calendar;
-import java.util.Date;
 import java.util.List;
-
-import javax.swing.filechooser.FileSystemView;
 
 import com.reality.repository.AttendanceRepository;
 import jakarta.servlet.http.HttpServletResponse;
 import org.apache.poi.ss.usermodel.DateUtil;
-import org.apache.poi.ss.usermodel.Row;
-import org.apache.poi.ss.usermodel.Workbook;
 import org.apache.poi.xssf.usermodel.XSSFCell;
 import org.apache.poi.xssf.usermodel.XSSFCellStyle;
 import org.apache.poi.xssf.usermodel.XSSFCreationHelper;
@@ -30,11 +22,7 @@ import com.reality.entity.Attendance;
 
 import jakarta.servlet.http.HttpSession;
 import org.springframework.beans.factory.annotation.Autowired;
-import org.springframework.core.io.FileSystemResource;
-import org.springframework.http.HttpHeaders;
 import org.springframework.web.bind.annotation.GetMapping;
-import org.springframework.web.bind.annotation.Mapping;
-import org.springframework.web.bind.annotation.PostMapping;
 import org.springframework.web.bind.annotation.RestController;
 
 @RestController
@@ -46,19 +34,14 @@ public class Form2ExcelMM {
 	XSSFWorkbook wb;
 	XSSFSheet ws;
 	boolean isCal = false;
-	
-	public void runForm2Excel(List<Attendance> list, String date, HttpSession session, HttpServletResponse response) throws Exception {
-//		doExcel(list, session);
-//		buildExcel(list, date, session, response);
-	}
 
 	@GetMapping("/gen")
-//	public void buildExcel(List<Attendance> list, String date, HttpSession session, HttpServletResponse response) throws Exception {
 	public void buildExcel(Integer month, HttpSession session, HttpServletResponse response) throws Exception {
 
 		List<Attendance> list = attendanceRepository.findByMMAndUserIdOrderByDateAsc(
 				month, Integer.parseInt(session.getAttribute("userId").toString()));
 		String date = Calendar.getInstance().get(Calendar.YEAR)+"/"+month;
+		
 		// excel生成
 		
 		// template利用
@@ -70,10 +53,7 @@ public class Form2ExcelMM {
 		
 		SimpleDateFormat sdf = new SimpleDateFormat("MM/dd");
 		SimpleDateFormat sdfE = new SimpleDateFormat("E");
-		SimpleDateFormat fileSdf = new SimpleDateFormat("h:mm");
-		XSSFCreationHelper createHelper = wb.getCreationHelper();
-		
-		Row row = ws.getRow(4);
+		XSSFCreationHelper createHelper = wb.getCreationHelper();	
 
 		String yyyy = date.split("/")[0];
 		String mm = Integer.parseInt(date.split("/")[1])<10?"0"+date.split("/")[1]:date.split("/")[1];
@@ -125,13 +105,15 @@ public class Form2ExcelMM {
 		// output
 
 		// 生成
+		String outputFileName = yyyy+mm+"_月報_"+ session.getAttribute("fullName").toString() + ".xlsx";
+		// local
 // 		File desktopDir = FileSystemView.getFileSystemView().getHomeDirectory();
 //		String outputFilePath = desktopDir.getAbsolutePath()+"\\";
-//		System.out.println(fileSdf.format(new Date()));
-		String outputFileName = yyyy+mm+"_月報_"+ session.getAttribute("fullName").toString() + ".xlsx";
+//		System.out.println(fileSdf.format(new Date()));		
 //		Files.createDirectories(new File(outputFilePath).toPath());
 //		FileOutputStream stream = new FileOutputStream(outputFilePath + outputFileName);
 
+		// download
 		response.reset();
 		response.setContentType("application/octet-stream");
 		response.setHeader("Content-Disposition", "attachment;filename=" + URLEncoder.encode(outputFileName, "UTF-8"));
@@ -146,6 +128,7 @@ public class Form2ExcelMM {
 		os.flush();
 		os.close();
 
+		// local用
 //		wb.write(stream);
 //		stream.close();
 

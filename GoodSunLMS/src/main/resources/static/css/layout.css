@@ -95,6 +95,14 @@ th, td {
 	color: #e6e6fa;
 }
 
+.mail_subject{
+
+}
+
+.copy_button {
+	margin-top: 20px;
+}
+
 .return{
         margin-top: 100px;
     }

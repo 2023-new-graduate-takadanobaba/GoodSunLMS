@@ -9,6 +9,83 @@
 <title>日報</title>
 </head>
 <body>
-  にゃー
+
+<h2>日報</h2>
+
+<form method="post" th:action="@{/doDairyReport}">
+	<table class="table table-bordered">
+		<tr>
+			<th>やったこと</th>
+			<th>評価</th>
+			<th>改善点など</th>
+		</tr>
+		<tr>
+			<td><input type="text" name="doneThings" /></td>
+			<td>
+				<select>
+					<option value="completeness">○</option>
+					<option value="completeness">△</option>
+					<option value="completeness">×</option>
+				</select>
+			</td>
+			<td><input type="text" name="improvement" /></td>
+		</tr>
+		<tr>
+			<td><input type="text" name="doneThings" /></td>
+			<td>
+				<select>
+					<option value="completeness">○</option>
+					<option value="completeness">△</option>
+					<option value="completeness">×</option>
+				</select>
+			</td>
+			<td><input type="text" name="improvement" /></td>
+		</tr>
+		<tr>
+			<td><input type="text" name="doneThings" /></td>
+			<td>
+				<select>
+					<option value="completeness">○</option>
+					<option value="completeness">△</option>
+					<option value="completeness">×</option>
+				</select>
+			</td>
+			<td><input type="text" name="improvement" /></td>
+		</tr>
+		<tr>
+			<td><input type="text" name="doneThings" /></td>
+			<td>
+				<select>
+					<option value="completeness">○</option>
+					<option value="completeness">△</option>
+					<option value="completeness">×</option>
+				</select>
+			</td>
+			<td><input type="text" name="improvement" /></td>
+		</tr>
+		<tr>
+			<td><input type="text" name="doneThings" /></td>
+			<td>
+				<select>
+					<option value="completeness">○</option>
+					<option value="completeness">△</option>
+					<option value="completeness">×</option>
+				</select>
+			</td>
+			<td><input type="text" name="improvement" /></td>
+		</tr>
+	</table>
+	
+	所感<br/>
+	<textarea name="reflection" cols="80" rows="5"></textarea><br>
+	<input type="submit" value="日報生成" />
+	<div class="select">
+		<a th:href="@{/select}">戻る</a>
+	</div>
+	
+</form>
+
+
+
 </body>
 </html>

@@ -37,7 +37,7 @@
 				<td th:text="${attendance.division}"></td>
 				<td th:text="${attendance.workHours}"></td>
 				<td th:text="${attendance.project}"></td>
-					<td th:text="${attendance.place}"></td>
+				<td th:text="${attendance.place}"></td>
 				<td th:text="${attendance.remarks}"></td>
 				<td><button th:onclick="del(this.getAttribute('delId'))" type="button" th:delId="${attendance.id}" th:text="削除"></button></td>
 			</tr>

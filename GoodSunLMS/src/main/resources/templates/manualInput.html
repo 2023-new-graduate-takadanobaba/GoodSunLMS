@@ -11,6 +11,7 @@
 <title>勤怠情報入力</title>
 </head>
 <body>
+	<h2>勤怠情報入力</h2>
 	<form method="post" th:action="@{/doManualInput}">
 		<div>
 			<p>
@@ -29,13 +30,13 @@
 			</p>
 			<p>
 				<label> 終了時間<input type="time" value="18:00" name="endTime"
-					list="end-list" step="1800"/> <datalist id="end-list">
+					list="end-list" step="1800" /> <datalist id="end-list">
 						<option value="17:00">
 						<option value="17:30">
 						<option value="18:30">
 						<option value="19:00">
 					</datalist>
-				</label> 勤務時間<input type="time" value="00:00" name="workHours"/>
+				</label> 勤務時間<input type="time" value="00:00" name="workHours" />
 			</p>
 		</div>
 		<br>
@@ -84,9 +85,11 @@
 		<p>
 			<input type="submit" value="登録" />
 		</p>
+		<br>
 		<p>
 			<a th:href="@{/attendanceSystem}">戻る</a>
 		</p>
+
 	</form>
 
 	<script src="https://code.jquery.com/jquery-2.2.4.min.js"

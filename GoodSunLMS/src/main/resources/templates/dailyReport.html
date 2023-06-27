@@ -10,9 +10,22 @@
 </head>
 <body>
 
+<!-- 日報作成時の確認ダイアログ -->
+<script type="text/javascript"> 
+function check(){
+	if(window.confirm('日報を作成しますか？')){
+		return true; //送信実行
+	}
+	else{
+		window.alert('キャンセルしました');
+		return false; // 送信中止
+	}
+}
+</script>
+
 <h2>日報</h2>
 
-<form method="post" th:action="@{/doDailyReport}">
+<form method="post" th:action="@{/doDailyReport}" onSubmit="return check()">
 	<table class="table table-bordered">
 		<tr>
 			<th>やったこと</th>

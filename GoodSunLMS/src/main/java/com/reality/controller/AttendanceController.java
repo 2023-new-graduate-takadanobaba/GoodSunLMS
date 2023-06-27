@@ -85,8 +85,8 @@ public class AttendanceController {
         Form2ExcelMM form = new Form2ExcelMM();
         List<Attendance> attendanceList = attendanceRepository.findByMMAndUserIdOrderByDateAsc(
                                             month, Integer.parseInt(session.getAttribute("userId").toString()));
-        SimpleDateFormat sdf = new SimpleDateFormat("yyyy/M");
-        form.runForm2Excel(attendanceList, sdf.format(new Date()), session);
+        String genDate = Calendar.getInstance().get(Calendar.YEAR)+"/"+month;
+        form.runForm2Excel(attendanceList, genDate, session);
         return "loading";
     }
 }

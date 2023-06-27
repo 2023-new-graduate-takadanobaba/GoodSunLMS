@@ -13,12 +13,12 @@
 
 <p class="attention">※当日の欠勤連絡は電話でお伝えする方が確実です</p>
 
-<p>
+<p class="alert alert-warning text-dark rounded p-3 border border-warning border border-2">
 件名:<br/>
 【勤怠連絡】体調不良による欠勤のご連絡
 </p>
 
-<div id="text_absence" class="bg-light rounded p-3">
+<div id="text_absence" class="alert alert-warning text-dark rounded p-3 border border-warning border border-3">
 <span th:text="${recipient}"></span>さん<br/>
 
 おはようございます。<span th:text="${session.fullName}"></span>です。<br/>
@@ -34,7 +34,7 @@
 
 </div>
 
-<p>
+<p class="copy_button">
 <button type="button" id="copy_absence">本文をコピー</button>
 </p>
 
@@ -44,12 +44,12 @@
 
 
 <div th:if="${#strings.equals(contents, 'docSubmit_link')}" class="select">
-<p>
+<p class="alert alert-warning text-dark rounded p-3 border border-warning border border-2">
 件名:<br/>
 ●●ご確認のお願い
 </p>
 
-<div id="text_docSubmit_link" class="bg-light rounded p-3">
+<div id="text_docSubmit_link" class="alert alert-warning text-dark rounded p-3 border border-warning border border-3">
 <span th:text="${recipient}"></span>さん<br/>
 
 お疲れ様です。<span th:text="${session.fullName}"></span>です。<br/>
@@ -65,7 +65,7 @@
 <div th:text="${session.fullName}"></div>
 
 </div>
-<p>
+<p class="copy_button">
 <button type="button" id="copy_docSubmit_link">本文をコピー</button>
 </p>
 
@@ -74,12 +74,12 @@
 </div>
 
 <div th:if="${#strings.equals(contents, 'docSubmit_att')}" class="select">
-<p>
+<p class="alert alert-warning text-dark rounded p-3 border border-warning border border-2">
 件名:<br/>
 ●●ご確認のお願い
 </p>
 
-<div id="text_docSubmit_att" class="bg-light rounded p-3">
+<div id="text_docSubmit_att" class="alert alert-warning text-dark rounded p-3 border border-warning border border-3">
 <span th:text="${recipient}"></span>さん<br/>
 
 お疲れ様です。<span th:text="${session.fullName}"></span>です。<br/>
@@ -93,7 +93,7 @@
 <div th:text="${session.fullName}"></div>
 
 </div>
-<p>
+<p class="copy_button">
 <button type="button" id="copy_docSubmit_att">本文をコピー</button>
 </p>
 
@@ -103,7 +103,7 @@
 
 <div th:if="${#strings.equals(contents, 'greeting')}" class="select">
 
-<div id="text_greeting" class="bg-light rounded p-3">
+<div id="text_greeting" class="alert alert-warning text-dark rounded p-3 border border-warning border border-3">
 <span th:text="${recipient}"></span>さん<br/>
 
 お疲れ様です。<span th:text="${session.fullName}"></span>です。<br/>
@@ -119,7 +119,7 @@
 <div th:text="${session.fullName}"></div>
 </div>
 
-<p>
+<p class="copy_button">
 <button type="button" id="copy_greeting">本文をコピー</button>
 
 </p>

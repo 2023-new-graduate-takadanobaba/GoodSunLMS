@@ -1,17 +1,22 @@
 package com.reality.util;
 
-import java.io.File;
-import java.io.FileOutputStream;
-import java.io.InputStream;
+import java.io.*;
+import java.net.URLEncoder;
+import java.net.http.HttpResponse;
 import java.nio.file.Files;
+import java.nio.file.Path;
 import java.text.SimpleDateFormat;
+import java.util.Calendar;
 import java.util.Date;
 import java.util.List;
 
 import javax.swing.filechooser.FileSystemView;
 
+import com.reality.repository.AttendanceRepository;
+import jakarta.servlet.http.HttpServletResponse;
 import org.apache.poi.ss.usermodel.DateUtil;
 import org.apache.poi.ss.usermodel.Row;
+import org.apache.poi.ss.usermodel.Workbook;
 import org.apache.poi.xssf.usermodel.XSSFCell;
 import org.apache.poi.xssf.usermodel.XSSFCellStyle;
 import org.apache.poi.xssf.usermodel.XSSFCreationHelper;
@@ -24,20 +29,36 @@ import com.reality.entity.Attendance;
 
 
 import jakarta.servlet.http.HttpSession;
+import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.core.io.FileSystemResource;
+import org.springframework.http.HttpHeaders;
+import org.springframework.web.bind.annotation.GetMapping;
+import org.springframework.web.bind.annotation.Mapping;
+import org.springframework.web.bind.annotation.PostMapping;
+import org.springframework.web.bind.annotation.RestController;
 
+@RestController
 public class Form2ExcelMM {
-	
+
+	@Autowired
+	AttendanceRepository attendanceRepository;
+
 	XSSFWorkbook wb;
 	XSSFSheet ws;
 	boolean isCal = false;
 	
-	public void runForm2Excel(List<Attendance> list, String date, HttpSession session) throws Exception {
+	public void runForm2Excel(List<Attendance> list, String date, HttpSession session, HttpServletResponse response) throws Exception {
 //		doExcel(list, session);
-		buildExcel(list, date, session);
+//		buildExcel(list, date, session, response);
 	}
-	
-	
-	private void buildExcel(List<Attendance> list, String date, HttpSession session) throws Exception {
+
+	@GetMapping("/gen")
+//	public void buildExcel(List<Attendance> list, String date, HttpSession session, HttpServletResponse response) throws Exception {
+	public void buildExcel(Integer month, HttpSession session, HttpServletResponse response) throws Exception {
+
+		List<Attendance> list = attendanceRepository.findByMMAndUserIdOrderByDateAsc(
+				month, Integer.parseInt(session.getAttribute("userId").toString()));
+		String date = Calendar.getInstance().get(Calendar.YEAR)+"/"+month;
 		// excel生成
 		
 		// template利用
@@ -102,15 +123,31 @@ public class Form2ExcelMM {
 		wb.setForceFormulaRecalculation(true);
 		wb.getCreationHelper().createFormulaEvaluator().evaluateAll();
 		// output
-		
- 		File desktopDir = FileSystemView.getFileSystemView().getHomeDirectory();
-		String outputFilePath = desktopDir.getAbsolutePath()+"\\";
-		System.out.println(fileSdf.format(new Date()));
+
+		// 生成
+// 		File desktopDir = FileSystemView.getFileSystemView().getHomeDirectory();
+//		String outputFilePath = desktopDir.getAbsolutePath()+"\\";
+//		System.out.println(fileSdf.format(new Date()));
 		String outputFileName = yyyy+mm+"_月報_"+ session.getAttribute("fullName").toString() + ".xlsx";
-		Files.createDirectories(new File(outputFilePath).toPath());
-		FileOutputStream stream = new FileOutputStream(outputFilePath + outputFileName);
-		wb.write(stream);
-		stream.close();
+//		Files.createDirectories(new File(outputFilePath).toPath());
+//		FileOutputStream stream = new FileOutputStream(outputFilePath + outputFileName);
+
+		response.reset();
+		response.setContentType("application/octet-stream");
+		response.setHeader("Content-Disposition", "attachment;filename=" + URLEncoder.encode(outputFileName, "UTF-8"));
+		String fileNameURL = URLEncoder.encode(outputFileName, "UTF-8");
+		response.setCharacterEncoding("UTF-8");
+		response.setHeader("Content-disposition", "attachment;filename=" + fileNameURL + ";" + "filename*=utf-8''" + fileNameURL);
+		response.setContentType("application/octet-stream");
+		response.flushBuffer();
+		OutputStream os = response.getOutputStream();
+
+		wb.write(os);
+		os.flush();
+		os.close();
+
+//		wb.write(stream);
+//		stream.close();
 
 		wb.close();
 

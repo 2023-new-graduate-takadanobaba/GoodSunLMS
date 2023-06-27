@@ -6,6 +6,7 @@ import java.util.Calendar;
 import java.util.Date;
 import java.util.List;
 
+import jakarta.servlet.http.HttpServletResponse;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
@@ -80,13 +81,13 @@ public class AttendanceController {
         return "findAllAttendance";
     }
 
-    @PostMapping("/genReport")
-    public String genReport(Integer month, Model model, HttpSession session) throws Exception {
-        Form2ExcelMM form = new Form2ExcelMM();
-        List<Attendance> attendanceList = attendanceRepository.findByMMAndUserIdOrderByDateAsc(
-                                            month, Integer.parseInt(session.getAttribute("userId").toString()));
-        String genDate = Calendar.getInstance().get(Calendar.YEAR)+"/"+month;
-        form.runForm2Excel(attendanceList, genDate, session);
-        return "loading";
-    }
+//    @PostMapping("/genReport")
+//    public String genReport(Integer month, Model model, HttpSession session, HttpServletResponse response) throws Exception {
+//        Form2ExcelMM form = new Form2ExcelMM();
+//        List<Attendance> attendanceList = attendanceRepository.findByMMAndUserIdOrderByDateAsc(
+//                                            month, Integer.parseInt(session.getAttribute("userId").toString()));
+//        String genDate = Calendar.getInstance().get(Calendar.YEAR)+"/"+month;
+//        form.runForm2Excel(attendanceList, genDate, session, response);
+//        return "loading";
+//    }
 }

@@ -14,8 +14,12 @@
 	<h2>勤怠情報入力</h2>
 	<form method="post" th:action="@{/doManualInput}">
 		<div>
+			<p class="attention">
+			※<span id="explain">■</span>は必須入力です。
+			</p>
+		
 			<p>
-				日付<input type="date" name="date" required/>
+				日付<input type="date" class="required" name="date" required/>
 			</p>
 			<br>
 			<p>
@@ -38,7 +42,10 @@
 						<option value="18:30">
 						<option value="19:00">
 					</datalist>
-				</label> 勤務時間<input type="time" value="00:00" name="workHours" />
+				</label>
+			</p>
+			<p>
+				<label> 勤務時間<input type="time" value="00:00" name="workHours" /></label>
 			</p>
 		</div>
 		<br>
@@ -53,9 +60,8 @@
 					</datalist>
 				</label>
 			</p>
-			<br>
 			<p>
-				<label>プロジェクト <input type="text" name="project"
+				<label>プロジェクト <input type="text" class="required" name="project"
 					list="project-list" placeholder="選択または入力" autocomplete="on" required/>
 					<datalist id="project-list">
 						<option value="新入社員研修">
@@ -63,9 +69,8 @@
 					</datalist>
 				</label>
 			</p>
-			<br>
 			<p>
-				<label>作業場所 <input type="text" name="place"
+				<label>作業場所 <input type="text" class="required" name="place"
 					list="place-list" placeholder="選択または入力" autocomplete="on" required/>
 					<datalist id="place-list">
 						<option value="高田馬場事務所">
@@ -75,7 +80,6 @@
 					</datalist>
 				</label>
 			</p>
-			<br>
 			<p>
 				<label>備考 <input type="text" name="remarks"
 					list="remarks-list" placeholder="選択または入力" autocomplete="on" />

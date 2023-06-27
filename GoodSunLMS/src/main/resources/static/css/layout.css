@@ -78,6 +78,23 @@ th, td {
 	padding-top: 50px;
 }
 
+.required:invalid {
+	background: #e6e6fa;
+}
+
+.attention_bold {
+		color:red;
+		font-weight: bold;
+}
+
+.attention {
+	color: red;
+}
+
+#explain{
+	color: #e6e6fa;
+}
+
 .return{
         margin-top: 100px;
     }

@@ -17,24 +17,33 @@
 
 
 		<p>
-		<form method="get" th:action="@{/mailTemplate}">
-			<!--  送信相手を選択◆
-	<input type="text" name="recipient" list="recipient" placeholder="選択または入力" autocomplete="off"/>
-		<datalist id="recipient">
-			
-		</datalist>
--->
-			送信相手の名前を入力◆ <input type="text" name="recipient" /> <br />
-			テンプレート内容を選択◆ <select name="contents">
-				<option value="docSubmit_link">書類提出（リンク添付）</option>
-				<option value="docSubmit_att">書類提出（ファイル添付）</option>
-				<option value="absence">欠勤連絡</option>
-				<option value="greeting">挨拶と結びのみ</option>
-			</select> <br /> <p></p><input type="submit" value="テンプレート出力" />
-			<p class="return">
-				<a th:href="@{/select}">戻る</a>
-			</p>
-		</form>
+			<form method="get" th:action="@{/mailTemplate}">
+				<!--  
+					送信相手を選択◆
+					<input type="text" name="recipient" list="recipient" placeholder="選択または入力" autocomplete="off"/>
+					<datalist id="recipient">
+					
+					</datalist>
+				-->
+				
+				<p>送信相手の名前を入力◆ <input type="text" name="recipient" /></p>
+				<p>テンプレート内容を選択◆
+					<select name="contents">
+						<option value="docSubmit_link">書類提出（リンク添付）</option>
+						<option value="docSubmit_att">書類提出（ファイル添付）</option>
+						<option value="absence">欠勤連絡</option>
+						<option value="greeting">挨拶と結びのみ</option>
+					</select>
+				</p>
+					
+				<p>
+					<input type="submit" class="btn btn-outline-success" value="テンプレート出力" />
+				</p>
+				
+				<p class="return">
+					<a th:href="@{/select}">戻る</a>
+				</p>
+			</form>
 		</p>
 
 		<!-- 

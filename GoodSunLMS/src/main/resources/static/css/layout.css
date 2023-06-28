@@ -1,5 +1,9 @@
 @charset "UTF-8";
 
+.bg-light {
+    background-color: #C0DBEA!important;
+}
+
 #header {
  width: 100%;
  position: fixed;

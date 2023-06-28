@@ -16,9 +16,9 @@ function submitAndRedirect(){
     let formDoc = document.getElementById("form");
     if(check()) {
         formDoc.submit();
-                sleep(3000).then(function() {
-                    document.location.reload();
-                });
+        sleep(3000).then(function() {
+            document.location.reload();
+        });
     }
 }
 

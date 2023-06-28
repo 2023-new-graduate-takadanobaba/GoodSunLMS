@@ -1,19 +1,24 @@
 @charset "UTF-8";
 
 #header {
- background-color:#ffdead;
+ /*background-color:#ffdead;*/
  height: 80px;
+ /*
  display:flex;
  justify-content: space-between;
- align-items:flex-end;
  
+ */
  width: 100%;
  position: fixed;
  top: 0px;
  
 }
 
-#container{
+
+
+.header-right{
+display:flex;
+white-space: nowrap;
 	
 }
 

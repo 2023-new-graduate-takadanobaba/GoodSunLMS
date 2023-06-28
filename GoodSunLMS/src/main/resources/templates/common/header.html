@@ -40,13 +40,18 @@
 		 			</li>
 		 		</ul>		 	
 		 	</div>
+		 <div class="header-right">
+			<p>ユーザー名：<span id="userName" th:text="${session.fullName}"></span><p>&emsp; <a
+				th:href="@{/logout}">ログアウト</a>
+		</div>
 		 </nav>
 		
-
+	<!--  
 		<div>
 			ユーザー名：<span id="userName" th:text="${session.fullName}"></span>&emsp; <a
 				th:href="@{/logout}">ログアウト</a>
 		</div>
+		-->
 	</header>
 </body>
 </html>

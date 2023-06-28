@@ -22,14 +22,14 @@ function check(){
 }
 </script>
 
-<h2>日報</h2>
+<h2 class="text-secondary">日報</h2>
 
 <form method="post" th:action="@{/genDaily}" onSubmit="return check()">
 	<table class="table table-warning table-striped">
 		<tr>
-			<th>やったこと</th>
-			<th>評価</th>
-			<th>改善点など</th>
+			<th class="text-secondary">やったこと</th>
+			<th class="text-secondary">評価</th>
+			<th class="text-secondary">改善点など</th>
 		</tr>
 		<tr>
 			<td><input type="text" class="table-warning" name="doneThings.things" /></td>
@@ -88,7 +88,7 @@ function check(){
 		</tr>
 		
 		<tr>
-		<th colspan="3">所感(400字程度)</th>
+		<th colspan="3" class="text-secondary">所感(400字程度)</th>
 		</tr>
 		<tr>
 		<td colspan="3">

@@ -10,12 +10,12 @@
 
 <h2 class="text-secondary">勤怠登録</h2>
 	
-	<form method="post" th:action="@{/attendanceRegister}" class="card">
+	<form method="post" th:action="@{/attendanceRegister}" class="attCard">
 		<h4 class="text-secondary att_title">【出勤登録】</h4>
 		<input type="submit" class="btn btn-outline-info attBtn" value=">出勤登録" onClick="Check();" />
 	</form>
 
-	<form method="post" th:action="@{/complaints}" class="card">
+	<form method="post" th:action="@{/complaints}" class="attCard">
 		<h4 class="text-secondary att_title" id="comp_title">【愚痴相談登録】</h4>
 		<div class="text-secondary" id="comp_btn">
 			開始時間◆<input type="time" class="table-info" value="18:30" name="startTime" step="1800" />
@@ -27,7 +27,7 @@
 		<input type="submit" class="btn btn-outline-info" id="comp_btn" value=">登録" />
 	</form>
 	
-	<div class="card">
+	<div class="attCard">
 		<h4 class="text-secondary att_title">【手動入力】</h4><br/>
 		<a th:href="@{/manualInput}" class="link-info">&#62;勤怠情報入力</a><br/>
 		<a th:href="@{/manualDelete}" class="link-info">&#62;勤怠情報削除</a><br/>

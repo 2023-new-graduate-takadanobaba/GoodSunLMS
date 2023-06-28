@@ -61,7 +61,7 @@ h2{
  } 
 
 
-.form{
+form .form{
  padding:50px;
 }
 
@@ -96,7 +96,7 @@ th, td {
 	margin-top: 20px;
 }
 
-.card {
+.attCard {
 	height: 300px;
 	margin: 10% 10px;
 	padding: 50px 20px 20px;

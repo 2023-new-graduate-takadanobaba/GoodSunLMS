@@ -10,14 +10,11 @@
  width: 100%;
  position: fixed;
  top: 0px;
- background-image: url();
- background-size: cover;
- background-position: 50% 25%; /* 横 縦 */
+ 
 }
 
 #container{
-	background-image: url();
-	background-size: cover;
+	
 }
 
 article{
@@ -70,7 +67,6 @@ form, .form{
 th, td {
 	text-align: center;
 }
-
 
 .mail{
 	margin-left:20px;

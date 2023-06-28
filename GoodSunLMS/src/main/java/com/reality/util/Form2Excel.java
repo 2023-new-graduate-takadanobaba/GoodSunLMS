@@ -45,7 +45,7 @@ public class Form2Excel {
 	XSSFWorkbook wb;
 	XSSFSheet ws;
 	
-	private DailyReportForm dailyReportForms = new DailyReportForm();
+//	private DailyReportForm dailyReportForms = new DailyReportForm();
 	
 //	public void runForm2Excel(DailyReportForm drf) throws Exception {
 //		doExcel(drf);
@@ -53,8 +53,8 @@ public class Form2Excel {
 //	}
 	
 	@PostMapping("/genDaily")
-	public void buildExcel(DailyReportForm drf, HttpServletResponse response) throws Exception {
-		doExcel(drf);
+	public void buildExcel(DailyReportForm dailyReportForms, HttpServletResponse response) throws Exception {
+		doExcel(dailyReportForms);
 		
 		// excel生成
 		
@@ -127,11 +127,11 @@ public class Form2Excel {
 		System.out.println("JOB_DONE");
 	}
 	
-	private void doExcel(DailyReportForm drf) throws IOException {
+	private void doExcel(DailyReportForm dailyReportForms) throws IOException {
 		// form情報整え
 		
-		dailyReportForms.setDoneThings(drf.getDoneThings());
-		dailyReportForms.setReflection(drf.getReflection().replaceAll("(.{40})", "$1\n"));
+		dailyReportForms.setDoneThings(dailyReportForms.getDoneThings());
+		dailyReportForms.setReflection(dailyReportForms.getReflection().replaceAll("(.{40})", "$1\n"));
 		
 //		dailyReportForms.getDoneThingsList().forEach(s->{System.out.println(s.getThings());});
 				

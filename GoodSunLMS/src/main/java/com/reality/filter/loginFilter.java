@@ -21,7 +21,7 @@ public class loginFilter implements Filter {
 
     @Override
     public void init(FilterConfig filterConfig) throws ServletException {
-        System.out.println("init loginFilter");
+//        System.out.println("init loginFilter");
     }
 
     @Override
@@ -32,8 +32,6 @@ public class loginFilter implements Filter {
         boolean allowPath = ALLOWED_PATH.stream().anyMatch(p -> path.contains(p));
 
         if (!allowPath) {
-            System.out.println(path);
-            System.out.println("not allow");
             HttpSession session = req.getSession();
             boolean isLogin = session.getAttribute("userId")==null?false:true;
 
@@ -46,22 +44,10 @@ public class loginFilter implements Filter {
         response.setCharacterEncoding("utf-8");
         chain.doFilter(request, response);
 
-
-//        HttpSession session = req.getSession();
-//        String user = (String) session.getAttribute("userId");
-//
-//		if (user == null) {
-//			res.sendRedirect("/goodsunlms/index");
-//			return;
-//		} else {
-//			response.setCharacterEncoding("utf-8");
-//			chain.doFilter(request, response);
-//		}
-
     }
 
     @Override
     public void destroy() {
-        System.out.println("destroy loginFilter");
+//        System.out.println("destroy loginFilter");
     }
 }

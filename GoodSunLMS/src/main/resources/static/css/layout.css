@@ -1,13 +1,6 @@
 @charset "UTF-8";
 
 #header {
- /*background-color:#ffdead;*/
- height: 80px;
- /*
- display:flex;
- justify-content: space-between;
- 
- */
  width: 100%;
  position: fixed;
  top: 0px;

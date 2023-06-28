@@ -15,66 +15,66 @@
 <h2>日報</h2>
 
 <form id="form" method="post" th:action="@{/genDaily}" onSubmit="return check()">
-	<table class="table table-warning table-striped">
+	<table class="table table-info table-striped">
 		<tr>
 			<th>やったこと</th>
 			<th>評価</th>
 			<th>改善点など</th>
 		</tr>
 		<tr>
-			<td><input type="text" class="table-warning" name="doneThings.things" /></td>
+			<td><input type="text" class="table-info" name="doneThings.things" /></td>
 			<td>
-				<select class="table-warning" name="doneThings.completeness">
+				<select class="table-info" name="doneThings.completeness">
 					<option>○</option>
 					<option>△</option>
 					<option>×</option>
 				</select>
 			</td>
-			<td><input type="text" class="table-warning" name="doneThings.improvement" /></td>
+			<td><input type="text" class="table-info" name="doneThings.improvement" /></td>
 		</tr>
 		<tr>
-			<td><input type="text" class="table-warning" name="doneThings.things" /></td>
+			<td><input type="text" class="table-info" name="doneThings.things" /></td>
 			<td>
-				<select class="table-warning" name="doneThings.completeness">
+				<select class="table-info" name="doneThings.completeness">
 					<option>○</option>
 					<option>△</option>
 					<option>×</option>
 				</select>
 			</td>
-			<td><input type="text" class="table-warning" name="doneThings.improvement" /></td>
+			<td><input type="text" class="table-info" name="doneThings.improvement" /></td>
 		</tr>
 		<tr>
-			<td><input type="text" class="table-warning" name="doneThings.things" /></td>
+			<td><input type="text" class="table-info" name="doneThings.things" /></td>
 			<td>
-				<select class="table-warning" name="doneThings.completeness">
+				<select class="table-info" name="doneThings.completeness">
 					<option>○</option>
 					<option>△</option>
 					<option>×</option>
 				</select>
 			</td>
-			<td><input type="text" class="table-warning" name="doneThings.improvement" /></td>
+			<td><input type="text" class="table-info" name="doneThings.improvement" /></td>
 		</tr>
 		<tr>
-			<td><input type="text" class="table-warning" name="doneThings.things" /></td>
+			<td><input type="text" class="table-info" name="doneThings.things" /></td>
 			<td>
-				<select class="table-warning" name="doneThings.completeness">
+				<select class="table-info" name="doneThings.completeness">
 					<option>○</option>
 					<option>△</option>
 					<option>×</option>
 				</select>
 			</td>
-			<td><input type="text" class="table-warning" name="doneThings.improvement" /></td>
+			<td><input type="text" class="table-info" name="doneThings.improvement" /></td>
 		</tr>
 		<tr>
-			<td><input type="text" class="table-warning" name="doneThings.things" /></td>
+			<td><input type="text" class="table-info" name="doneThings.things" /></td>
 			<td>
-				<select class="table-warning" name="doneThings.completeness">
+				<select class="table-info" name="doneThings.completeness">
 					<option>○</option>
 					<option>△</option>
 					<option>×</option>
 				</select>
 			</td>
-			<td><input type="text" class="table-warning" name="doneThings.improvement" /></td>
+			<td><input type="text" class="table-info" name="doneThings.improvement" /></td>
 		</tr>
 		
 		<tr>
@@ -82,14 +82,14 @@
 		</tr>
 		<tr>
 		<td colspan="3">
-			<textarea name="reflection" class="table-warning" cols="80" rows="5"></textarea>
+			<textarea name="reflection" class="table-info" cols="80" rows="5"></textarea>
 		</td>
 		</tr>
 	</table>
 	
 	<br/>
 
-	<button type="button" class="btn btn-outline-success" th:onclick="submitAndRedirect()">日報生成</button>
+	<button type="button" class="btn btn-outline-info" th:onclick="submitAndRedirect()">日報生成</button>
 	
 	<div class="select">
 		<a th:href="@{/select}">戻る</a>

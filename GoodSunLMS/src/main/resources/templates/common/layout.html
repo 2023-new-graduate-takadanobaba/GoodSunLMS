@@ -14,5 +14,16 @@
 		<main id="main" th:replace="${body}"></main>
 	</article>
 	<footer th:replace="~{common/footer :: layout-footer}"></footer>
+
+<script src="https://code.jquery.com/jquery-2.2.4.min.js" integrity="sha256-BbhdlvQf/xTY9gja0Dq3HiwQF8LaCRTXxZKRutelT44=" crossorigin="anonymous"></script>
+<script>
+	var checkSession = setInterval(function () {
+<!--		console.log($("#userName").text().length+",");-->
+		if($("#userName").text().length==0) {
+			alert("Session expired.\nPlease login again.");
+			location.href="./index";
+		}
+	}, 1000*3);
+</script>
 </body>
 </html>

@@ -7,8 +7,7 @@
 </head>
 <body>
 	<header id="header" th:fragment="layout-header">
-		<!-- <div> -->
-		<!--  -
+		<!-- <div>
 			<p>
 				&emsp; <a th:href="@{/select}">メニュー</a> &emsp;
 				&emsp; <a th:href="@{/dailyReport}">日報</a> &emsp; <a
@@ -16,29 +15,10 @@
 					href="/goodsunlms/mail">メールテンプレート</a>
 					
 			</p>->
-			//タブ
-		<!-- </div> -->
-		<!-- 
-		<div>
-		<ul class="nav nav-tabs" id="tabs">
-		<li class="nav-item">
-		<a class="nav-link active" aria-current="page" data-bs-toggle="tab" th:href="@{/select}" onclick="">メニュー</a>
-		</li>
-		<li class="nav-item">
-		<a class="nav-link" data-bs-toggle="tab" th:href="@{/dailyReport}">日報</a>
-		</li>
-		<li class="nav-item">
-		<a class="nav-link" data-bs-toggle="tab" th:href="@{/attendanceSystem}">勤怠登録</a>
-		</li>
-		<li class="nav-item">
-		<a class="nav-link" data-bs-toggle="tab" href="/goodsunlms/mail">メールテンプレート</a>
-		</li>
-		</ul>
-		</div>
-		 -->
+		 </div> -->
 		 
-		
-		 <nav class="navbar navbar-expand-lg navbar-light bg-light">
+<!-- 	ナビゲーションバー -->
+		 <nav class="navbar navbar-expand-sm navbar-light bg-light">
 		 	<div class="container-fluid">
 		 		<a class="navbar-brand" th:href="@{/select}">メニュー</a>
 		 		<button type="button" class="navbar-toggler" data-bs-toggle="collapse" data-bs-target="#navbarSupportedContent" aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="Toggle navigation">
@@ -63,12 +43,12 @@
 		 </nav>
 		
 		
-		
+		<!--  
 		<div>
 			ユーザー名：<span th:text="${session.fullName}"></span>&emsp; <a
 				th:href="@{/logout}">ログアウト</a>
 		</div>
-		
+		-->
 	</header>
 </body>
 </html>

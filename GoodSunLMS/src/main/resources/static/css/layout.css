@@ -10,14 +10,11 @@
  width: 100%;
  position: fixed;
  top: 0px;
- background-image: url();
- background-size: cover;
- background-position: 50% 25%; /* 横 縦 */
+ 
 }
 
 #container{
-	background-image: url();
-	background-size: cover;
+	
 }
 
 article{

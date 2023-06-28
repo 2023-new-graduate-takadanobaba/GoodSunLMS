@@ -4,6 +4,10 @@
     background-color: #C0DBEA!important;
 }
 
+.bg-rose{
+	background: #ffe0ef;
+}
+
 #header {
  width: 100%;
  position: fixed;
@@ -76,12 +80,12 @@ th, td {
 }
 
 .attention_bold {
-		color:red;
+		color:#e95464;
 		font-weight: bold;
 }
 
 .attention {
-	color: red;
+	color: #e95464;
 }
 
 #explain{

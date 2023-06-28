@@ -27,17 +27,22 @@
 		<!-- </div> -->
 		
 		<div>
-		<ul class="nav nav-tabs">
-		
-		<li class="nav nav-item"><a th:href="@{/select}" class="nav-link active" aria-current="page" data-toggle="tab">メニュー</a></li>
-		<li class="nav nav-item"><a th:href="@{/dailyReport}" class="nav-link" data-toggle="tab">日報</a></li>
-		<li class="nav nav-item"><a th:href="@{/attendanceSystem}" class="nav-link" data-toggle="tab">勤怠登録</a></li>
-		<li class="nav nav-item"><a href="/goodsunlms/mail" class="nav-link" data-toggle="tab">メールテンプレート</a></li>
-		
-		
-		
+		<ul class="nav nav-tabs" id="tabs">
+		<li class="nav-item">
+		<a class="nav-link active" aria-current="page" th:href="@{/select}" onclick="">メニュー</a>
+		</li>
+		<li class="nav-item">
+		<a class="nav-link" th:href="@{/dailyReport}">日報</a>
+		</li>
+		<li class="nav-item">
+		<a class="nav-link" th:href="@{/attendanceSystem}">勤怠登録</a>
+		</li>
+		<li class="nav-item">
+		<a class="nav-link" href="/goodsunlms/mail">メールテンプレート</a>
+		</li>
 		</ul>
 		</div>
+		
 		<div>
 			ユーザー名：<span th:text="${session.fullName}"></span>&emsp; <a
 				th:href="@{/logout}">ログアウト</a>

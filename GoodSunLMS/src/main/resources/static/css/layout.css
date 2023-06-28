@@ -11,15 +11,11 @@
  width: 100%;
  position: fixed;
  top: 0px;
- 
 }
-
-
 
 .header-right{
 display:flex;
 white-space: nowrap;
-	
 }
 
 article{

@@ -5,7 +5,19 @@
 }
 
 .bg-rose{
-	background: #ffe0ef;
+	background: #fef5f8;
+}
+
+.border-rose {
+  border-color: rgba(229, 151, 178, 0.3)!important;
+}
+
+.bg-lb{
+	background: #ebf6f7;
+}
+
+.border-lb {
+  border-color: rgba(193, 228, 233, 0.3)!important;
 }
 
 #header {

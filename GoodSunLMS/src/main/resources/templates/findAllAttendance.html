@@ -7,6 +7,9 @@
 <title>勤怠情報一覧</title>
 </head>
 <body>
+<div class="loading">
+	<img src="img/loading.gif">
+</div>
  	<h2>勤怠情報一覧</h2>
 
 	<div class="list">
@@ -43,9 +46,10 @@
 
 		<div class="form">
 			<input id="genMM" type="month" value="2023-06" name="month" />
-			<button id="genBtn" type="button" th:onclick="gen()"
-				th:text="月報生成"></button>
+			<button type="button" class="btn btn-outline-info" th:onclick="submitAndRedirect()" th:text="月報生成"></button>
 		</div>
+
+
 
 
 		<p class="return">

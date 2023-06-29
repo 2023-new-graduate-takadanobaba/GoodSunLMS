@@ -41,18 +41,18 @@ public class ManualDeleteController {
 //		return "redirect:/findAllAttendance";
 //	}
 	
-	@PostMapping("/doManualDelete1")
+	@PostMapping("/doManualDeleteAjax")
 	@Transactional(rollbackFor = Exception.class)
 	public String doManualDelete1(Integer aId) throws ParseException {
 		attendanceRepository.deleteById(aId);
 		return "redirect:/manualDelete";
 	}
-	
-	//　時刻の入力形式変更 ex) 09:00 >> 9:00
-	private String removeFirstChar (String str) {
-		if(str.startsWith("0")) {
-			str = str.substring(1);
-		}		
-		return str;
-	}
+
+//	//　時刻の入力形式変更 ex) 09:00 >> 9:00
+//	private String removeFirstChar (String str) {
+//		if(str.startsWith("0")) {
+//			str = str.substring(1);
+//		}
+//		return str;
+//	}
 }

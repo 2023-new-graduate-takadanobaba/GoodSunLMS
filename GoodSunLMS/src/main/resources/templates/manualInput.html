@@ -11,19 +11,19 @@
 <title>勤怠情報入力</title>
 </head>
 <body>
-	<h2>勤怠情報入力</h2>
+	<h2 class="text-secondary">勤怠情報入力</h2>
 	<form method="post" th:action="@{/doManualInput}">
-		<div>
+		<div class="list text-secondary">
 			<p class="text-danger">
 			※<span id="explain">■</span>は必須入力です。
 			</p>
 		
 			<p>
-				日付<input type="date" class="required" name="date" required/>
+				日付<input type="date" class="required table-danger" name="date" required/>
 			</p>
 			<br>
 			<p>
-				<label>開始時間<input type="time" value="09:00" name="startTime"
+				<label>開始時間<input type="time" class="table-danger" value="09:00" name="startTime"
 					list="start-list" step="1800" required/>
 					<datalist id="start-list">
 						<option value="08:00">
@@ -33,7 +33,7 @@
 					</datalist>
 				</label>
 			
-				<label> 終了時間<input type="time" value="18:00" name="endTime"
+				<label> 終了時間<input type="time" class="table-danger" value="18:00" name="endTime"
 					list="end-list" step="1800" required/>
 					<datalist id="end-list">
 						<option value="17:00">
@@ -44,13 +44,13 @@
 				</label>
 			</p>
 			<p>
-				勤務時間<input type="time" value="00:00" name="workHours" />
+				勤務時間<input type="time" class="table-danger"value="00:00" name="workHours" />
 			</p>
 		</div>
 		<br>
 		<div>
 			<p>
-				<label> 区分<input type="text" name="division"
+				<label> 区分<input type="text" name="division" class="table-danger"
 					list="division-list" />
 					<datalist id="division-list">
 						<option value="遅刻">
@@ -60,7 +60,7 @@
 				</label>
 			</p>
 			<p>
-				<label>プロジェクト <input type="text" class="required" name="project"
+				<label>プロジェクト <input type="text" class="required table-danger" name="project"
 					list="project-list" placeholder="選択または入力" autocomplete="off" required/>
 					<datalist id="project-list">
 						<option value="新入社員研修">
@@ -69,7 +69,7 @@
 				</label>
 			</p>
 			<p>
-				<label>作業場所 <input type="text" class="required" name="place"
+				<label>作業場所 <input type="text" class="required table-danger" name="place"
 					list="place-list" placeholder="選択または入力" autocomplete="off" required/>
 					<datalist id="place-list">
 						<option value="高田馬場事務所">
@@ -80,7 +80,7 @@
 				</label>
 			</p>
 			<p>
-				<label>備考 <input type="text" name="remarks"
+				<label>備考 <input type="text" class="table-danger" name="remarks"
 					list="remarks-list" placeholder="選択または入力" autocomplete="off" />
 					<datalist id="remarks-list">
 						<option value="やっとむ屋">
@@ -93,7 +93,7 @@
 		</p>
 		<br>
 		<p>
-			<a th:href="@{/attendanceSystem}">戻る</a>
+			<a th:href="@{/attendanceSystem}" class="link-info">戻る</a>
 		</p>
 	</form>
 

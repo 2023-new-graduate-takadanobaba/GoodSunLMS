@@ -10,16 +10,18 @@
 <div class="loading">
 	<img src="img/loading.gif">
 </div>
- 	<h2>勤怠情報一覧</h2>
+ 	<h2 class="text-secondary">勤怠情報一覧</h2>
 
-	<div class="list">
+	<div class="list text-secondary">
 	
+	<div class="form">
 	<form th:action="@{/findByMonth}" method="get">
-			月別検索◆<input type="month" value="2023-06" name="month" />
-			<input type="submit" value="検索"/>
+			月別検索◆<input type="month" class="text-secondary table-info" value="2023-06" name="month" />
+			<input type="submit" class="btn btn-outline-info" value="検索"/>
 	</form>
+	</div>
 	
-		<table border=1 class="table table-light  table-hover border border-primary">
+		<table border=1 class="select table table-mute text-secondary table-hover border border-info">
 			<tr>
 				<th colspan="2">日付</th>
 				<th>開始</th>
@@ -44,8 +46,8 @@
 		</table>
 
 
-		<div class="form">
-			<input id="genMM" type="month" value="2023-06" name="month" />
+		<div class="select">
+			<input id="genMM" type="month" class="text-secondary table-info" value="2023-06" name="month" />
 			<button type="button" class="btn btn-outline-info" th:onclick="submitAndRedirect()" th:text="月報生成"></button>
 		</div>
 
@@ -53,7 +55,7 @@
 
 
 		<p class="return">
-			<a th:href="@{/attendanceSystem}">戻る</a>
+			<a th:href="@{/attendanceSystem}" class="link-info">戻る</a>
 
 		</p>
 

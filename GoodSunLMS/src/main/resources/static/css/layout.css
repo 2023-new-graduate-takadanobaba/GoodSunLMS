@@ -20,6 +20,13 @@
   border-color: rgba(193, 228, 233, 0.3)!important;
 }
 
+.link-purple {
+  color: #c4a3bf;
+}
+.link-purple:hover, .link-purple:focus {
+  color: pink;
+}
+
 #header {
  width: 100%;
  position: fixed;

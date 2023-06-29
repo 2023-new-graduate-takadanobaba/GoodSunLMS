@@ -194,12 +194,12 @@ th, td {
 }
 
 .table-pink {
-  --bs-table-bg: #cff4fc;
+  --bs-table-bg: rgba(238, 187, 203, 0.3);
   --bs-table-striped-bg: #c5e8ef;
   --bs-table-striped-color: #000;
   --bs-table-active-bg: #badce3;
   --bs-table-active-color: #000;
-  --bs-table-hover-bg: #bfe2e9;
+  --bs-table-hover-bg: rgba(238, 187, 203, 0.5);
   --bs-table-hover-color: #000;
   color: #000;
   border-color: #dfc2c4;
@@ -207,12 +207,12 @@ th, td {
 }
 
 .table-lb {
-  --bs-table-bg: #cff4fc;
+  --bs-table-bg: rgba(193, 228, 233, 0.2);
   --bs-table-striped-bg: #c5e8ef;
   --bs-table-striped-color: #000;
   --bs-table-active-bg: #badce3;
   --bs-table-active-color: #000;
-  --bs-table-hover-bg: #bfe2e9;
+  --bs-table-hover-bg: rgba(193, 228, 233, 0.5);
   --bs-table-hover-color: #000;
   color: #000;
   border-color: #badce3;

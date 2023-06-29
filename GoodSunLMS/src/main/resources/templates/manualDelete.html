@@ -17,7 +17,7 @@
 <h2>出勤情報削除</h2>
 <div class="list">
 	<div id="table">
-		<table border=1 class="table table-bordered">
+		<table border=1 class="table table-mute text-secondary table-hover border border-info">
 			<tr>
 				<th colspan="2">日付</th>
 				<th>開始</th>
@@ -39,11 +39,12 @@
 				<td th:text="${attendance.project}"></td>
 				<td th:text="${attendance.place}"></td>
 				<td th:text="${attendance.remarks}"></td>
-				<td><button th:onclick="del(this.getAttribute('delId'))" type="button" th:delId="${attendance.id}" th:text="削除"></button></td>
+				<td><button th:onclick="del(this.getAttribute('delId'))" type="button"
+						class="btn btn-outline-lb" th:delId="${attendance.id}" th:text="削除"></button></td>
 			</tr>
 		</table>
 	</div>
-	<p class="return"><a th:href="@{/attendanceSystem}">戻る</a></p>
+	<p class="return"><a th:href="@{/attendanceSystem}" class="link-info">戻る</a></p>
 </div>
 
 	<script th:src="@{/js/manuallDel.js}" type="text/javascript"></script>

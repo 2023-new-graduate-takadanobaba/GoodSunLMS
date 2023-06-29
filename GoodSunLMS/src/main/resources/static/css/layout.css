@@ -131,9 +131,40 @@ th, td {
 	margin-bottom: 30px;
 }
 
+.btn-outline-pink {
+	color: #f19ca7;
+	border-color: #f19ca7;
+}
+
+.btn-outline-pink:hover {
+ 	color: #9a0d7c;
+  	background-color: #ffe0ef;
+  	border-color: #e6c0c0;
+}
+
+.btn-check:focus + .btn-outline-pink, .btn-outline-pink:focus {
+	box-shadow: 0 0 0 0.25rem rgba(230, 175, 207, 0.3);
+}
+
+.btn-outline-lb{
+	color: #6c9bd2;
+	border-color: #6c9bd2;
+}
+
+.btn-outline-lb:hover {
+ 	color: #008db7;
+  	background-color: #bbe2f1;
+  	border-color: #a0d8ef;
+}
+
+.btn-check:focus + .btn-outline-lb, .btn-outline-lb:focus {
+	box-shadow: 0 0 0 0.25rem rgba(162, 194, 230, 0.4);
+}
+
+
 .return{
         margin-top: 100px;
-    }
+}
 
 .loading {
     position: fixed;

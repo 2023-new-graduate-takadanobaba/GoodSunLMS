@@ -41,6 +41,14 @@ public class ManualDeleteController {
 //		return "redirect:/findAllAttendance";
 //	}
 	
+	@GetMapping("/findByMonthManualDelete")
+    public String findByMonthManualDelete(String month, Model model, HttpSession session) {
+        Integer monInt = Integer.parseInt(month.split("-")[1]);
+        model.addAttribute("attendance", attendanceRepository.findByMMAndUserIdOrderByDateAsc(
+                            monInt, Integer.parseInt(session.getAttribute("userId").toString())));
+        return "manualDelete";
+    }
+	
 	@PostMapping("/doManualDeleteAjax")
 	@Transactional(rollbackFor = Exception.class)
 	public String doManualDelete1(Integer aId) throws ParseException {

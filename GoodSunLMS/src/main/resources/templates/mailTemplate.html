@@ -13,12 +13,12 @@
 
 	<p class="attention">※当日の欠勤連絡は電話でお伝えする方が確実です</p>
 	
-	<p class="bg-rose rounded p-3 border border-warning border border-2">
+	<p class="bg-lb rounded p-3 border border-lb border border-2">
 		件名:<br/>
 		【勤怠連絡】体調不良による欠勤のご連絡
 	</p>
 	
-<div id="text_absence" class="bg-rose rounded p-3 border border-warning border border-3">
+<div id="text_absence" class="bg-rose rounded p-3 border border-rose border border-3">
 <span th:text="${recipient}"></span>さん<br/>
 
 おはようございます。<span th:text="${session.fullName}"></span>です。<br/>
@@ -41,12 +41,12 @@
 
 
 <div th:if="${#strings.equals(contents, 'docSubmit_link')}" class="mail">
-	<p class="bg-rose rounded p-3 border border-warning border border-2">
+	<p class="bg-lb rounded p-3 border border-lb border border-2">
 		件名:<br/>
 		●●ご確認のお願い
 	</p>
 	
-<div id="text_docSubmit_link" class="bg-rose rounded p-3 border border-warning border border-3">
+<div id="text_docSubmit_link" class="bg-rose rounded p-3 border border-rose border border-3">
 <span th:text="${recipient}"></span>さん<br/>
 
 お疲れ様です。<span th:text="${session.fullName}"></span>です。<br/>
@@ -69,12 +69,12 @@
 </div>
 
 <div th:if="${#strings.equals(contents, 'docSubmit_att')}" class="select">
-	<p class="bg-rose rounded p-3 border border-warning border border-2">
+	<p class="bg-lb rounded p-3 border border-lb border border-2">
 		件名:<br/>
 		●●ご確認のお願い
 	</p>
 	
-<div id="text_docSubmit_att" class="bg-rose rounded p-3 border border-warning border border-3">
+<div id="text_docSubmit_att" class="bg-rose rounded p-3 border border-rose border border-3">
 <span th:text="${recipient}"></span>さん<br/>
 
 お疲れ様です。<span th:text="${session.fullName}"></span>です。<br/>
@@ -96,7 +96,7 @@
 
 <div th:if="${#strings.equals(contents, 'greeting')}" class="select">
 
-<div id="text_greeting" class="bg-rose rounded p-3 border border-warning border border-3">
+<div id="text_greeting" class="bg-rose rounded p-3 border border-rose border border-3">
 <span th:text="${recipient}"></span>さん<br/>
 
 お疲れ様です。<span th:text="${session.fullName}"></span>です。<br/>

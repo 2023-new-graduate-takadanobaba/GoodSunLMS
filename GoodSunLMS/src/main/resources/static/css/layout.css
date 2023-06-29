@@ -67,7 +67,9 @@ body{
 
 h2{
  white-space: nowrap;
- padding-left: 3%
+ padding-left: 3%;
+ padding-top: 3%;
+
 }
 
 #footer {
@@ -180,6 +182,7 @@ th, td {
 	box-shadow: 0 0 0 0.25rem rgba(162, 194, 230, 0.4);
 }
 
+<<<<<<< HEAD
 .table-purple {
   --bs-table-bg: #cff4fc;
   --bs-table-striped-bg: #c5e8ef;
@@ -219,6 +222,8 @@ th, td {
   border-radius: 10px;
 }
 
+=======
+>>>>>>> branch 'main' of https://github.com/2023-new-graduate-takadanobaba/GoodSunLMS.git
 
 .return{
         margin-top: 100px;

@@ -18,11 +18,11 @@
 	<form method="post" th:action="@{/complaints}" class="attCard">
 		<h4 class="text-secondary att_title" id="comp_title">【愚痴相談登録】</h4>
 		<div class="text-secondary comp_btn">
-			開始時間◆<input type="time" class="table-info" value="18:30" name="startTime" step="1800" />
+			開始時間◆<input type="time" class="table-lb" value="18:30" name="startTime" step="1800" />
 			<br />
-			終了時間◆<input type="time" class="table-info" value="19:00" name="endTime" step="1800"/>
+			終了時間◆<input type="time" class="table-purple" value="19:00" name="endTime" step="1800"/>
 			<br />
-			開催場所◆<input type="text" class="table-info" name="place" required/>
+			開催場所◆<input type="text" class="table-pink" name="place" required/>
 		</div>
 		<input type="submit" class="btn btn-outline-pink comp_btn" value=">登録" />
 	</form>

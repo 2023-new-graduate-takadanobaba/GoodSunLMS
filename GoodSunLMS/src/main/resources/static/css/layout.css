@@ -54,7 +54,7 @@ h2{
 #footer {
  background-color: #ffe0ef;
  height: 80px;
- 
+ text-align: center;
 }
 
 [list]::-webkit-calendar-picker-indicator { 

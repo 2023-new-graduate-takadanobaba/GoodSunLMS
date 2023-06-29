@@ -47,6 +47,7 @@ public class ComplaintsController {
 		attendance.setPlace(place);
 		attendance.setProject("新人教育（愚痴相談）");
 		attendance.setUser(user);
+		attendanceRepository.save(attendance);
 		model.addAttribute("stat", "complaints");
 		return "loading";
 	}

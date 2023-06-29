@@ -67,7 +67,9 @@ body{
 
 h2{
  white-space: nowrap;
- padding-left: 3%
+ padding-left: 3%;
+ padding-top: 3%;
+
 }
 
 #footer {

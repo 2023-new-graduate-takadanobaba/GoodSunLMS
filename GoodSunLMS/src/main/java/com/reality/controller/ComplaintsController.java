@@ -47,9 +47,8 @@ public class ComplaintsController {
 		attendance.setPlace(place);
 		attendance.setProject("新人教育（愚痴相談）");
 		attendance.setUser(user);
-		attendanceRepository.save(attendance);
-		model.addAttribute("attendance");
-		return "complaintsMessage";
+		model.addAttribute("stat", "complaints");
+		return "loading";
 	}
 	
 	//　時刻の入力形式変更 ex) 09:00 >> 9:00

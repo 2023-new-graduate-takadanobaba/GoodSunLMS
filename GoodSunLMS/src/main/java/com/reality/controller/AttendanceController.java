@@ -1,24 +1,19 @@
 package com.reality.controller;
 
-import java.text.ParseException;
 import java.text.SimpleDateFormat;
-import java.util.Calendar;
 import java.util.Date;
 import java.util.List;
 
-import jakarta.servlet.http.HttpServletResponse;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.GetMapping;
-import org.springframework.web.bind.annotation.ModelAttribute;
 import org.springframework.web.bind.annotation.PostMapping;
 
 import com.reality.entity.Attendance;
 import com.reality.entity.User;
 import com.reality.repository.AttendanceRepository;
 import com.reality.repository.UserRepository;
-import com.reality.util.Form2ExcelMM;
 
 import jakarta.servlet.http.HttpSession;
 
@@ -61,7 +56,7 @@ public class AttendanceController {
         attendance.setWorkHours("8:00");
         attendance.setProject("新入社員研修");
         attendance.setPlace("高田馬場事務所");
-        attendance.setRemarks("やっとむ屋");
+        attendance.setRemarks("Agile-PBL開発");
         attendance.setUser(user);
 
         attendanceRepository.save(attendance);

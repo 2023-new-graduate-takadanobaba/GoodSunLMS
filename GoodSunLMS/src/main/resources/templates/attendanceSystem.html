@@ -22,7 +22,24 @@
 			<br />
 			終了時間◆<input type="time" class="table-purple" value="19:00" name="endTime" step="1800"/>
 			<br />
-			開催場所◆<input type="text" class="table-pink" name="place" required/>
+			備考　　◆
+				<select class="table-purple text-secondary" name="remarks"required>
+					<option value="">メンターを選択</option>
+					<option>加藤さん</option>
+					<option>小林さん</option>
+					<option>平野さん</option>
+					<option>重地さん</option>
+					<option>白髭さん</option>
+				</select>
+			<br />
+			開催場所◆<input type="text" class="table-pink" name="place"
+						list="place-list" placeholder="選択または入力" autocomplete="off" required/>
+							<datalist id="place-list">
+								<option value="高田馬場事務所"></option>
+								<option value="高田馬場"></option>
+								<option value="中野"></option>
+								<option value="在宅"></option>
+							</datalist>
 		</div>
 		<input type="submit" class="btn btn-outline-pink comp_btn" value=">登録" />
 	</form>

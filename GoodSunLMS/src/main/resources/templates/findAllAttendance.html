@@ -16,7 +16,7 @@
 	
 	<div class="form">
 	<form th:action="@{/findByMonth}" method="get">
-			月別検索◆<input type="month" class="text-secondary table-lb" value="2023-07" name="month" />
+			月別検索◆<input type="month" class="text-secondary table-lb" th:value="${date}" name="month" />
 			<input type="submit" class="btn btn-outline-lb" value="検索"/>
 	</form>
 	</div>
@@ -47,7 +47,7 @@
 
 
 		<div class="select">
-			<input id="genMM" type="month" class="text-secondary table-pink" value="2023-06" name="month" />
+			<input id="genMM" type="month" class="text-secondary table-pink" th:value="${date}" name="month" />
 			<button type="button" class="btn btn-outline-pink" th:onclick="submitAndRedirect()" th:text="月報生成"></button>
 		</div>
 

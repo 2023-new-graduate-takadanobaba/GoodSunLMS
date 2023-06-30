@@ -69,6 +69,10 @@ public class AttendanceController {
     public String findAllAttendance(Model model, HttpSession session) {
         User user = userRepository.getReferenceById(Integer.parseInt(session.getAttribute("userId").toString()));
         model.addAttribute("attendance", attendanceRepository.findByUserOrderByDateAsc(user));
+        Date date = new Date();
+		SimpleDateFormat sdf = new SimpleDateFormat("yyyy-MM");
+		String dateStr = sdf.format(date);
+		model.addAttribute("date", dateStr);
         return "findAllAttendance";
     }
 
@@ -77,6 +81,10 @@ public class AttendanceController {
         Integer monInt = Integer.parseInt(month.split("-")[1]);
         model.addAttribute("attendance", attendanceRepository.findByMMAndUserIdOrderByDateAsc(
                             monInt, Integer.parseInt(session.getAttribute("userId").toString())));
+        Date date = new Date();
+		SimpleDateFormat sdf = new SimpleDateFormat("yyyy-MM");
+		String dateStr = sdf.format(date);
+		model.addAttribute("date", dateStr);
         return "findAllAttendance";
     }
 

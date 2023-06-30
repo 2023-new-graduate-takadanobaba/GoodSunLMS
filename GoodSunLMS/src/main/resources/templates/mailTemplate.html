@@ -19,20 +19,20 @@
 			【勤怠連絡】体調不良による欠勤のご連絡
 		</p>
 
-		<div id="text_absence" class="bg-rose rounded p-3 border border-rose border border-3">
-			<span th:text="${recipient}"></span>さん<br/>
+<div id="text_absence" class="bg-rose rounded p-3 border border-rose border border-3">
+<span th:text="${recipient}"></span>さん<br/>
 
-			おはようございます。<span th:text="${session.fullName}"></span>です。<br/>
+おはようございます。<span th:text="${session.fullName}"></span>です。<br/>
 
-			昨晩から体調が優れず、現在も発熱があるため、<br/>
-			静養のために欠勤させていただきたくご連絡差し上げました。<br/>
+昨晩から体調が優れず、現在も発熱があるため、<br/>
+静養のために欠勤させていただきたくご連絡差し上げました。<br/>
 
-			ご迷惑をおかけして大変申し訳ございません。<br/>
-			後ほど詳細についてご連絡いたします。<br/>
-			よろしくお願いいたします。<br/>
+ご迷惑をおかけして大変申し訳ございません。<br/>
+後ほど詳細についてご連絡いたします。<br/>
+よろしくお願いいたします。<br/>
 
-			<div th:text="${session.fullName}"></div>
-		</div>
+<div th:text="${session.fullName}"></div>
+</div>
 	</div>
 
 	<!-- リンク添付 -->
@@ -42,22 +42,22 @@
 			●●ご確認のお願い
 		</p>
 
-		<div id="text_docSubmit_link" class="bg-rose rounded p-3 border border-rose border border-3">
-			<span th:text="${recipient}"></span>さん<br/>
+<div id="text_docSubmit_link" class="bg-rose rounded p-3 border border-rose border border-3">
+<span th:text="${recipient}"></span>さん<br/>
 
-			お疲れ様です。<span th:text="${session.fullName}"></span>です。<br/>
-			●●についてご確認をお願いしたくご連絡いたしました。<br/>
+お疲れ様です。<span th:text="${session.fullName}"></span>です。<br/>
+●●についてご確認をお願いしたくご連絡いたしました。<br/>
 
-			-------------------------------------<br/>
-			　●リンクがある場合は添付●<br/>
-			-------------------------------------<br/>
+-------------------------------------<br/>
+　●リンクがある場合は添付●<br/>
+-------------------------------------<br/>
 
-			お忙しいところ大変恐縮ですが、<br/>
-			ご確認のほどよろしくお願いいたします。
+お忙しいところ大変恐縮ですが、<br/>
+ご確認のほどよろしくお願いいたします。
 
-			<div th:text="${session.fullName}"></div>
-		</div>
-	</div>
+<div th:text="${session.fullName}"></div>
+</div>
+</div>
 
 	<!-- ファイル添付 -->
 	<div th:if="${#strings.equals(contents, 'docSubmit_att')}" class="select">
@@ -66,40 +66,40 @@
 			●●ご確認のお願い
 		</p>
 
-		<div id="text_docSubmit_att" class="bg-rose rounded p-3 border border-rose border border-3">
-			<span th:text="${recipient}"></span>さん<br/>
+<div id="text_docSubmit_att" class="bg-rose rounded p-3 border border-rose border border-3">
+<span th:text="${recipient}"></span>さん<br/>
 
-			お疲れ様です。<span th:text="${session.fullName}"></span>です。<br/>
-			●●についてご確認をお願いしたくご連絡いたしました。<br/>
+お疲れ様です。<span th:text="${session.fullName}"></span>です。<br/>
+●●についてご確認をお願いしたくご連絡いたしました。<br/>
 
-			本メールに当該のファイルを添付しております。<br/>
+本メールに当該のファイルを添付しております。<br/>
 
-			お忙しいところ大変恐縮ですが、<br/>
-			ご確認のほどよろしくお願いいたします。
+お忙しいところ大変恐縮ですが、<br/>
+ご確認のほどよろしくお願いいたします。
 
-			<div th:text="${session.fullName}"></div>
-		</div>
-	</div>
+<div th:text="${session.fullName}"></div>
+</div>
+</div>
 
 	<!-- 挨拶と結びのみ -->
 	<div th:if="${#strings.equals(contents, 'greeting')}" class="select">
 
-		<div id="text_greeting" class="bg-rose rounded p-3 border border-rose border border-3">
-			<span th:text="${recipient}"></span>さん<br/>
+<div id="text_greeting" class="bg-rose rounded p-3 border border-rose border border-3">
+<span th:text="${recipient}"></span>さん<br/>
 
-			お疲れ様です。<span th:text="${session.fullName}"></span>です。<br/>
-			●●について●●したくご連絡いたしました。<br/>
+お疲れ様です。<span th:text="${session.fullName}"></span>です。<br/>
+●●について●●したくご連絡いたしました。<br/>
 
-			------<br/>
-			&nbsp;本文<br/>
-			------<br/>
+------<br/>
+&nbsp;本文<br/>
+------<br/>
 
-			お手数をお掛けして大変恐縮ですが、<br/>
-			よろしくお願いいたします。<br/>
+お手数をお掛けして大変恐縮ですが、<br/>
+よろしくお願いいたします。<br/>
 
-			<div th:text="${session.fullName}"></div>
-		</div>
-	</div>
+<div th:text="${session.fullName}"></div>
+</div>
+</div>
 
 	<div class="copy_button">
 		<button type="button" id="copy_absence" class="copy btn btn-outline-pink">本文をコピー</button>

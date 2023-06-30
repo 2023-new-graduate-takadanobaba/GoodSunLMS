@@ -39,12 +39,16 @@ html, body {
 
 .btnCol {
 	display: flex;
-	justify-content: flex-end;
+	justify-content: space-between;
 }
 
 .btn-outline-lb {
 	background-color: transparent;
 	padding: 4px 32px;
+}
+
+input{
+   width: 80%;
 }
 
 textarea {

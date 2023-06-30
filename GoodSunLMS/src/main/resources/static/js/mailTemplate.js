@@ -29,7 +29,7 @@ function toSendMail() {
 
     let tcont = $('#' + tid).text().split(":")[1].trim();
     let tecont = $('#' + teid).html();
-    tecont = tecont.replace(/<span>|<\/span>|<div>/ig, "").replace(/<br>|<div>/ig, "%0A");
+    tecont = tecont.replace(/<span>|<\/span>|<\/div>/ig, "").replace(/<br>|<div>/ig, "%0A");
 //    console.log(tecont);
 
     window.location.href = "./sendMail?title="+tcont+"&text="+tecont;

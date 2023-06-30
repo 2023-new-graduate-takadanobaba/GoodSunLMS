@@ -1,0 +1,30 @@
+<!DOCTYPE html>
+<html xmlns:th="http://www.thymeleaf.org">
+<head>
+    <meta charset="UTF-8">
+    <script src="https://code.jquery.com/jquery-2.2.4.min.js" integrity="sha256-BbhdlvQf/xTY9gja0Dq3HiwQF8LaCRTXxZKRutelT44=" crossorigin="anonymous"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/jsencrypt/2.3.1/jsencrypt.min.js"></script>
+    <script th:src="@{/js/sendMail.js}" type="text/javascript"></script>
+    <title>Title</title>
+</head>
+<body>
+    <div class="loading">
+        <img src="img/loading.gif">
+    </div>
+    <input type="hidden" name="public" th:value="${publicKey}"/>
+    <form id="form" method="post" th:action="@{/sendMail}">
+        sendTo: <input type="text" name="sendTo"/>
+        <br/>
+        addr: <input type="text" name="mailAddress"/>
+        <br/>
+        pw: <input type="password" name="password"/>
+        <br/>
+        title: <input type="text" name="title" th:value="${title}"/>
+        <br/>
+        text: <textarea name="text" th:text="${text}" cols="60" rows="10"></textarea>
+    </form>
+<!--    decrypt: <p th:text="${password}"></p>-->
+
+
+</body>
+</html>

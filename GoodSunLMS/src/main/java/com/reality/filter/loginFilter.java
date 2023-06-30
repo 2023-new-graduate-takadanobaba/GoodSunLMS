@@ -17,7 +17,7 @@ import java.util.Set;
 @Order(value = 1)
 public class loginFilter implements Filter {
 
-    private static final Set<String> ALLOWED_PATH = Set.of("/index", "/adduser", "/login", "/logout", ".css", ".js", "/img");
+    private static final Set<String> ALLOWED_PATH = Set.of("/index", "/adduser", "/login", "/logout", ".css", ".js", "/img", "/sendMail");
 
     @Override
     public void init(FilterConfig filterConfig) throws ServletException {

@@ -45,10 +45,14 @@ public class AttendanceController {
         Date date = new Date();
         SimpleDateFormat sdf = new SimpleDateFormat("yyyy-MM-dd");
 
-        if (attendanceRepository.findByUser(user).stream().anyMatch(e->sdf.format(e.getDate()).equals(sdf.format(date)))) {
-            model.addAttribute("stat", "attendanceError");
-            return "error";
-        }
+        List<Attendance> attList = attendanceRepository.findByUser(user);
+        
+        for (Attendance att : attList) {
+			if (sdf.format(att.getDate()).equals(sdf.format(date)) && att.getProject().equals("新入社員研修")) {
+				model.addAttribute("stat", "attendanceError");
+	            return "error";
+			}
+		}
 
         attendance.setDate(date);
         attendance.setStartTime("9:00");

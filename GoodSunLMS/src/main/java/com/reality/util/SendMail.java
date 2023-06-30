@@ -9,6 +9,7 @@ import org.springframework.web.bind.annotation.PostMapping;
 import javax.crypto.BadPaddingException;
 import javax.crypto.Cipher;
 import javax.crypto.IllegalBlockSizeException;
+import javax.crypto.NoSuchPaddingException;
 import javax.mail.Message;
 import javax.mail.PasswordAuthentication;
 import javax.mail.Session;
@@ -35,13 +36,19 @@ public class SendMail {
     }
 
     @PostMapping("/sendMail")
-    public String send(String sendTo, String mailAddress, String password, String title, String text) throws Exception {
+    public String send(String sendTo, String mailAddress, String password, String title, String text, Model model) throws InvalidKeyException, NoSuchPaddingException, NoSuchAlgorithmException, IllegalBlockSizeException, BadPaddingException {
         Cipher cipher = Cipher.getInstance("RSA");
         cipher.init(Cipher.DECRYPT_MODE, keyPair.getPrivate());
         String decryptedPassword = new String(splitDecrypt(password, cipher)).replaceAll("\\W","");
 
-        submit(mailAddress, decryptedPassword, sendTo, title, text);
-        return "redirect:/mail";
+        try {
+            submit(mailAddress, decryptedPassword, sendTo, title, text);
+        } catch (Exception e) {
+            model.addAttribute("stat", "sendFail");
+            return "error";
+        }
+        model.addAttribute("stat", "sendSuccess");
+        return "loading";
     }
 
     private void submit(String mailAddress, String password, String to, String title, String text) throws Exception {

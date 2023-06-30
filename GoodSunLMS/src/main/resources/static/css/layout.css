@@ -39,6 +39,10 @@ white-space: nowrap;
 }
 
 article{
+ background-image: url("../img/watercolor.jpg");
+ background-color:rgba(255,255,255,0.5);
+ background-blend-mode:lighten;
+ background-size: 100%;
  display:flex;
  margin-top: 60px;
  width: 100%;

@@ -30,6 +30,20 @@ public class ManualDeleteController {
 		return "manualDelete";
 	}
 	
+    @GetMapping("/findByDateDescManualDelete")
+    public String findByDateDescManualDelete(Model model, HttpSession session) {
+    	User user = userRepository.getReferenceById(Integer.parseInt(session.getAttribute("userId").toString()));
+    	model.addAttribute("attendance", attendanceRepository.findByUserOrderByDateDesc(user));
+    	return "manualDelete";
+    }
+    
+    @GetMapping("/findByDateAscManualDelete")
+    public String findByDateAscManualDelete(Model model, HttpSession session) {
+    	User user = userRepository.getReferenceById(Integer.parseInt(session.getAttribute("userId").toString()));
+    	model.addAttribute("attendance", attendanceRepository.findByUserOrderByDateAsc(user));
+    	return "manualDelete";
+    }
+	
 //	@PostMapping("/doManualDelete")
 //	@Transactional(rollbackFor = Exception.class)
 //	public String doManualDelete(String date, String startTime, Model model, HttpSession session) throws ParseException {

@@ -21,6 +21,17 @@
 			月別検索◆<input type="month" class="text-secondary table-lb" value="2023-06" name="month" />
 			<input type="submit" class="btn btn-outline-lb" value="検索"/>
 	</form>
+	
+	<form th:action="@{/findByDateDescManualDelete}" method="get">
+			降順並び替え◆
+			<input type="submit" class="btn btn-outline-lb" value="検索"/>
+	</form>
+	
+	<form th:action="@{/findByDateAscManualDelete}" method="get">
+			昇順並び替え◆
+			<input type="submit" class="btn btn-outline-lb" value="検索"/>
+	</form>
+	
 		<div id="table">
 		<table border=1 class="table table-lb text-secondary table-hover border border-pink">
 			<tr>

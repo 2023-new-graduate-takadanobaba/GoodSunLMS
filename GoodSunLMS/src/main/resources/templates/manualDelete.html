@@ -19,7 +19,7 @@
 	
 	<div class="searchBtn_a">
 	<form th:action="@{/findByMonthManualDelete}" method="get" style="display: inline">
-			月別検索◆<input type="month" class="text-secondary table-lb" value="2023-07" name="month" />
+			月別検索◆<input type="month" class="text-secondary table-lb" th:value="${session.date}" name="month" />
 			<input type="submit" class="btn btn-outline-lb" value="検索"/>&#0009;
 	</form>
 	

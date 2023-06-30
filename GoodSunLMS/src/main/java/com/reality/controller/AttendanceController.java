@@ -72,7 +72,7 @@ public class AttendanceController {
         Date date = new Date();
 		SimpleDateFormat sdf = new SimpleDateFormat("yyyy-MM");
 		String dateStr = sdf.format(date);
-		model.addAttribute("date", dateStr);
+		session.setAttribute("date", dateStr);
         return "findAllAttendance";
     }
 
@@ -81,10 +81,6 @@ public class AttendanceController {
         Integer monInt = Integer.parseInt(month.split("-")[1]);
         model.addAttribute("attendance", attendanceRepository.findByMMAndUserIdOrderByDateAsc(
                             monInt, Integer.parseInt(session.getAttribute("userId").toString())));
-        Date date = new Date();
-		SimpleDateFormat sdf = new SimpleDateFormat("yyyy-MM");
-		String dateStr = sdf.format(date);
-		model.addAttribute("date", dateStr);
         return "findAllAttendance";
     }
 

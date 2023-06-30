@@ -1,6 +1,8 @@
 package com.reality.controller;
 
 import java.text.ParseException;
+import java.text.SimpleDateFormat;
+import java.util.Date;
 
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
@@ -27,6 +29,10 @@ public class ManualDeleteController {
 	public String manualDelete(Model model, HttpSession session) {
 		User user = userRepository.getReferenceById(Integer.parseInt(session.getAttribute("userId").toString()));
 		model.addAttribute("attendance", attendanceRepository.findByUserOrderByDateAsc(user));
+		Date date = new Date();
+		SimpleDateFormat sdf = new SimpleDateFormat("yyyy-MM");
+		String dateStr = sdf.format(date);
+		session.setAttribute("date", dateStr);
 		return "manualDelete";
 	}
 	

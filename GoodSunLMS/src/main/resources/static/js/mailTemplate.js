@@ -3,7 +3,7 @@ let textId;
 
 $('.copy').click(function(){
 	btnId = this.getAttribute("id");
-	textId = $('#'+ btnId).parent().parent().children("div").attr("id");
+	textId = $('#'+ btnId).parent().parent().children().children("div").attr("id");
 	console.log($('#' + textId).text());
 	// let btn = getElementById("btnId");
 	

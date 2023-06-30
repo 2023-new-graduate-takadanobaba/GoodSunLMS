@@ -159,6 +159,7 @@ th, td {
 .btn-outline-pink {
 	color: #f19ca7;
 	border-color: #f19ca7;
+	background-color: #fef9fb;
 }
 
 .btn-outline-pink:hover {
@@ -173,6 +174,7 @@ th, td {
 
 .btn-outline-lb{
 	color: #6c9bd2;
+	background-color: aliceblue;
 	border-color: #6c9bd2;
 }
 

@@ -24,7 +24,7 @@ import java.util.Properties;
 @Controller
 public class SendMail {
 
-    private static final KeyPair keyPair = initKey();
+    public static final KeyPair keyPair = initKey();
 
 
     @GetMapping("/sendMail")
@@ -40,11 +40,12 @@ public class SendMail {
     public String send(String sendTo, String mailAddress, String password, String title, String text, Model model) throws InvalidKeyException, NoSuchPaddingException, NoSuchAlgorithmException, IllegalBlockSizeException, BadPaddingException {
         Cipher cipher = Cipher.getInstance("RSA");
         cipher.init(Cipher.DECRYPT_MODE, keyPair.getPrivate());
-        String decryptedPassword = new String(splitDecrypt(password, cipher)).replaceAll("[^a-zA-Z0-9`~!@#$%^&*()+=|{}':;',\\[\\].<>/?~！@#￥%……&*（）——+|{}【】‘；：”“’。，、？\\\\]", "");
+        String decryptedPassword = new String(splitDecrypt(password, cipher)).replaceAll("[^a-zA-Z0-9`~!@#$%^&*()+=|{}':;',\\[\\].<>/?~！@#￥%……&*（）——+|{}【】‘；：”“’。，、？\\\\\\-]", "");
 
         try {
             submit(mailAddress, decryptedPassword, sendTo, title, text);
         } catch (Exception e) {
+            e.printStackTrace();
             model.addAttribute("stat", "sendFail");
             return "error";
         }

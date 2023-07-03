@@ -16,6 +16,7 @@
         <img src="img/loading.gif">
     </div>
     <div class="sendContent">
+    <h2 class="text-secondary">メール送信</h2>
     	<input type="hidden" name="public" th:value="${publicKey}"/>
 	    <form id="form" method="post" th:action="@{/sendMail}">
 	    	<div class="col">

@@ -26,6 +26,7 @@ public class SendMail {
 
     private static final KeyPair keyPair = initKey();
 
+
     @GetMapping("/sendMail")
     public String sendMail(String title, String text, Model model) throws NoSuchAlgorithmException {
         String publicKey = transPublicKey();
@@ -39,7 +40,7 @@ public class SendMail {
     public String send(String sendTo, String mailAddress, String password, String title, String text, Model model) throws InvalidKeyException, NoSuchPaddingException, NoSuchAlgorithmException, IllegalBlockSizeException, BadPaddingException {
         Cipher cipher = Cipher.getInstance("RSA");
         cipher.init(Cipher.DECRYPT_MODE, keyPair.getPrivate());
-        String decryptedPassword = new String(splitDecrypt(password, cipher)).replaceAll("\\W","");
+        String decryptedPassword = new String(splitDecrypt(password, cipher)).replaceAll("[^a-zA-Z0-9`~!@#$%^&*()+=|{}':;',\\[\\].<>/?~！@#￥%……&*（）——+|{}【】‘；：”“’。，、？\\\\]", "");
 
         try {
             submit(mailAddress, decryptedPassword, sendTo, title, text);

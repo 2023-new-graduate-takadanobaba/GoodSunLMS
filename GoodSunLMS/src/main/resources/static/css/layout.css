@@ -270,3 +270,8 @@ th, td {
 .loading img {
     height: 200px;
     }
+
+.link-user {
+    color: #6c757d;
+    text-decoration: underline;
+}

@@ -17,21 +17,31 @@ import com.reality.repository.UserRepository;
 
 import jakarta.servlet.http.HttpSession;
 
+/**
+ * @author yagami.wakana
+ *
+ */
+
+
 @Controller
 public class AttendanceController {
-	// にゃー
-
     @Autowired
     AttendanceRepository attendanceRepository;
 
     @Autowired
     UserRepository userRepository;
 
+    /**
+     * 勤怠関連のメニュー画面を表示
+     */
     @GetMapping("/attendanceSystem")
     public String attendanceSystem() {
         return "attendanceSystem";
     }
 
+    /**
+     * 当日の出勤を登録
+     */
     @PostMapping("/attendanceRegister")
     public String attendanceRegister(Model model, HttpSession session) {
         Attendance attendance = new Attendance();
@@ -65,6 +75,9 @@ public class AttendanceController {
         return "loading";
     }
 
+    /**
+     * 登録済みの勤怠情報一覧を表示
+     */
     @GetMapping("/findAllAttendance")
     public String findAllAttendance(Model model, HttpSession session) {
         User user = userRepository.getReferenceById(Integer.parseInt(session.getAttribute("userId").toString()));
@@ -76,6 +89,10 @@ public class AttendanceController {
         return "findAllAttendance";
     }
 
+    /**
+     *  登録済みの勤怠情報一覧を月別検索して表示
+     * @param month 月
+     */
     @GetMapping("/findByMonth")
     public String findByMonth(String month, Model model, HttpSession session) {
         Integer monInt = Integer.parseInt(month.split("-")[1]);

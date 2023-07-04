@@ -25,12 +25,26 @@ public class ManualnputController {
 	@Autowired
 	UserRepository userRepository;
 	
-	
+	/**
+	 * 勤怠情報の手動入力画面表示
+	 */
 	@GetMapping("/manualInput")
 	public String manualInput() {
 		return "manualInput";
 	}
 	
+	/**
+	 * 手動入力した勤怠情報をDBに登録
+	 * 
+	 * @param date 日付
+	 * @param startTime 開始時間
+	 * @param endTime 終了時間
+	 * @param workHours 勤務時間
+	 * @param division 区分
+	 * @param project プロジェクト
+	 * @param place 作業場所
+	 * @param remarks 備考
+	 */
 	@PostMapping("/doManualInput")
 	public String doManualInput(String date, String startTime, String endTime, String workHours,
 			String division, String project, String place, String remarks, Model model, HttpSession session) throws ParseException {

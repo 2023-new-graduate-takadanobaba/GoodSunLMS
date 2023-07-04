@@ -25,6 +25,9 @@ public class ManualDeleteController {
 	@Autowired
 	UserRepository userRepository;
 
+	/**
+	 * 登録した勤怠情報の削除画面の表示
+	 */
 	@GetMapping("/manualDelete")
 	public String manualDelete(Model model, HttpSession session) {
 		User user = userRepository.getReferenceById(Integer.parseInt(session.getAttribute("userId").toString()));
@@ -36,6 +39,9 @@ public class ManualDeleteController {
 		return "manualDelete";
 	}
 	
+	/**
+	 * 登録した勤怠情報の削除画面の表示（降順）
+	 */
     @GetMapping("/findByDateDescManualDelete")
     public String findByDateDescManualDelete(Model model, HttpSession session) {
     	User user = userRepository.getReferenceById(Integer.parseInt(session.getAttribute("userId").toString()));
@@ -43,6 +49,9 @@ public class ManualDeleteController {
     	return "manualDelete";
     }
     
+	/**
+	 * 登録した勤怠情報の削除画面の表示（昇順）
+	 */
     @GetMapping("/findByDateAscManualDelete")
     public String findByDateAscManualDelete(Model model, HttpSession session) {
     	User user = userRepository.getReferenceById(Integer.parseInt(session.getAttribute("userId").toString()));
@@ -50,17 +59,11 @@ public class ManualDeleteController {
     	return "manualDelete";
     }
 	
-//	@PostMapping("/doManualDelete")
-//	@Transactional(rollbackFor = Exception.class)
-//	public String doManualDelete(String date, String startTime, Model model, HttpSession session) throws ParseException {
-//		User user = userRepository.getReferenceById(Integer.parseInt(session.getAttribute("userId").toString()));
-//		Date dateTemp = new SimpleDateFormat("yyyy-MM-dd").parse(date);
-//		startTime = removeFirstChar(startTime);
-//		
-//		attendanceRepository.deleteByDateAndStartTimeAndUser(dateTemp, startTime, user);
-//		return "redirect:/findAllAttendance";
-//	}
-	
+	/**
+	 * 登録した勤怠情報を月別に検索して表示
+	 * 
+	 * @param month 月
+	 */
 	@GetMapping("/findByMonthManualDelete")
     public String findByMonthManualDelete(String month, Model model, HttpSession session) {
         Integer monInt = Integer.parseInt(month.split("-")[1]);
@@ -69,18 +72,13 @@ public class ManualDeleteController {
         return "manualDelete";
     }
 	
+	/**
+	 * 登録した勤怠情報を削除
+	 */
 	@PostMapping("/doManualDeleteAjax")
 	@Transactional(rollbackFor = Exception.class)
 	public String doManualDelete1(Integer aId) throws ParseException {
 		attendanceRepository.deleteById(aId);
 		return "redirect:/manualDelete";
 	}
-
-//	//　時刻の入力形式変更 ex) 09:00 >> 9:00
-//	private String removeFirstChar (String str) {
-//		if(str.startsWith("0")) {
-//			str = str.substring(1);
-//		}
-//		return str;
-//	}
 }

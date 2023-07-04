@@ -183,6 +183,22 @@ th, td {
 	margin-bottom: 30px;
 }
 
+.btn-outline-gray {
+	color: #808080;
+	border-color: #a9a9a9;
+	border-radius: 100vh;
+}
+
+.btn-outline-gray:hover {
+ 	color: #ffffff;
+  	border-color: #a9a9a9;
+  	background-color: #a9a9a9;
+}
+
+.btn-check:focus + .btn-outline-gray, .btn-outline-gray:focus {
+	box-shadow: 0 0 0 0.25rem rgba(169,169,169,0.3);
+}
+
 .btn-outline-pink {
 	color: #f19ca7;
 	border-color: #f19ca7;

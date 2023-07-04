@@ -6,17 +6,8 @@
 <title>勤怠情報削除</title>
 </head>
 <body>
-	<!-- 	<form method="post" th:action="@{/doManualDelete}"> -->
-	<!-- 		日時◆<input type="date" name="date" /> -->
-	<!-- 		開始時間◆<input type="time" value="09:00" name="startTime" /> -->
-
-	<!-- 		<input type="submit"value="削除" /> -->
-	<!-- 	</form> -->
-
-	<!-- 	<p> -->
 	<h2 class="text-secondary">勤怠情報削除</h2>
 	<div class="list text-secondary">
-
 		<div class="searchBtn_a">
 			<form th:action="@{/findByMonthManualDelete}" method="get"
 				style="display: inline">
@@ -24,7 +15,6 @@
 					th:value="${session.date}" name="month" /> <input type="submit"
 					class="btn btn-outline-lb" value="検索" />&#0009;
 			</form>
-
 			<div class="searchBtn_b" style="display: inline">
 
 				<form th:action="@{/findByDateAscManualDelete}" method="get"
@@ -36,10 +26,8 @@
 					style="display: inline">
 					<input type="submit" class="btn btn-outline-lb" value="降順" />
 				</form>
-
 			</div>
 		</div>
-
 		<div id="table">
 			<table border=1
 				class="table table-lb text-secondary table-hover border border-pink">
@@ -64,10 +52,6 @@
 					<td th:text="${attendance.project}"></td>
 					<td th:text="${attendance.place}"></td>
 					<td th:text="${attendance.remarks}"></td>
-					<!--  
-				<td><button th:onclick="del(this.getAttribute('delId'))" type="button"
-						class="btn btn-outline-lb" th:delId="${attendance.id}" th:text="削除"></button></td>
-			-->
 					<td><button th:onclick="del(this.getAttribute('delId'))"
 							type="button" class="btn btn-outline-secondary"
 							th:delId="${attendance.id}">
@@ -82,7 +66,6 @@
 				</tr>
 			</table>
 		</div>
-
 		<p class="return">
 			<a th:href="@{/attendanceSystem}" class="icon-link link-secondary">
 				<svg xmlns="http://www.w3.org/2000/svg" width="40" height="40"
@@ -94,7 +77,6 @@
 			</a>
 		</p>
 	</div>
-
 	<script th:src="@{/js/manuallDel.js}" type="text/javascript"></script>
 </body>
 </html>

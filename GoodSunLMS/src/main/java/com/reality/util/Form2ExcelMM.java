@@ -58,7 +58,10 @@ public class Form2ExcelMM {
 		
 		SimpleDateFormat sdf = new SimpleDateFormat("MM/dd");
 		SimpleDateFormat sdfE = new SimpleDateFormat("E", Locale.JAPANESE);
+		SimpleDateFormat MM = new SimpleDateFormat("MM");
+		SimpleDateFormat dd = new SimpleDateFormat("dd");
 		XSSFCreationHelper createHelper = wb.getCreationHelper();	
+		Calendar cal = Calendar.getInstance();
 
 		String yyyy = date.split("/")[0];
 		String mm = Integer.parseInt(date.split("/")[1])<10?"0"+date.split("/")[1]:date.split("/")[1];
@@ -73,11 +76,42 @@ public class Form2ExcelMM {
 		// 氏名
 		this.setValue(1, 7, session.getAttribute("fullName").toString());
 		for (int i = 0; i < list.size(); i++) {
+			int col_pos = 0;
+			
+			System.out.println(sdfE.format(list.get(i).getDate()));
+			// 繰り返しの1回目が月曜日だった場合
+			if (i == 0 && sdfE.format(list.get(i).getDate()).equals("月")) {
+				if (dd.format(list.get(i).getDate()).equals("03")) {
+					cal.setTime(list.get(i).getDate());
+					cal.add(Calendar.DATE, -2);
+					col_pos = 0;
+					// 土曜の日付
+					this.setValue(row_pos, col_pos++, sdf.format(cal.getTime()));
+					this.setValue(row_pos, col_pos++, sdfE.format(cal.getTime()));
+					row_pos++;
+//					// 日曜の日付
+					col_pos = 0;
+					cal.add(Calendar.DATE, 1);
+					this.setValue(row_pos, col_pos++, sdf.format(cal.getTime()));
+					this.setValue(row_pos, col_pos++, sdfE.format(cal.getTime()));
+					row_pos++;
+				} else if (dd.format(list.get(i).getDate()).equals("02")) {
+					cal.setTime(list.get(i).getDate());
+					cal.add(Calendar.DATE, -1);
+					col_pos = 0;
+					// 日曜の日付
+					this.setValue(row_pos, col_pos++, sdf.format(cal.getTime()));
+					this.setValue(row_pos, col_pos++, sdfE.format(cal.getTime()));
+					row_pos++;
+				}
+			}
+			
 			if (row_pos>34) {
 				insertRow(wb, ws, row_pos-1, 1);
 				isCal = true;
 			}
-			int col_pos = 0;
+			
+			col_pos = 0;
 			// 日付
 			this.setValue(row_pos, col_pos++, sdf.format(list.get(i).getDate()));
 			this.setValue(row_pos, col_pos++, sdfE.format(list.get(i).getDate()));
@@ -103,7 +137,6 @@ public class Form2ExcelMM {
 			// 土日の追加
 			if (sdfE.format(list.get(i).getDate()).equals("金")) {
 				// 繰り返し中に金曜日があった場合、翌日（土曜日）の日付を算出
-				Calendar cal = Calendar.getInstance();
 				cal.setTime(list.get(i).getDate());
 				cal.add(Calendar.DATE, 1);
 
@@ -114,7 +147,7 @@ public class Form2ExcelMM {
 				}
 
 				// 土曜日の日付が、出力中の月と一致しているか確認
-				SimpleDateFormat MM = new SimpleDateFormat("MM");
+
 				if (MM.format(cal.getTime()).equals(mm)) {
 					col_pos = 0;
 					// 日付

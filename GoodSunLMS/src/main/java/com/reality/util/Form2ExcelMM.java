@@ -77,8 +77,6 @@ public class Form2ExcelMM {
 		this.setValue(1, 7, session.getAttribute("fullName").toString());
 		for (int i = 0; i < list.size(); i++) {
 			int col_pos = 0;
-			
-			System.out.println(sdfE.format(list.get(i).getDate()));
 			// 繰り返しの1回目が月曜日だった場合
 			if (i == 0 && sdfE.format(list.get(i).getDate()).equals("月")) {
 				if (dd.format(list.get(i).getDate()).equals("03")) {

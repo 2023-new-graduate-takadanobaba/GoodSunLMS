@@ -35,6 +35,11 @@ public class Form2ExcelMM {
 	XSSFSheet ws;
 	boolean isCal = false;
 
+	/**
+	 * 月報生成
+	 * 
+	 * @param month 月
+	 */
 	@GetMapping("/genMonth")
 	public void buildExcel(Integer month, HttpSession session, HttpServletResponse response) throws Exception {
 
@@ -170,6 +175,12 @@ public class Form2ExcelMM {
 		System.out.println("JOB_DONE");
 	}
 	
+	/**
+	 * 入力内容をExcelファイルに出力する
+	 * 
+	 * @param row_pos 行の位置指定（0～）
+	 * @param col_pos 列の位置指定（0～）
+	 */
 	private void setValue(int row_pos, int col_pos, Object value) throws Exception {
 		// create and set cell
 		if (ws.getRow(row_pos) == null) {

@@ -20,9 +20,13 @@
     	<input type="hidden" name="public" th:value="${publicKey}"/>
 	    <form id="form" method="post" th:action="@{/sendMail}">
 	    	<div class="col">
-	    		送信先
+				宛先
 	    	</div>
 	    	<input class="text-secondary table-lb" type="email" name="sendTo"/>
+			<div class="col">
+				CC
+			</div>
+			<input class="text-secondary table-lb" type="email" name="sendCC"/>
 <!--	        <div class="col">-->
 <!--	        	メールアドレス-->
 <!--	        </div>-->

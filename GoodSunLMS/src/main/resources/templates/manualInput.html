@@ -18,20 +18,20 @@
 				※<span id="explain">■</span>は必須入力です。
 			</p>
 			<p>
-				日付◆<input type="date" class="required table-pink" name="date"
-					required />
+				日付◆<input type="date" class="required table-pink" name="date" required />
 			</p>
 			<br>
 			<p>
 				<label>開始時間◆<input type="time" class="table-pink"
-					value="09:00" name="startTime" list="start-list" step="1800"
-					required /> <datalist id="start-list">
+					value="09:00" name="startTime" list="start-list" step="1800" required />
+					<datalist id="start-list">
 						<option value="08:00">
 						<option value="08:30">
 						<option value="09:30">
 						<option value="10:00">
 					</datalist>
-				</label> <label> 終了時間◆<input type="time" class="table-pink"
+				</label>
+				<label> 終了時間◆<input type="time" class="table-pink"
 					value="18:00" name="endTime" list="end-list" step="1800" required />
 					<datalist id="end-list">
 						<option value="17:00">
@@ -42,15 +42,14 @@
 				</label>
 			</p>
 			<p>
-				勤務時間◆<input type="time" class="table-pink" value="00:00"
-					name="workHours" />
+				勤務時間◆<input type="time" class="table-pink" value="00:00" name="workHours" />
 			</p>
 		</div>
 		<div class="list text-secondary">
 			<p>
 				<label> 区分◆<input type="text" name="division"
-					class="table-pink" list="division-list" placeholder="選択または入力"
-					autocomplete="off" /> <datalist id="division-list">
+					class="table-pink" list="division-list" placeholder="選択または入力" autocomplete="off" />
+					<datalist id="division-list">
 						<option value="遅刻">
 						<option value="早退">
 						<option value="休暇">
@@ -59,8 +58,8 @@
 			</p>
 			<p>
 				<label>プロジェクト◆<input type="text" class="required table-pink"
-					name="project" list="project-list" placeholder="選択または入力"
-					autocomplete="off" required /> <datalist id="project-list">
+					name="project" list="project-list" placeholder="選択または入力" autocomplete="off" required />
+					<datalist id="project-list">
 						<option value="新入社員研修">
 						<option value="新人教育(愚痴相談)">
 					</datalist>
@@ -68,8 +67,8 @@
 			</p>
 			<p>
 				<label>作業場所◆<input type="text" class="required table-pink"
-					name="place" list="place-list" placeholder="選択または入力"
-					autocomplete="off" required /> <datalist id="place-list">
+					name="place" list="place-list" placeholder="選択または入力" autocomplete="off" required />
+					<datalist id="place-list">
 						<option value="高田馬場事務所">
 						<option value="高田馬場">
 						<option value="中野">
@@ -78,11 +77,12 @@
 				</label>
 			</p>
 			<p>
-				<label>備考◆<input type="text" class="table-pink"
-					name="remarks" list="remarks-list" placeholder="選択または入力"
-					autocomplete="off" /> <datalist id="remarks-list">
-						<option value="Agile-PBL開発">
-					</datalist>
+				<label>備考◆
+					<input type="text" class="table-pink"
+						name="remarks" list="remarks-list" placeholder="選択または入力" autocomplete="off" />
+						<datalist id="remarks-list">
+							<option value="Agile-PBL開発">
+						</datalist>
 				</label>
 			</p>
 		</div>

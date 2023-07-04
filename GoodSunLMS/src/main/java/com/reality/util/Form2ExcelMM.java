@@ -1,14 +1,13 @@
 package com.reality.util;
 
-import java.io.*;
+import java.io.InputStream;
+import java.io.OutputStream;
 import java.net.URLEncoder;
 import java.text.SimpleDateFormat;
 import java.util.Calendar;
 import java.util.List;
 import java.util.Locale;
 
-import com.reality.repository.AttendanceRepository;
-import jakarta.servlet.http.HttpServletResponse;
 import org.apache.poi.ss.usermodel.DateUtil;
 import org.apache.poi.xssf.usermodel.XSSFCell;
 import org.apache.poi.xssf.usermodel.XSSFCellStyle;
@@ -16,15 +15,15 @@ import org.apache.poi.xssf.usermodel.XSSFCreationHelper;
 import org.apache.poi.xssf.usermodel.XSSFRow;
 import org.apache.poi.xssf.usermodel.XSSFSheet;
 import org.apache.poi.xssf.usermodel.XSSFWorkbook;
-
-
-import com.reality.entity.Attendance;
-
-
-import jakarta.servlet.http.HttpSession;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.RestController;
+
+import com.reality.entity.Attendance;
+import com.reality.repository.AttendanceRepository;
+
+import jakarta.servlet.http.HttpServletResponse;
+import jakarta.servlet.http.HttpSession;
 
 @RestController
 public class Form2ExcelMM {
@@ -95,10 +94,45 @@ public class Form2ExcelMM {
 			this.setValue(row_pos, col_pos++, list.get(i).getRemarks());
 
 			row_pos++;
+			
+			// 土日の追加
+			if (sdfE.format(list.get(i).getDate()).equals("金")) {
+				// 繰り返し中に金曜日があった場合、翌日（土曜日）の日付を算出
+				Calendar cal = Calendar.getInstance();
+				cal.setTime(list.get(i).getDate());
+				cal.add(Calendar.DATE, 1);
+
+				// 行が足りないときは追加
+				if (row_pos>34) {
+					insertRow(wb, ws, row_pos-1, 1);
+					isCal = true;
+				}
+
+				// 土曜日の日付が、出力中の月と一致しているか確認
+				SimpleDateFormat MM = new SimpleDateFormat("MM");
+				if (MM.format(cal.getTime()).equals(mm)) {
+					col_pos = 0;
+					// 日付
+					this.setValue(row_pos, col_pos++, sdf.format(cal.getTime()));
+					this.setValue(row_pos, col_pos++, sdfE.format(cal.getTime()));
+					row_pos++;
+					// 日曜日の日付を算出
+					cal.add(Calendar.DATE, 1);
+					// 日曜日の日付が、出力中の月と一致しているか確認
+					if (MM.format(cal.getTime()).equals(mm)) {
+						col_pos = 0;
+						// 日付
+						this.setValue(row_pos, col_pos++, sdf.format(cal.getTime()));
+						this.setValue(row_pos, col_pos++, sdfE.format(cal.getTime()));
+						row_pos++;
+					}
+				}
+				
+			}
 		}
 		
 		if (isCal) {
-			ws.getRow(row_pos).getCell(5).setCellFormula("SUM(F5:F"+Integer.toString(row_pos)+")");
+			ws.getRow(row_pos + 1).getCell(5).setCellFormula("SUM(F5:F"+Integer.toString(row_pos + 1)+")");
 		}
 		
 		wb.setForceFormulaRecalculation(true);

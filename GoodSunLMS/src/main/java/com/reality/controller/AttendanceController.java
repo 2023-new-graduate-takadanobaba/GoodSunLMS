@@ -76,13 +76,18 @@ public class AttendanceController {
         Date date = Date.from(now.atStartOfDay().atZone(ZoneId.systemDefault()).toInstant());
 
         SimpleDateFormat sdf = new SimpleDateFormat("yyyy-MM-dd");
-
-        if (attendanceRepository.findByUserAndDate(user, date).stream().filter(a->a.getProject()==null).collect(java.util.stream.Collectors.toList()).size() == 0) {
-            model.addAttribute("stat", "attendanceError");
-            return "error";
+        Attendance attendance = new Attendance();
+        if (attendanceRepository.findByUserAndDate(user, date).size() != 0) {
+            if (attendanceRepository.findByUserAndDate(user, date).stream().filter(a->a.getProject()==null).collect(java.util.stream.Collectors.toList()).size() == 0) {
+                model.addAttribute("stat", "attendanceError");
+                return "error";
+            } else {
+                attendance = attendanceRepository.findByUserAndDate(user, date).stream().filter(a->a.getProject()==null).collect(java.util.stream.Collectors.toList()).get(0);
+            }
+        } else {
+            attendance.setDate(date);
         }
 
-        Attendance attendance = attendanceRepository.findByUserAndDate(user, date).stream().filter(a->a.getProject()==null).collect(java.util.stream.Collectors.toList()).get(0);
         attendance.setStartTime("9:00");
         attendance.setEndTime("18:00");
         attendance.setDivision("");

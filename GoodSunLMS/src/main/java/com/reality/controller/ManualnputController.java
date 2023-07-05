@@ -54,7 +54,7 @@ public class ManualnputController {
 			SimpleDateFormat sdf = new SimpleDateFormat("yyyy-MM-dd");
 			Date dateTemp = new SimpleDateFormat("yyyy-MM-dd").parse(date);
 
-			if (project.equals("新入社員研修")) {
+			if (project.equals("新入社員研修") && attendanceRepository.findByUserAndDate(user, dateTemp).size() != 0) {
 				if(attendanceRepository.findByUserAndDate(user, dateTemp).stream().filter(a->a.getProject()==null).collect(java.util.stream.Collectors.toList()).size() != 0) {
 					attendance = attendanceRepository.findByUserAndDate(user, dateTemp).stream().filter(a -> a.getProject()==null).collect(Collectors.toList()).get(0);
 				} else {

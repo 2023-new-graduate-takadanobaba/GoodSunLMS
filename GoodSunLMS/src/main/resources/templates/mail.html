@@ -20,15 +20,7 @@
 
 
 		<p>
-			<form method="get" th:action="@{/mailTemplate}">
-				<!--  
-					送信相手を選択◆
-					<input type="text" name="recipient" list="recipient" placeholder="選択または入力" autocomplete="off"/>
-					<datalist id="recipient">
-					
-					</datalist>
-				-->
-				
+			<form method="get" th:action="@{/mailTemplate}">				
 				<p>送信相手の名前を入力◆ <input type="text" class="table-lb" name="recipient" /></p>
 				<p>テンプレート内容を選択◆
 					<select name="contents" class="table-lb text-secondary">
@@ -45,11 +37,6 @@
 				
 			</form>
 		</p>
-
-		<!-- 
-<p><a th:href="@{/addRecipient}">送信相手の名前を登録</a>
- -->
-
 
 	</div>
 </body>

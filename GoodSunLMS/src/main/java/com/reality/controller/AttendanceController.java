@@ -6,9 +6,7 @@ import java.time.ZoneId;
 import java.time.temporal.TemporalAdjusters;
 import java.util.Calendar;
 import java.util.Date;
-import java.util.List;
 
-import com.reality.repository.AttenRepository;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
@@ -37,7 +35,7 @@ public class AttendanceController {
     UserRepository userRepository;
 
     @Autowired
-    AttenRepository attenRepository;
+    AttendanceRepository attenRepository;
 
     /**
      * 勤怠関連のメニュー画面を表示

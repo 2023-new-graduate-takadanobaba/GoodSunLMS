@@ -34,9 +34,6 @@ public class AttendanceController {
     @Autowired
     UserRepository userRepository;
 
-    @Autowired
-    AttendanceRepository attenRepository;
-
     /**
      * 勤怠関連のメニュー画面を表示
      */

@@ -1,5 +1,10 @@
 @charset "UTF-8";
 
+article#container{
+	background: pink;
+}
+
+
 .bg-light {
 	background-color: #C0DBEA!important;
 }
@@ -52,7 +57,7 @@
 }
 
 article#container{
-	background-image: url("../img/watercolor.jpg");
+	background-image: url("../img/metal.jpg");
 	background-color:rgba(255,255,255,0.5);
 	background-blend-mode:lighten;
 	background-size: 100%;

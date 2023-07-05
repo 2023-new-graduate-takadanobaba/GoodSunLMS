@@ -15,11 +15,10 @@ import org.springframework.transaction.annotation.Transactional;
 public interface AttendanceRepository extends JpaRepository<Attendance, Integer>{
 	Attendance findByDate(Date date);
 	List<Attendance> findByUser(User user);
-	List<Attendance> findByUserOrderByDateAsc(User user);
+	List<Attendance> findByUserAndProjectIsNotNullOrderByDateAsc(User user);
 	List<Attendance> findByDateAndStartTime(Date date, String startTime);
 	void deleteByDateAndStartTimeAndUser(Date date, String startTime, User user);
-//	List<Attendance> findByDateContaining(Date date);
-	List<Attendance> findByUserOrderByDateDesc(User user);
+	List<Attendance> findByUserAndProjectIsNotNullOrderByDateDesc(User user);
 	List<Attendance> findByUserAndDate(User user, Date date);
 	@Query(value = "select * from attendance where month(date) = :month and uid = :uid order by date, TIME_TO_SEC(start_time) asc", nativeQuery = true)
 	List<Attendance> findByMMAndUserIdOrderByDateAsc(@Param("month") Integer month, @Param("uid") Integer uid);

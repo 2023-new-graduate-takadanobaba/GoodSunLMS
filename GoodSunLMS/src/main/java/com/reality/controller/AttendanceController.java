@@ -1,9 +1,14 @@
 package com.reality.controller;
 
 import java.text.SimpleDateFormat;
+import java.time.LocalDate;
+import java.time.ZoneId;
+import java.time.temporal.TemporalAdjusters;
+import java.util.Calendar;
 import java.util.Date;
 import java.util.List;
 
+import com.reality.repository.AttenRepository;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
@@ -31,11 +36,36 @@ public class AttendanceController {
     @Autowired
     UserRepository userRepository;
 
+    @Autowired
+    AttenRepository attenRepository;
+
     /**
      * 勤怠関連のメニュー画面を表示
      */
     @GetMapping("/attendanceSystem")
-    public String attendanceSystem() {
+    public String attendanceSystem(HttpSession session) {
+        Date date = new Date();
+        SimpleDateFormat sdf = new SimpleDateFormat("MM");
+        int month = Integer.parseInt(sdf.format(date));
+        int uid = Integer.parseInt(session.getAttribute("userId").toString());
+
+        LocalDate now = LocalDate.now();
+        LocalDate first = now.with(TemporalAdjusters.firstDayOfMonth());
+        LocalDate last = now.with(TemporalAdjusters.lastDayOfMonth());
+
+        Date startDate = Date.from(first.atStartOfDay().atZone(ZoneId.systemDefault()).toInstant());
+        Date endDate = Date.from(last.atStartOfDay().atZone(ZoneId.systemDefault()).toInstant());
+
+        if (attendanceRepository.findByMMAndUserIdOrderByDateAsc(month, uid).size() == 0) {
+            Calendar startCal = Calendar.getInstance();
+            startCal.setTime(startDate);
+            Calendar endCal = Calendar.getInstance();
+            endCal.setTime(endDate);
+            while (startCal.getTimeInMillis() <= endCal.getTimeInMillis()) {
+                attendanceRepository.insertDateByUserId(startCal.getTime(), uid);
+                startCal.add(Calendar.DATE, 1);
+            }
+        }
         return "attendanceSystem";
     }
 
@@ -44,22 +74,20 @@ public class AttendanceController {
      */
     @PostMapping("/attendanceRegister")
     public String attendanceRegister(Model model, HttpSession session) {
-        Attendance attendance = new Attendance();
+
         User user = userRepository.getReferenceById(Integer.parseInt(session.getAttribute("userId").toString()));
 
-        Date date = new Date();
+        LocalDate now = LocalDate.now();
+        Date date = Date.from(now.atStartOfDay().atZone(ZoneId.systemDefault()).toInstant());
+
         SimpleDateFormat sdf = new SimpleDateFormat("yyyy-MM-dd");
 
-        List<Attendance> attList = attendanceRepository.findByUser(user);
-        
-        for (Attendance att : attList) {
-			if (sdf.format(att.getDate()).equals(sdf.format(date)) && att.getProject().equals("新入社員研修")) {
-				model.addAttribute("stat", "attendanceError");
-	            return "error";
-			}
-		}
+        if (attendanceRepository.findByUserAndDate(user, date).stream().filter(a->a.getProject()==null).collect(java.util.stream.Collectors.toList()).size() == 0) {
+            model.addAttribute("stat", "attendanceError");
+            return "error";
+        }
 
-        attendance.setDate(date);
+        Attendance attendance = attendanceRepository.findByUserAndDate(user, date).stream().filter(a->a.getProject()==null).collect(java.util.stream.Collectors.toList()).get(0);
         attendance.setStartTime("9:00");
         attendance.setEndTime("18:00");
         attendance.setDivision("");

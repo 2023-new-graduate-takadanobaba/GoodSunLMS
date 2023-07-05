@@ -76,51 +76,29 @@ public class Form2ExcelMM {
 		// 氏名
 		this.setValue(1, 7, session.getAttribute("fullName").toString());
 		for (int i = 0; i < list.size(); i++) {
-			int col_pos = 0;
-			// 繰り返しの1回目が月曜日だった場合
-			if (i == 0 && sdfE.format(list.get(i).getDate()).equals("月") && dd.format(list.get(i).getDate()).equals("03")) {
-				cal.setTime(list.get(i).getDate());
-				cal.add(Calendar.DATE, -2);
-				col_pos = 0;
-				// 土曜の日付
-				this.setValue(row_pos, col_pos++, sdf.format(cal.getTime()));
-				this.setValue(row_pos, col_pos++, sdfE.format(cal.getTime()));
-				row_pos++;
-				// 日曜の日付
-				col_pos = 0;
-				cal.add(Calendar.DATE, 1);
-				this.setValue(row_pos, col_pos++, sdf.format(cal.getTime()));
-				this.setValue(row_pos, col_pos++, sdfE.format(cal.getTime()));
-				row_pos++;
-			} else if (i == 0 && sdfE.format(list.get(i).getDate()).equals("月") && dd.format(list.get(i).getDate()).equals("02")) {
-				cal.setTime(list.get(i).getDate());
-				cal.add(Calendar.DATE, -1);
-				col_pos = 0;
-				// 日曜の日付
-				this.setValue(row_pos, col_pos++, sdf.format(cal.getTime()));
-				this.setValue(row_pos, col_pos++, sdfE.format(cal.getTime()));
-				row_pos++;
-			}
-			
 			if (row_pos>34) {
 				insertRow(wb, ws, row_pos-1, 1);
 				isCal = true;
 			}
-			
-			col_pos = 0;
+			int col_pos = 0;
 			// 日付
 			this.setValue(row_pos, col_pos++, sdf.format(list.get(i).getDate()));
 			this.setValue(row_pos, col_pos++, sdfE.format(list.get(i).getDate()));
 			// 開始終了
-			this.setValue(row_pos, col_pos++, list.get(i).getStartTime());			
+			this.setValue(row_pos, col_pos++, list.get(i).getStartTime());
 			this.setValue(row_pos, col_pos++, list.get(i).getEndTime());
-			
+
 			// 区分
 			this.setValue(row_pos, col_pos++, list.get(i).getDivision());
 			// 時間
 //			System.out.println("row: "+row_pos+";cell: "+col_pos);
 			ws.getRow(row_pos).getCell(col_pos).getCellStyle().setDataFormat(createHelper.createDataFormat().getFormat("[h]:mm"));
-			ws.getRow(row_pos).getCell(col_pos++).setCellValue(DateUtil.convertTime(list.get(i).getWorkHours()));		
+			System.out.println(list.get(i).getWorkHours()+":"+list.get(i).getDate());
+			if (list.get(i).getWorkHours()==null){
+				this.setValue(row_pos, col_pos++, "");
+			} else {
+				ws.getRow(row_pos).getCell(col_pos++).setCellValue(DateUtil.convertTime(list.get(i).getWorkHours()));
+			}
 			// プロジェクト
 			this.setValue(row_pos, col_pos++, list.get(i).getProject());
 			// 作業場所
@@ -129,43 +107,11 @@ public class Form2ExcelMM {
 			this.setValue(row_pos, col_pos++, list.get(i).getRemarks());
 
 			row_pos++;
-			
-			// 土日の追加
-			if (sdfE.format(list.get(i).getDate()).equals("金")) {
-				// 繰り返し中に金曜日があった場合、翌日（土曜日）の日付を算出
-				cal.setTime(list.get(i).getDate());
-				cal.add(Calendar.DATE, 1);
 
-				// 行が足りないときは追加
-				if (row_pos>34) {
-					insertRow(wb, ws, row_pos-1, 1);
-					isCal = true;
-				}
-
-				// 土曜日の日付が、出力中の月と一致しているか確認
-
-				if (MM.format(cal.getTime()).equals(mm)) {
-					col_pos = 0;
-					// 日付
-					this.setValue(row_pos, col_pos++, sdf.format(cal.getTime()));
-					this.setValue(row_pos, col_pos++, sdfE.format(cal.getTime()));
-					row_pos++;
-					// 日曜日の日付を算出
-					cal.add(Calendar.DATE, 1);
-					// 日曜日の日付が、出力中の月と一致しているか確認
-					if (MM.format(cal.getTime()).equals(mm)) {
-						col_pos = 0;
-						// 日付
-						this.setValue(row_pos, col_pos++, sdf.format(cal.getTime()));
-						this.setValue(row_pos, col_pos++, sdfE.format(cal.getTime()));
-						row_pos++;
-					}
-				}
-			}
 		}
 		
 		if (isCal) {
-			ws.getRow(row_pos + 1).getCell(5).setCellFormula("SUM(F5:F"+Integer.toString(row_pos + 1)+")");
+			ws.getRow(row_pos).getCell(5).setCellFormula("SUM(F5:F"+Integer.toString(row_pos)+")");
 		}
 		
 		wb.setForceFormulaRecalculation(true);

@@ -31,7 +31,7 @@ public class ManualDeleteController {
 	@GetMapping("/manualDelete")
 	public String manualDelete(Model model, HttpSession session) {
 		User user = userRepository.getReferenceById(Integer.parseInt(session.getAttribute("userId").toString()));
-		model.addAttribute("attendance", attendanceRepository.findByUserOrderByDateAsc(user));
+		model.addAttribute("attendance", attendanceRepository.findByUserAndProjectIsNotNullOrderByDateAsc(user));
 		Date date = new Date();
 		SimpleDateFormat sdf = new SimpleDateFormat("yyyy-MM");
 		String dateStr = sdf.format(date);
@@ -46,10 +46,10 @@ public class ManualDeleteController {
     public String findByDateAscManualDelete(String sorting, Model model, HttpSession session) {
     	User user = userRepository.getReferenceById(Integer.parseInt(session.getAttribute("userId").toString()));
     	if (sorting.equals("asc")) {
-    		model.addAttribute("attendance", attendanceRepository.findByUserOrderByDateAsc(user));
+    		model.addAttribute("attendance", attendanceRepository.findByUserAndProjectIsNotNullOrderByDateAsc(user));
         	return "manualDelete";
     	} else {
-    		model.addAttribute("attendance", attendanceRepository.findByUserOrderByDateDesc(user));
+    		model.addAttribute("attendance", attendanceRepository.findByUserAndProjectIsNotNullOrderByDateDesc(user));
         	return "manualDelete";
     	}
     	

@@ -27,7 +27,7 @@ function toSendMail() {
     let tid = $(".select").children("p.bg-lb").attr("id");
     let teid = $(".select").children("div").attr("id");
 
-    let tcont = $('#' + tid).text().split(":")[1].trim();
+    let tcont = $('#' + tid).text().split(":")[1].length!=0?$('#' + tid).text().split(":")[1].trim():"";
     let tecont = $('#' + teid).html();
     tecont = tecont.replace(/<span>|<\/span>|<\/div>/ig, "").replace(/<br>|<div>/ig, "%0A");
 //    console.log(tecont);

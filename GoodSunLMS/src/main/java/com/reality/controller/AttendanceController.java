@@ -119,7 +119,7 @@ public class AttendanceController {
     @GetMapping("/findByMonth")
     public String findByMonth(String month, Model model, HttpSession session) {
         Integer monInt = Integer.parseInt(month.split("-")[1]);
-        model.addAttribute("attendance", attendanceRepository.findByMMAndUserIdOrderByDateAsc(
+        model.addAttribute("attendance", attendanceRepository.findByMMAndUserIdAndProjectIsNotNullOrderByDateAsc(
                             monInt, Integer.parseInt(session.getAttribute("userId").toString())));
         return "findAllAttendance";
     }

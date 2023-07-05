@@ -20,6 +20,9 @@ public interface AttendanceRepository extends JpaRepository<Attendance, Integer>
 	void deleteByDateAndStartTimeAndUser(Date date, String startTime, User user);
 	List<Attendance> findByUserAndProjectIsNotNullOrderByDateDesc(User user);
 	List<Attendance> findByUserAndDate(User user, Date date);
+	@Query(value = "select * from attendance where month(date) = :month and uid = :uid and project is not null order by date, TIME_TO_SEC(start_time) asc", nativeQuery = true)
+	List<Attendance> findByMMAndUserIdAndProjectIsNotNullOrderByDateAsc(@Param("month") Integer month, @Param("uid") Integer uid);
+
 	@Query(value = "select * from attendance where month(date) = :month and uid = :uid order by date, TIME_TO_SEC(start_time) asc", nativeQuery = true)
 	List<Attendance> findByMMAndUserIdOrderByDateAsc(@Param("month") Integer month, @Param("uid") Integer uid);
 

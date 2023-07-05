@@ -33,9 +33,6 @@
 
 	<script>
 		var checkSession = setInterval(function() {
-			<!--
-			console.log($("#userName").text().length + ",");
-			-->
 			if ($("#userName").text().length == 0) {
 				alert("セッションの有効期限が切れました。\nもう一度ログインしてください。");
 				location.href = "./index";

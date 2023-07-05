@@ -3,6 +3,7 @@ import java.text.ParseException;
 import java.text.SimpleDateFormat;
 import java.util.Date;
 import java.util.List;
+import java.util.stream.Collectors;
 
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
@@ -52,20 +53,18 @@ public class ManualnputController {
 			User user = userRepository.getReferenceById(Integer.parseInt(session.getAttribute("userId").toString()));
 			SimpleDateFormat sdf = new SimpleDateFormat("yyyy-MM-dd");
 			Date dateTemp = new SimpleDateFormat("yyyy-MM-dd").parse(date);
-			  
-			List<Attendance> attdArr = attendanceRepository.findByUser(user);
-			
-			for (int i = 0; i < attdArr.size(); i++) {
-				if (sdf.format(attdArr.get(i).getDate()).equals(date) && attdArr.get(i).getProject().equals("新入社員研修")) {
-//					if(removeFirstChar(startTime).equals("9:00") || removeFirstChar(endTime).equals("18:00")) {
-					if(project.equals(attdArr.get(i).getProject())) {
-						model.addAttribute("stat", "attendanceError");
-						return "error";
-					}	
+
+			if (project.equals("新入社員研修")) {
+				if(attendanceRepository.findByUserAndDate(user, dateTemp).stream().filter(a->a.getProject()==null).collect(java.util.stream.Collectors.toList()).size() != 0) {
+					attendance = attendanceRepository.findByUserAndDate(user, dateTemp).stream().filter(a -> a.getProject()==null).collect(Collectors.toList()).get(0);
+				} else {
+					model.addAttribute("stat", "attendanceError");
+					return "error";
 				}
+			} else {
+				attendance.setDate(dateTemp);
 			}
-			
-			attendance.setDate(dateTemp);
+
 			attendance.setStartTime(removeFirstChar(startTime));
 			attendance.setEndTime(removeFirstChar(endTime));
 			attendance.setWorkHours(removeFirstChar(workHours));

@@ -60,15 +60,15 @@ public class Form2ExcelMM {
 		SimpleDateFormat sdfE = new SimpleDateFormat("E", Locale.JAPANESE);
 		SimpleDateFormat MM = new SimpleDateFormat("MM");
 		SimpleDateFormat dd = new SimpleDateFormat("dd");
-		XSSFCreationHelper createHelper = wb.getCreationHelper();	
+		XSSFCreationHelper createHelper = wb.getCreationHelper();
 		Calendar cal = Calendar.getInstance();
 
 		String yyyy = date.split("/")[0];
 		String mm = Integer.parseInt(date.split("/")[1])<10?"0"+date.split("/")[1]:date.split("/")[1];
-			
+		
 		// Cell処理...
 		int row_pos = 4;
-		
+	
 		XSSFCellStyle wrapStyle = wb.createCellStyle();
 		wrapStyle.setWrapText(true);
 		// 日付
@@ -78,30 +78,28 @@ public class Form2ExcelMM {
 		for (int i = 0; i < list.size(); i++) {
 			int col_pos = 0;
 			// 繰り返しの1回目が月曜日だった場合
-			if (i == 0 && sdfE.format(list.get(i).getDate()).equals("月")) {
-				if (dd.format(list.get(i).getDate()).equals("03")) {
-					cal.setTime(list.get(i).getDate());
-					cal.add(Calendar.DATE, -2);
-					col_pos = 0;
-					// 土曜の日付
-					this.setValue(row_pos, col_pos++, sdf.format(cal.getTime()));
-					this.setValue(row_pos, col_pos++, sdfE.format(cal.getTime()));
-					row_pos++;
-//					// 日曜の日付
-					col_pos = 0;
-					cal.add(Calendar.DATE, 1);
-					this.setValue(row_pos, col_pos++, sdf.format(cal.getTime()));
-					this.setValue(row_pos, col_pos++, sdfE.format(cal.getTime()));
-					row_pos++;
-				} else if (dd.format(list.get(i).getDate()).equals("02")) {
-					cal.setTime(list.get(i).getDate());
-					cal.add(Calendar.DATE, -1);
-					col_pos = 0;
-					// 日曜の日付
-					this.setValue(row_pos, col_pos++, sdf.format(cal.getTime()));
-					this.setValue(row_pos, col_pos++, sdfE.format(cal.getTime()));
-					row_pos++;
-				}
+			if (i == 0 && sdfE.format(list.get(i).getDate()).equals("月") && dd.format(list.get(i).getDate()).equals("03")) {
+				cal.setTime(list.get(i).getDate());
+				cal.add(Calendar.DATE, -2);
+				col_pos = 0;
+				// 土曜の日付
+				this.setValue(row_pos, col_pos++, sdf.format(cal.getTime()));
+				this.setValue(row_pos, col_pos++, sdfE.format(cal.getTime()));
+				row_pos++;
+				// 日曜の日付
+				col_pos = 0;
+				cal.add(Calendar.DATE, 1);
+				this.setValue(row_pos, col_pos++, sdf.format(cal.getTime()));
+				this.setValue(row_pos, col_pos++, sdfE.format(cal.getTime()));
+				row_pos++;
+			} else if (i == 0 && sdfE.format(list.get(i).getDate()).equals("月") && dd.format(list.get(i).getDate()).equals("02")) {
+				cal.setTime(list.get(i).getDate());
+				cal.add(Calendar.DATE, -1);
+				col_pos = 0;
+				// 日曜の日付
+				this.setValue(row_pos, col_pos++, sdf.format(cal.getTime()));
+				this.setValue(row_pos, col_pos++, sdfE.format(cal.getTime()));
+				row_pos++;
 			}
 			
 			if (row_pos>34) {
@@ -163,7 +161,6 @@ public class Form2ExcelMM {
 						row_pos++;
 					}
 				}
-				
 			}
 		}
 		

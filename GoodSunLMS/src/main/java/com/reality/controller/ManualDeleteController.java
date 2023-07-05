@@ -38,25 +38,21 @@ public class ManualDeleteController {
 		session.setAttribute("date", dateStr);
 		return "manualDelete";
 	}
-	
+
 	/**
-	 * 登録した勤怠情報の削除画面の表示（降順）
+	 * 登録した勤怠情報の削除画面を昇順/降順に並べ替えて表示
 	 */
-    @GetMapping("/findByDateDescManualDelete")
-    public String findByDateDescManualDelete(Model model, HttpSession session) {
+    @GetMapping("/findByDateManualDelete")
+    public String findByDateAscManualDelete(String sorting, Model model, HttpSession session) {
     	User user = userRepository.getReferenceById(Integer.parseInt(session.getAttribute("userId").toString()));
-    	model.addAttribute("attendance", attendanceRepository.findByUserOrderByDateDesc(user));
-    	return "manualDelete";
-    }
-    
-	/**
-	 * 登録した勤怠情報の削除画面の表示（昇順）
-	 */
-    @GetMapping("/findByDateAscManualDelete")
-    public String findByDateAscManualDelete(Model model, HttpSession session) {
-    	User user = userRepository.getReferenceById(Integer.parseInt(session.getAttribute("userId").toString()));
-    	model.addAttribute("attendance", attendanceRepository.findByUserOrderByDateAsc(user));
-    	return "manualDelete";
+    	if (sorting.equals("asc")) {
+    		model.addAttribute("attendance", attendanceRepository.findByUserOrderByDateAsc(user));
+        	return "manualDelete";
+    	} else {
+    		model.addAttribute("attendance", attendanceRepository.findByUserOrderByDateDesc(user));
+        	return "manualDelete";
+    	}
+    	
     }
 	
 	/**

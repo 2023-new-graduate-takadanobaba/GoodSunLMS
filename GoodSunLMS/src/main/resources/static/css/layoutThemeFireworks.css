@@ -17,15 +17,15 @@
 }
 
 .link-info{
-	color: #d3cfd9;
+	color: #FFFCDB;
 }
 
 .link-info:hover, .link-info:focus {
-	color: #9287ab;
+	color: #dc143c;
 }
 
 .text-secondary{
-	color: #f5ecf4!important;
+	color: #cce8f0!important;
 }
 
 .bg-light {
@@ -65,10 +65,10 @@
 }
 
 .link-purple {
- 	color: #bfbfff;
+ 	color: #FFFCDB;
 }
 .link-purple:hover, .link-purple:focus {
-	color: #f5ecf4;
+	color: #dc143c;
 }
 
 #header {
@@ -83,7 +83,7 @@
 }
 
 article#container{
-	background-image: url("../img/black.jpg");
+	background-image: url("../img/sample.jpg");
 	background-color: #010429;
 	background-blend-mode:lighten;
 	background-size: 100%;
@@ -176,7 +176,7 @@ th, td {
 	border-radius: 20px;
 	border-color: #bee5eb;
 	border-width: 5px;
-	border-image: linear-gradient(to bottom, #241b82 10%, #6b0707 100%);
+	border-image: linear-gradient(to bottom, #D4987E 10%, #CB4829 100%);
 	border-image-slice: 1;
 	display: flex;
     flex-direction: column;
@@ -191,7 +191,7 @@ th, td {
 	border-radius: 20px;
 	border-color: #bee5eb;
 	border-width: 5px;
-	border-image: linear-gradient(to bottom, #241b82 10%, #6b0707 100%);
+	border-image: linear-gradient(to bottom, #D4987E 10%, #CB4829 100%);
 	border-image-slice: 1;
 	display: flex;
     flex-direction: column;
@@ -236,7 +236,7 @@ th, td {
 .btn-outline-pink {
 	color: white;
 	border-color: #727d92;
-	background-color: #7c8699;
+	background-color: #903E84;
 }
 
 .btn-outline-pink:hover {

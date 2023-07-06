@@ -217,6 +217,12 @@ th, td {
 	margin-bottom: 30px;
 }
 
+.btn-outline-secondary {
+    color: #D4987E;
+	border-color: #6f2f65;
+	background-color: rgba(203, 72, 41, 0.5);
+}
+
 .btn-outline-gray {
 	color: #808080;
 	border-color: #a9a9a9;
@@ -234,14 +240,16 @@ th, td {
 }
 
 .btn-outline-pink {
-	color: white;
-	border-color: #727d92;
-	background-color: #903E84;
+	color: #D4987E;
+	border-color: #6f2f65;
+	border: 2px;
+	border-style: dashed;
+	background-color: rgba(203, 72, 41, 0.5);
 }
 
 .btn-outline-pink:hover {
- 	color: white;
-  	background-color: #6b0707;
+ 	color: #FFFCDB;
+  	background-color: #bf1134;
   	border-color: #e6c0c0;
 }
 
@@ -250,14 +258,16 @@ th, td {
 }
 
 .btn-outline-lb{
-	color: white;
-	background-color: #7c8699;
-	border-color: #305ab0;
+	color: #D4987E;
+	border-color: #6f2f65;
+	border: 2px;
+	border-style: dashed;
+	background-color: rgba(203, 72, 41, 0.5);
 }
 
 .btn-outline-lb:hover {
- 	color: white;
-  	background-color: #6b0707;
+ 	color: #FFFCDB;
+  	background-color: #bf1134;
   	border-color: #e6c0c0;
 }
 
@@ -299,8 +309,8 @@ th, td {
 	--bs-table-striped-color: #000;
 	--bs-table-active-bg: black;
 	--bs-table-active-color: #000;
-	--bs-table-hover-bg: #390000;
-	--bs-table-hover-color: #ffd7eb;
+	--bs-table-hover-bg: rgba(203, 72, 41, 0.8);
+	--bs-table-hover-color: #FFFCDB;
 	color: #f7f6fb;
 	background: rgba(36, 20, 14, 0.9);
 	border-color: #badce3;
@@ -308,8 +318,8 @@ th, td {
 }
 
 .table-daily{
-	--bs-table-bg: #000055;
-    --bs-table-striped-bg: #000039;
+	--bs-table-bg: rgba(144, 62, 132, 0.5);
+    --bs-table-striped-bg: rgba(90, 27, 82, 0.5);
     --bs-table-striped-color: #000;
     --bs-table-active-bg: #badce3;
     --bs-table-active-color: #000;

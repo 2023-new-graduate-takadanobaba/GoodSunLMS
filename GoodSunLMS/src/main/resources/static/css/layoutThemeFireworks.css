@@ -334,6 +334,17 @@ th, td {
     border-color: #badce3;
 }
 
+.sendContent {
+	margin: 10% 0;
+	padding: 36px;
+	padding-top: 26px;
+	border: 4px solid #7c3131;
+	border-radius: 8px;
+	display: flex;
+    flex-direction: column;
+    justify-content: center;
+}
+
 .return{
 	margin-top: 50px;
 }

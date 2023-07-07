@@ -35,25 +35,20 @@
 								class="dropdown-item" th:href="@{/findAllAttendance}">一覧</a> <a
 								class="dropdown-item" th:href="@{/manualDelete}">削除</a>
 						</div>
+					</li>&emsp;
+					<li class="dropdown">
+						<a class="btn btn-outline-gray" id="dropdownMenuLink" data-bs-toggle="dropdown">theme</a>
+						<ul class="dropdown-menu" aria-labelledby="dropdownMenuLink">
+							<li><a class="dropdown-item" id="girly"
+								href="javascript:changeStyleSheet('./css/layout.css');">girly</a></li>
+							<li><a class="dropdown-item" id="dusty"
+								href="javascript:changeStyleSheet('./css/layoutThemeDusty.css');">dusty</a></li>
+							<li><a class="dropdown-item" id="dark"
+								href="javascript:changeStyleSheet('./css/layoutThemeDark.css');">dark</a></li>
+							<li><a class="dropdown-item" id="fireworks"
+								href="javascript:changeStyleSheet('./css/layoutThemeFireworks.css');">fireworks</a></li>
+						</ul>
 					</li>
-					<div class="btn-group">
-						<button type="button" class="btn btn-outline-gray">theme</button>
-						<button type="button"
-							class="btn btn-outline-gray dropdown-toggle dropdown-toggle-split"
-							data-bs-toggle="dropdown" aria-expanded="false">
-							<span class="visually-hidden">Theme Dropdown</span>
-						</button>
-						<div class="dropdown-menu">
-							<a class="dropdown-item" id="girly"
-								href="javascript:changeStyleSheet('./css/layout.css');">girly</a>
-							<a class="dropdown-item" id="dusty"
-								href="javascript:changeStyleSheet('./css/layoutThemeDusty.css');">dusty</a>
-							<a class="dropdown-item" id="dark"
-								href="javascript:changeStyleSheet('./css/layoutThemeDark.css');">dark</a>
-							<a class="dropdown-item" id="fireworks"
-								href="javascript:changeStyleSheet('./css/layoutThemeFireworks.css');">fireworks</a>
-						</div>
-					</div>
 				</ul>
 				<div class="header-right text-secondary">
 					ユーザー名：<a class="link-user" th:href="@{/editUser}"><span
